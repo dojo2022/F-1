@@ -1,0 +1,79 @@
+2022-06-08 14:51:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "CREATE TABLE ACCOUNT (ID INT PRIMARY KEY AUTO_INCRIMENT[*], USER VARCHAR(20) NOT NULL,
+ USER_ID VARCHAR(20) UNIQUE NOT NULL, PASSWORD VARCHAR(20) NOT NULL)"; 期待されるステートメント "HASH, AUTO_INCREMENT, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE ACCOUNT (ID INT PRIMARY KEY AUTO_INCRIMENT[*], USER VARCHAR(20) NOT NULL,
+ USER_ID VARCHAR(20) UNIQUE NOT NULL, PASSWORD VARCHAR(20) NOT NULL)"; expected "HASH, AUTO_INCREMENT, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE ACCOUNT (id INT PRIMARY KEY AUTO_INCRIMENT, user VARCHAR(20) NOT NULL,
+ user_id VARCHAR(20) UNIQUE NOT NULL, password VARCHAR(20) NOT NULL) [42001-200]
+2022-06-08 14:53:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "CREATE TABLE ACCOUNT (
+ID INT NOT NULL PRIMARY KEY AUTO_INCRIMENT[*], 
+USER VARCHAR(20),
+USER_ID  VARCHAR(20) NOT NULL UNIQUE, 
+PASSWORD VARCHAR(20) NOT NULL)"; 期待されるステートメント "HASH, AUTO_INCREMENT, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE ACCOUNT (
+ID INT NOT NULL PRIMARY KEY AUTO_INCRIMENT[*], 
+USER VARCHAR(20),
+USER_ID  VARCHAR(20) NOT NULL UNIQUE, 
+PASSWORD VARCHAR(20) NOT NULL)"; expected "HASH, AUTO_INCREMENT, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE ACCOUNT (
+id INT NOT NULL PRIMARY KEY AUTO_INCRIMENT, 
+user VARCHAR(20),
+user_id  VARCHAR(20) NOT NULL UNIQUE, 
+password VARCHAR(20) NOT NULL) [42001-200]
+2022-06-08 14:59:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ACCOUNT (ID, USER, USER_ID, PASSWORD) VALUES (,[*] TEST, 0000, PASSWORD)"; 期待されるステートメント "), DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO ACCOUNT (ID, USER, USER_ID, PASSWORD) VALUES (,[*] TEST, 0000, PASSWORD)"; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO ACCOUNT (id, user, user_id, password) VALUES (, test, 0000, password) [42001-200]
+2022-06-08 14:59:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "TEST" が見つかりません
+Column "TEST" not found; SQL statement:
+INSERT INTO ACCOUNT (id, user, user_id, password) VALUES (1, test, 0000, password) [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.command.dml.Insert.prepare(Insert.java:327)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2022-06-08 15:00:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "test" が見つかりません
+Column "test" not found; SQL statement:
+INSERT INTO ACCOUNT (id, user, user_id, password) VALUES (1, "test", "0000", "password") [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.command.dml.Insert.prepare(Insert.java:327)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2022-06-08 15:00:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ACCOUNT (ID, USER, USER_ID, PASSWORD) VALUES (,[*] ""test"", ""0000"", ""password"")"; 期待されるステートメント "), DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO ACCOUNT (ID, USER, USER_ID, PASSWORD) VALUES (,[*] ""test"", ""0000"", ""password"")"; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO ACCOUNT (id, user, user_id, password) VALUES (, "test", "0000", "password") [42001-200]
