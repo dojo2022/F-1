@@ -1,1 +1,126 @@
 @charset "UTF-8";
+
+/*calendar.html*/
+.wrapper-calendar {
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.wrapper-calendar .wrapper {
+    margin: 0 auto;
+    color: #666;
+}
+
+.wrapper-calendar #header {
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+    margin: 1rem 0 0;
+}
+
+/*カレンダー*/
+.wrapper-calendar #calendar {
+    text-align: center;
+    width: 100%;
+}
+
+.wrapper-calendar table {
+    outline: 2px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.wrapper-calendar th {
+    color: #000;
+}
+
+.wrapper-calendar th,
+.wrapper-calendar td {
+    outline: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.wrapper-calendar td.day-1 .day-schedule{
+    font-size: 0;
+}
+
+.day-schedule{
+	color: gray;
+}
+td.today .day-schedule{
+	color: #fff;
+}
+
+/*日曜日*/
+.wrapper-calendar td:first-child {
+    color: red;
+}
+
+/*土曜日*/
+.wrapper-calendar td:last-child {
+    color: blue;
+}
+
+/*前後月の日付*/
+.wrapper-calendar td.disabled {
+    color: #ccc;
+}
+
+/*本日*/
+.wrapper-calendar td.today {
+    background-color: #ff9191;
+    color: #fff;
+}
+
+/*ボタン*/
+.wrapper-calendar #next-prev-button {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.wrapper-calendar #next-prev-button button {
+    cursor: pointer;
+    background: #00a2b7;
+    color: #fff;
+    border: 1px solid #0aa2b5;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+}
+
+.wrapper-calendar #next-prev-button button:hover {
+    background-color: #abd0d6;
+    border-color: #abd0d6;
+}
+
+.wrapper-calendar #prev {
+    float: left;
+}
+
+.wrapper-calendar #next {
+    float: right;
+}
+
+.wrapper-calendar .footer-container-calendar {
+    margin-top: 1em;
+    border-top: 1px solid #dadada;
+    padding: 10px 0;
+}
+
+.wrapper-calendar .footer-container-calendar select {
+    cursor: pointer;
+    display: inline-block;
+    zoom: 1;
+    background: #ffffff;
+    color: #454545;
+    border: 1px solid #bfc5c5;
+    border-radius: 3px;
+    padding: 5px 1em;
+}
+
+/*schedule.html*/
+.wrapper-schedule {
+    margin: 0 auto;
+}
