@@ -16,7 +16,7 @@ public class User implements Serializable {
 	}
 
 	public User() {
-		this.id = 0;
+		this.id = -1;
 		this.user = "";
 		this.userId = "";
 		this.password = "";
