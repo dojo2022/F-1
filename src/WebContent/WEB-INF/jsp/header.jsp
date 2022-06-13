@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="css/ganda_header.css">
+    <link rel="stylesheet" href="css/common.css">
 </head>
 
 <body>
@@ -27,6 +27,22 @@
                 <!--ログアウトアイコン-->
                 <div id="box-logout"><a href=""><img src="images/icon_logout.png" alt="logoutlogo" id="icon-logout"></a>
                 </div>
+
+        <div id="text_menu">
+            <p>
+                <a href="Calendar.html"> <img src="Calendar.png"><span class="first-text">C</span><span>alendar</span></a>
+            </p>
+            <p>
+                <a href="Schedule.html"><img src="Schedule.png"><span class="first-text">S</span><span>chedule</span></a>
+            </p>
+            <p>
+                <a href="Cooking.html"><img src="Cooking.png"><span class="first-text">C</span><span>ooking</span></a>
+            </p>
+            <p>
+                <a href="Travel.html"><img src="Travel.png"><span class="first-text">T</span><span>ravel</span></a>
+            </p>
+        </div>
+
             </div>
         </header>
 

@@ -61,3 +61,40 @@ body {
     width: 120px;
     height: 40px;
 }
+
+.wrapper_menu {
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 0;
+
+}
+
+.text_menu {
+  margin: 0;
+  font-size: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+span{
+  color: white;
+  font-size: 20px;
+}
+.first-text {
+  color: #B22234;
+  font-size: 30px;
+}
+
+p {
+  font-size: 20px;
+  display: inline-block;
+  width: 25%;
+  line-height: 30px;
+  vertical-align: auto;
+  margin-top: 80px;
+  letter-spacing: 0;
+  text-align: center;
+  background-color: #3C3B6E;
+}
