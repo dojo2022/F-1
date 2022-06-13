@@ -1,22 +1,21 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Schedule implements Serializable {
 	private int id;
-	private Date date;
+	private String date;
 	private String sub;
 
-	public Schedule(int id, Date date, String sub) {
+	public Schedule(int id, String date, String sub) {
 		this.id = id;
 		this.date = date;
 		this.sub = sub;
 	}
 
 	public Schedule() {
-		this.id = 0;
-		this.date = new Date();
+		this.id = -1;
+		this.date = "";
 		this.sub = "";
 	}
 
@@ -28,11 +27,11 @@ public class Schedule implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

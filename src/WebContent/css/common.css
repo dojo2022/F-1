@@ -1,1 +1,63 @@
 @charset "UTF-8";
+body {
+    background-color: #F8F8F8;
+    font-family:'メイリオ', 'Meiryo', sans-serif;
+    margin: 0;
+}
+
+
+/*スクロールでヘッダーを隠す*/
+#scroll-hide {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: -webkit-transform .4s ease;
+    transition: -webkit-transform .4s ease;
+    transition: transform .4s ease;
+    transition: transform .4s ease, -webkit-transform .4s ease;
+}
+
+.scroll-hide--unpinned {
+  -webkit-transform: translateY(-150%);
+  transform: translateY(-150%);
+}
+
+/*G＆Aアイコン、ユーザーネーム、時間表示、ログアウトアイコンのデザイン*/
+.images-icon {
+    display: flex;
+}
+
+#icon-main {
+    width: 150px;
+    height: 100px;
+    margin-right: 200px;
+    align-items: left;
+}
+.text-header {
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    height: 50px;
+    align-items: center;
+   margin-top: auto;
+   margin-bottom: 0px;
+    /*margin-left: 50px;*/
+}
+#text-username {
+    margin: 0px 50px 0px 20px;
+}
+#text-time {
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+#icon-logout {
+    width: 120px;
+    height: 50px;
+
+}
+#box-logout {
+    margin-left: auto;
+    margin-right: 10px;
+    margin-top: 5px;
+    width: 120px;
+    height: 40px;
+}

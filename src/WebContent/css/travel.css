@@ -1,1 +1,144 @@
 @charset "UTF-8";
+
+body {
+    background-color: #F8F8F8;
+    font-family: 'メイリオ', 'Meiryo', sans-serif;
+    margin: 0;
+}
+
+/*旅行先の名前*/
+#title-travel {
+    background-color: #F8F8F8;
+    width: fit-content;
+    margin: 10px 0px -30px 45px;
+    z-index: 100;
+    position: relative;
+}
+
+/*説明ブロック、写真の配置と間隔*/
+.flex-travel {
+    display: flex;
+    margin-left: 30px;
+}
+
+#text-pickup {
+    width: 620px;
+    height: auto;
+    padding: 10px;
+    padding-top: 30px;
+
+    overflow-wrap: break-word;
+    border: dashed;
+    border-color: #B22234;
+}
+
+/*説明文中の見出し*/
+
+#picmenu-food {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+#picmenu-spot {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+#picmenu-hotel {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+#picmenu-budget {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+#picmenu-location {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+
+/*説明文中の細かな説明*/
+#explain-food {
+    margin: 0px 5px 0px 20px;
+    font-size: 14px;
+}
+
+#explain-spot {
+    margin: 0px 5px 0px 20px;
+    font-size: 14px;
+}
+
+#explain-hotel {
+    margin: 0px 5px 0px 20px;
+    font-size: 14px;
+}
+
+#explain-budget {
+    margin: 0px 5px 0px 20px;
+    font-size: 14px;
+}
+
+#explain-location {
+    margin: 0px 5px 0px 20px;
+    font-size: 14px;
+}
+
+
+
+
+
+
+/*旅行先の写真*/
+
+#picture-travel {
+    margin-top: auto;
+    margin-left: 20px;
+    justify-content: flex-end;
+    max-width: 600px;
+}
+
+#picture-travel img {
+    width: 100%;
+    max-height: 400px;
+}
+
+
+
+/*季節ごとのアイコン表示*/
+.icon-season {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+}
+
+#title-season {
+    margin-right: 20px;
+}
+
+
+#season-spring {
+    width: 60px;
+    height: 60px;
+}
+
+#season-summer {
+    width: 70px;
+    height: 60px;
+    margin-left: 20px;
+}
+
+#season-autumn {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+}
+
+#season-winter {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+}
