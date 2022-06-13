@@ -1,1 +1,252 @@
 @charset "UTF-8";
+
+/*html {
+    font-family: sans-serif;
+    background-color: #F8F8F8;
+}*/
+
+#wrapper-recipe main {
+    display: flex;
+    width: 1000px;
+    margin: 0 auto 0 230px;
+}
+
+#wrapper-recipe p {
+    word-break:break-all;
+}
+
+#wrapper-recipe .pick {
+    
+}
+
+#wrapper-recipe h1 {
+    margin: 0;
+}
+
+#wrapper-recipe .space-detail {
+    display: flex;
+}
+
+#wrapper-recipe #image-pick {
+    width: 600px;
+    height: 400px;
+    box-shadow: 0 0 7px;
+}
+
+#wrapper-recipe .detail-pick{
+    width: 300px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 2px 2px 2px 2px rgb(168, 168, 168);
+    background-color: rgb(255, 255, 255);
+    
+}
+
+#wrapper-recipe h2 {
+    border-bottom: dashed 1px red;
+}
+
+#wrapper-recipe .explain-pick {
+    width: 910px;
+    margin-top: 10px;
+    padding: 0 10px 0 10px;
+    box-shadow: 2px 2px 2px 2px rgb(168, 168, 168);
+    background-color: rgb(255, 255, 255);
+}
+
+#wrapper-recipe .form-search-show {
+    margin: 50px 0 0 20px;
+}
+
+#wrapper-recipe #form-search {
+    padding: 0;
+    width: 40px;
+    height: 30px;
+    border: none;
+}
+
+#wrapper-recipe #space-search {
+    position: relative;
+    left: -5px;
+    
+    box-shadow: 2px 2px 2px 2px rgb(168, 168, 168);
+    background-color: white;
+    margin-top: 10px;
+    padding-top: 10px;
+    /*border: solid 0.3em rgb(111, 21, 255);
+    background: rgba(138, 138, 138, 0.801);*/
+}
+
+#wrapper-recipe label {
+    display: block;
+    margin: 0 10px 0px 10px;
+    color: black;
+    /*color: white;*/
+}
+
+#wrapper-recipe #name {
+    border-radius: 10px;
+}
+
+#wrapper-recipe #genre {
+    border-radius: 10px;
+} 
+
+#wrapper-recipe #ingredient {
+    border-radius: 10px;
+} 
+
+#wrapper-recipe #time-cooking {
+    border-radius: 10px;
+} 
+
+#wrapper-recipe label:hover #balloon-pop-name {
+    animation-name: popup;
+    animation-duration: 1s;
+} 
+
+#wrapper-recipe label:hover #balloon-pop-genre {
+    animation-name: popup;
+    animation-duration: 1s;
+} 
+
+#wrapper-recipe label:hover #balloon-pop-ingredient {
+    animation-name: popup;
+    animation-duration: 1s;
+}
+
+#wrapper-recipe label:hover #balloon-pop-time {
+    animation-name: popup;
+    animation-duration: 1s;
+} 
+
+#wrapper-recipe #balloon-pop-name {
+    position: absolute;
+    top: 0px;
+    left: 85px;
+    background-color: rgb(82, 108, 253);
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+#wrapper-recipe #balloon-pop-genre {
+    position: absolute;
+    top: 60px;
+    left: 70px;
+    background-color: rgb(82, 108, 253);
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+#wrapper-recipe #balloon-pop-ingredient {
+    position: absolute;
+    top: 95px;
+    left: 100px;
+    background-color: rgb(82, 108, 253);
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+#wrapper-recipe #balloon-pop-time {
+    position: absolute;
+    top: 155px;
+    left: 70px;
+    background-color: rgb(82, 108, 253);
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+@keyframes popup {
+    0% {
+    opacity:0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+  }
+
+
+#wrapper-recipe #search {
+    font-size: 1em;
+    margin: 8px 0 10px 50px;
+}
+
+
+/*レシピ検索画面*/
+#wrapper-search-recipe main {
+    margin: 0 auto 0 280px;
+}
+#wrapper-search-recipe .list-dish {
+
+}
+
+#wrapper-search-recipe .dish {
+    width: 860px;
+    border-bottom: 1px dashed red;
+    padding-left: 20px;
+}
+
+#wrapper-search-recipe .dish:last-child {
+    border: none;
+}
+
+#wrapper-search-recipe .space-detail {
+    display: flex;
+}
+
+#wrapper-search-recipe .name-dish {
+    font-size: 2em;
+    margin: 10px 0 0 0;
+}
+
+#wrapper-search-recipe .image-dish {
+    width: 500px;
+    height: 400px;
+    box-shadow: 0 0 7px;
+}
+
+#wrapper-search-recipe .detail-dish{
+    width: 300px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 2px 2px 2px 2px rgb(168, 168, 168);
+    background-color: rgb(255, 255, 255);
+}
+
+#wrapper-search-recipe .explain {
+    width: 810px;
+    margin-top: 10px;
+    padding: 0 10px 0 10px;
+    box-shadow: 2px 2px 2px 2px rgb(168, 168, 168);
+    background-color: rgb(255, 255, 255);
+}
+
+#wrapper-search-recipe .transition {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+}
+
+#wrapper-search-recipe #top {
+    margin-bottom: -16px;
+}
+
+#wrapper-search-recipe #back {
+    padding: 8px 10px 8px 10px;
+    margin-left: 10px;
+    font-size: 1em;
+}
+
+#wrapper-search-recipe #back a {
+    text-decoration: none;
+    color: black;
+}
