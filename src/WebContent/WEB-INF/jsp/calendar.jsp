@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -48,9 +48,10 @@
                     </select>
                     <select id="year" onchange="jump()"></select>
                 </div>
-
             </div>
         </main>
+        <p>${cardList[0].id}</p>
+        <a href="/GandA/ScheduleRegisterServlet">戻る</a>
         <!-- メイン（ここまで） -->
         <!-- フッター（ここから） -->
         <footer>
@@ -67,12 +68,10 @@
                 }
                 return years;
             }
+
             //予定がある日を設定
             var scheduleDay = [];
-            function setScheduleDay(){
-            	scheuleDay.pushh('orange', 'grapes');
-;
-            }
+
 
             var selectYear = document.getElementById("year");
             var selectMonth = document.getElementById("month");
