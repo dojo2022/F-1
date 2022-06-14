@@ -25,7 +25,7 @@
             <div class="pick">
                 <h1>【<%= recipeList.get(0).getNameDish() %>】</h1>
                 <div class="space-detail">
-                    <img src="C:\dojo6\src\WebContent\img\recipe/R.jpg" alt="料理の画像" id="image-pick">
+                    <img src="img/recipe/<%= recipeList.get(0).getImageRecipe() %>" alt="料理の画像" id="image-pick">
 
                     <!-- 料理の詳細 -->
                     <div class="detail-pick">
@@ -47,24 +47,24 @@
 
             <div class="form-search-show">
                 <!-- 検索項目表示ボタン -->
-                <button type="button" id="form-search" onclick="show()"><img src="c:/dojo6/src/WebContent/img/画像3.png" alt="" height="30px"
+                <button type="button" id="form-search" onclick="show()"><img src="img/recipe/画像3.png" alt="" height="30px"
                         width="40px"></button>
 
                 <!-- 検索フォーム -->
                 <div id="space-search">
-                    <form action="search-recipe.html">
-                        <label>Name<span id="balloon-pop-name">料理名</span><input type="text" size="15" id="name"></label>
-                        <label>Genre<br><span id="balloon-pop-genre">ジャンル</span><select id="genre">
-                                <option></option>
+                    <form method="POST" action="/GandA/RecipeSearchServlet">
+                        <label>Name<span id="balloon-pop-name">料理名</span><input type="text" size="15" name="NAMEDISH" id="name"></label>
+                        <label>Genre<br><span id="balloon-pop-genre">ジャンル</span><select name="GENRE" id="genre">
+                                <option>指定なし</option>
                                 <option>和食</option>
                                 <option>洋食</option>
                             </select></label>
                         <label>Ingredient<span id="balloon-pop-ingredient">具材</span><input type="text" size="15"
-                                id="ingredient"></label>
-                        <label>Time<br><span id="balloon-pop-time">調理時間</span><select id="time-cooking">
-                                <option></option>
-                                <option>30分</option>
-                                <option>1時間</option>
+                                name="INGREDIENT" id="ingredient"></label>
+                        <label>Time<br><span id="balloon-pop-time">調理時間</span><select name="TIMECOOKING" id="time-cooking">
+                                <option>指定なし</option>
+                                <option>30</option>
+                                <option>60</option>
                             </select></label>
                         <input type="submit" value="search" id="search">
                     </form>
