@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-body {
-    background-color: #F8F8F8;
-    font-family: 'メイリオ', 'Meiryo', sans-serif;
-    margin: 0;
-}
 
 /*旅行先の名前*/
 #title-travel {

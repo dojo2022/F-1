@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="css/travel.css">
+    <link rel="stylesheet" href="/GandA/css/travel.css">
 </head>
 
 
