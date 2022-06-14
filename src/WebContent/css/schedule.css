@@ -42,12 +42,14 @@
     text-align: center;
 }
 
-.wrapper-calendar td.day-1 .day-schedule{
-    font-size: 0;
-}
-
 .day-schedule{
 	color: gray;
+	font-size: 0px;
+
+}
+
+.wrapper-calendar td.day-1 .day-schedule{
+	font-size: 15px;
 }
 td.today .day-schedule{
 	color: #fff;
@@ -123,4 +125,109 @@ td.today .day-schedule{
 /*schedule.html*/
 .wrapper-schedule {
     margin: 0 auto;
+}
+
+.wrapper_schedule .time-schedule {
+    overflow-y: scroll;
+    max-height: 350px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.wrapper_schedule .time-schedule p {
+    overflow: hidden;
+    display: flex;
+    position: relative;
+}
+
+.wrapper_schedule .time {
+    display: flex;
+    padding: 0 1.5em 0 0.5em;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.wrapper_schedule .time:after {
+    border-top: 1px solid;
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 99em;
+}
+
+.wrapper_schedule .time:after {
+    left: 100%;
+}
+
+.wrapper_schedule .time-schedule input {
+    display: none;
+    outline: none;
+}
+
+.wrapper_schedule .time-schedule .line0 {
+    display: flex;
+    position: relative;
+    background-color: red;
+    border: none;
+    border-radius: 7px;
+    z-index: 100;
+    width: 300px;
+    /*1時間増えるごとに56px増やす*/
+    height: 51px;
+    /*-(height + 2)px*/
+    margin-bottom: -53px;
+    /*一番上の位置が-1370px*/
+    top: -1370px;
+    left: 90px;
+}
+
+.wrapper_schedule .time-schedule .line2 {
+    display: flex;
+    position: relative;
+    background-color: blue;
+    border: none;
+    border-radius: 7px;
+    z-index: 100;
+    width: 300px;
+    /*1時間増えるごとに56px増やす*/
+    height: 163px;
+    /*-(height + 2)px*/
+    margin-bottom: -165px;
+    margin-top: 0;
+    /*1時間増えるごとに56px増やす*/
+    top: -1146px;
+    left: 90px;
+}
+
+.wrapper_schedule .time-schedule .line7 {
+    display: flex;
+    position: relative;
+    background-color: green;
+    border: none;
+    border-radius: 7px;
+    z-index: 100;
+    width: 300px;
+    /*1時間増えるごとに56px増やす*/
+    height: 163px;
+    /*-(height + 2)px*/
+    margin-bottom: -165px;
+    /*1時間増えるごとに56px増やす*/
+    top: -810px;
+    left: 90px;
+}
+
+.wrapper_schedule .time-schedule .line15 {
+    display: flex;
+    position: relative;
+    background-color: yellow;
+    border: none;
+    border-radius: 7px;
+    z-index: 100;
+    width: 300px;
+    /*1時間増えるごとに56px増やす*/
+    height: 107px;
+    margin-bottom: -109px;
+    /*1時間増えるごとに56px増やす*/
+    top: -530px;
+    left: 90px;
 }
