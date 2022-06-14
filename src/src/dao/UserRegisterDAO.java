@@ -21,7 +21,7 @@ public class UserRegisterDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 			// SQL文を準備する
-			String sql = "insert into ACCOUNT (USER, USERID, PASSWORD) values (?, ?, ?)";
+			String sql = "insert into ACCOUNT (USER, USER_ID, PASSWORD) values (?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
