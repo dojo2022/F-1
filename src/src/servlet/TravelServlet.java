@@ -31,7 +31,7 @@ public class TravelServlet extends HttpServlet {
 			response.sendRedirect("/GandA/LoginServlet");
 			return;
 		}
-		// 検索ページにフォワードする
+		// 旅行ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/travel.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -51,14 +51,14 @@ public class TravelServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 
-		String site_place = request.getParameter("site_place");
-		String site_food = request.getParameter("site_food");
-		String site_spot = request.getParameter("site_spot");
-		String site_location = request.getParameter("site_location");
-		String site_hotel = request.getParameter("site_hotel");
-		String site_budget = request.getParameter("site_budget");
-		String site_image = request.getParameter("site_image");
-		int site_month = Integer.parseInt(request.getParameter("site_month"));
+		String site_place = request.getParameter("sitePlace");
+		String site_food = request.getParameter("siteFood");
+		String site_spot = request.getParameter("siteSpot");
+		String site_location = request.getParameter("siteLocation");
+		String site_hotel = request.getParameter("siteHotel");
+		String site_budget = request.getParameter("siteBudget");
+		String site_image = request.getParameter("siteImage");
+		int site_month = Integer.parseInt(request.getParameter("siteMonth"));
 
 		// ピックアップ処理を行う？
 		TravelDAO traDao = new TravelDAO();

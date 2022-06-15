@@ -33,14 +33,14 @@ public class TravelDAO {
 			while (rs.next()) {
 				Travel comment = new Travel(
 
-				rs.getString("sitePlace"),
-				rs.getString("siteFood"),
-				rs.getString("siteSpot"),
-				rs.getString("siteLocation"),
-				rs.getString("siteHotel"),
-				rs.getString("siteBudget"),
-				rs.getString("siteImage"),
-				rs.getInt("siteMonth")
+				rs.getString("site_place"),
+				rs.getString("site_food"),
+				rs.getString("site_spot"),
+				rs.getString("site_location"),
+				rs.getString("site_hotel"),
+				rs.getString("site_budget"),
+				rs.getString("site_image"),
+				rs.getInt("site_month")
 				);
 				travelList.add(comment);
 			}
