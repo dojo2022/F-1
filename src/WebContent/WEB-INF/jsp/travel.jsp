@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -14,39 +17,51 @@
 <body>
     <div class="wrapper-travel">
         <header>
-            <jsp:include page="header.jsp" flush="true"/>
+
         </header>
 
         <main>
-            <h1 id="title-travel">【湖畔のコテージ】</h1>
+            <h1 id="title-travel">【${travelList[0].site_place}】</h1>
             <div class="flex-travel">
 
                 <!--おすすめ旅行先の説明-->
                 <div id="text-pickup">
 
                     <h2 id="picmenu-food">≪food≫</h2>
-                      <p id="explain-food">清涼な水で育った小麦粉、パンが有名。特に真四角の食パンはほんのりと甘さが引き、そのまま食べても十分なおいしさを楽しめる。お越しになった際は、朝９時のできたてをぜひ。</p>
+                      <p id="explain-food">${travelList[0].site_food}</p>
                     <h2 id="picmenu-spot">≪spot≫</h2>
-                      <p id="explain-spot">山の中腹には縁結びの神社がある。春には満開の桜が咲き乱れ、夏は子供と虫取りやレジャーを楽しめる。秋は運動に最適な気候で、冬はワカサギ釣りをが盛ん。わたしも出会いがほしい。</p>
+                      <p id="explain-spot">${travelList[0].site_spot}</p>
                     <h2 id="picmenu-hotel">≪hotel≫</h2>
-                      <p id="explain-hotel">駅前徒歩5分:コンフォートhotelWW</p>
+                      <p id="explain-hotel">${travelList[0].site_hotel}</p>
                     <h2 id="picmenu-budget">≪budget≫</h2>
-                      <p id="explain-budget"> 自由席:￥2,700 宿泊代:￥20,000～40,000 総額:約￥50,000</p>
+                      <p id="explain-budget">${travelList[0].site_budget}</p>
                     <h2 id="picmenu-location">≪location≫</h2>
-                      <p id="explain-location">長野県　長野市　○○町　第四区　1674-32 東京から:特級azusa 約1時間</p>
+                      <p id="explain-location">${travelList[0].site_location}</p>
                 </div>
 
-                <!--旅行先写真-->
+                <!--旅行先写真 -->
                 <div id="picture-travel">
-                    <img src="images/example_spot_1.png" alt="image-spot">
+                    <img src="img/travel/${travelList[0].siteLocation}" alt="image-spot">
+
 
                     <!--旅行先の季節アイコン-->
                     <div class="icon-season">
                       <h1 id="title-season">Season: </h1>
+
+                      <c:choose>
+                      <c:when test="${travelList[0].siteMonth >= 1} && ${travelList[0].siteMonth <= 4}">
                       <div id="season-spring"><img src="img/travel/spring.png" alt="icon-spring"></div>
+                      </c:when>
+                      <c:when test="${travelList[0].siteMonth >= 5} && ${travelList[0].siteMonth <= 7}">
                       <div id="season-summer"><img src="img/travel/summer.png" alt="icon-summer"></div>
+                      </c:when>
+                      <c:when test="${travelList[0].siteMonth >= 8} && ${travelList[0].siteMonth <= 10}">
                       <div id="season-autumn"><img src="img/travel/autumn.png" alt="icon-autumn"></div>
+                      </c:when>
+                      <c:when test="${travelList[0].siteMonth >= 11} && ${travelList[0].siteMonth <= 12}">
                       <div id="season-winter"><img src="img/travel/winter.png" alt="icon-winter"></div>
+                      </c:when>
+                      </c:choose>
                    </div>
                 </div>
             </div>

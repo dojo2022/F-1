@@ -20,7 +20,7 @@
                 <!--名前、時間-->
                 <div class="text-header">
                     Name:
-                        <span id="text-username">林田</span>
+                        <span id="text-username"></span>
 
                     Time:
                         <span id="text-time"></span>

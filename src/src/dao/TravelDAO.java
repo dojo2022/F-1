@@ -23,7 +23,7 @@ public class TravelDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 			// SQL文を準備する
-			String sql = "SELECT siteMonth, sitePlace, siteFood, siteSpot, siteLocation, siteHotel, siteBudget, siteImage FROM travel WHERE siteMonth(NOW(), INTERVAL 1 MONTH) ORDER BY RAND LIMIT 1";
+			String sql = "SELECT SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH FROM TRAVEL WHERE SITE_MONTH = 6 ORDER BY RAND() LIMIT 1";
 			PreparedStatement pictravel = conn.prepareStatement(sql);
 
 			// SQL文を実行し、結果表を取得する
