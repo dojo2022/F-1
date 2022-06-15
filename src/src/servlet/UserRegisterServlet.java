@@ -40,9 +40,9 @@ public class UserRegisterServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user = request.getParameter("USER");
-		String userid = request.getParameter("USERID");
-		String password = request.getParameter("PASSWORD");
+		String user = request.getParameter("name");
+		String userid = request.getParameter("user_id");
+		String password = request.getParameter("password");
 
 
 		// 登録処理を行う

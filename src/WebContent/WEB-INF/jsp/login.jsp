@@ -15,10 +15,10 @@
   <!--ヘッダーここまで-->
   <!--メインここから-->
   <div id="login_box">
-    <form id="login_form" name="Form1" method="GET" action="result.html">
+    <form id="login_form" name="Form1" method="POST" action="/GandA/LoginServlet">
 
       <div class="icon_main">
-        <img src="/simpleBC/img/icon_main.png" alt="アイコン画像" width="120" height="100">
+        <img src="img/other/icon_main.png" alt="アイコン画像" width="120" height="100">
       </div>
       <div id="input_box">
         <p>ID:<br>

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class LoginDAO {
 	// ログインできるならtrueを返す
-	public boolean isLoginOK(int id,String pw) {
+	public boolean isLoginOK(String userid,String pw) {
 		Connection conn = null;
 		boolean loginResult = false;
 
@@ -19,13 +19,13 @@ public class LoginDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 			// SELECT文を準備する
 			String sql = "select count(*) from ACCOUNT where PASSWORD = ? and USER_ID = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(2,pw);
-			pStmt.setInt(1,id);
+			pStmt.setString(1,pw);
+			pStmt.setString(2,userid);
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();

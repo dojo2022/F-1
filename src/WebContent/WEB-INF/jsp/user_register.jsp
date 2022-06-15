@@ -18,10 +18,11 @@
     <div id="login_box">
         <form id="regist_user_form" name="Form1" method="POST" action="/GandA/UserRegisterServlet">
             <div class="icon_main" style="height:75px;">
-        <img src="/simpleBC/img/icon_main.png" alt="アイコン画像" width="120" height="100">
+        <img src="img/other/icon_main.png" alt="アイコン画像" width="120" height="100">
+
             </div>
             <div id="input_box">
-                <p>ID:<br>
+                <p>USER ID:<br>
                     <input type="text" name="user_id" id="user_id">
                 </p>
                 <p>Name:<br>
