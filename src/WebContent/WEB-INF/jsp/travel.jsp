@@ -14,7 +14,7 @@
 <body>
     <div class="wrapper-travel">
         <header>
-            <jsp:include page="header.jsp" flush="true" />
+            <jsp:include page="header.jsp" flush="true"/>
         </header>
 
         <main>
@@ -43,10 +43,10 @@
                     <!--旅行先の季節アイコン-->
                     <div class="icon-season">
                       <h1 id="title-season">Season: </h1>
-                      <div id="season-spring"><img src="images/spring.png" alt="icon-spring"></div>
-                      <div id="season-summer"><img src="images/summer.png" alt="icon-summer"></div>
-                      <div id="season-autumn"><img src="images/autumn.png" alt="icon-autumn"></div>
-                      <div id="season-winter"><img src="images/winter.png" alt="icon-winter"></div>
+                      <div id="season-spring"><img src="img/travel/spring.png" alt="icon-spring"></div>
+                      <div id="season-summer"><img src="img/travel/summer.png" alt="icon-summer"></div>
+                      <div id="season-autumn"><img src="img/travel/autumn.png" alt="icon-autumn"></div>
+                      <div id="season-winter"><img src="img/travel/winter.png" alt="icon-winter"></div>
                    </div>
                 </div>
             </div>

@@ -27,15 +27,15 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		int id = Integer.parseInt(request.getParameter("user_id"));
+		String userid = request.getParameter("user_id");
 		String pw = request.getParameter("password");
 
 		// ログイン処理を行う
 		LoginDAO iDao = new LoginDAO();
-		if (iDao.isLoginOK(id, pw)) {	// ログイン成功
+		if (iDao.isLoginOK(userid, pw)) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", (new LoginUser(id)).getId());
+			session.setAttribute("userid", (new LoginUser(userid)).getUserId());
 			// トップサーブレットにリダイレクトする
 			response.sendRedirect("/GandA/TopServlet");
 		}

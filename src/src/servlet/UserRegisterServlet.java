@@ -23,8 +23,9 @@ public class UserRegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// 新規登録ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_register.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -39,9 +40,9 @@ public class UserRegisterServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user = request.getParameter("USER");
-		String userid = request.getParameter("USERID");
-		String password = request.getParameter("PASSWORD");
+		String user = request.getParameter("name");
+		String userid = request.getParameter("user_id");
+		String password = request.getParameter("password");
 
 
 		// 登録処理を行う

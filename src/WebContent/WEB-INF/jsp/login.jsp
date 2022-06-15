@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-  <link rel="stylesheet" type="text/css" href="login.css">
+<link rel="stylesheet" type="text/css" href="/GandA/css/login.css">
 </head>
 <body>
   <!--ヘッダーここから-->
@@ -15,10 +15,10 @@
   <!--ヘッダーここまで-->
   <!--メインここから-->
   <div id="login_box">
-    <form id="login_form" name="Form1" method="GET" action="result.html">
+    <form id="login_form" name="Form1" method="POST" action="/GandA/LoginServlet">
 
       <div class="icon_main">
-        <img src="/simpleBC/img/icon_main.png" alt="アイコン画像" width="120" height="100">
+        <img src="img/other/icon_main.png" alt="アイコン画像" width="120" height="100">
       </div>
       <div id="input_box">
         <p>ID:<br>
@@ -70,7 +70,7 @@
 
     //新規登録ボタンを押したときの処理
     document.getElementById("regist_user").addEventListener("click", function () {
-      location.replace("regist_user.html");
+      location.replace("/GandA/UserRegisterServlet");
     }, false);
   </script>
   <!--JavaScriptここまで-->
