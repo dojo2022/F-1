@@ -3,31 +3,31 @@ package model;
 import java.io.Serializable;
 
 public class Schedule implements Serializable {
-	private int id;
+	private String user;
 	private String date;
 	private String sub;
 	private String tittle;
 
-	public Schedule(int id, String date, String sub,String tittle) {
-		this.id = id;
+	public Schedule(String user, String date, String sub,String tittle) {
+		this.user = user;
 		this.date = date;
 		this.sub = sub;
 		this.tittle = tittle;
 	}
 
 	public Schedule() {
-		this.id = -1;
+		this.user = "";
 		this.date = "";
 		this.sub = "";
 		this.tittle = "";
 	}
 
-	public int getId() {
-		return id;
+	public String getUser() {
+		return user;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String user) {
+		this.user = user;
 	}
 
 	public String getDate() {
