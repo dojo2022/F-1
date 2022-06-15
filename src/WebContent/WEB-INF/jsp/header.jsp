@@ -27,7 +27,7 @@
 
                 </div>
                 <!--ログアウトアイコン-->
-                <div id="box-logout"><a href="/GandA/LogoutServlet"><img src="images/icon_logout.png" alt="logoutlogo" id="icon-logout"></a>
+                <div id="box-logout"><a href="/GandA/LogoutServlet"><img src="img/other/icon_logout.png" alt="logoutlogo" id="icon-logout"></a>
                 </div>
 
 
@@ -35,16 +35,16 @@
 
         <div id="text_menu">
             <p>
-                <a href="/GandA/CalendarServlet"> <img src="Calendar.png"><span class="first-text">C</span><span>alendar</span></a>
+                <a href="/GandA/CalendarServlet"> <img src="img/other/Calendar.png"><span class="first-text">C</span><span>alendar</span></a>
             </p>
             <p>
-                <a href="/GandA/TopServlet"><img src="Schedule.png"><span class="first-text">S</span><span>chedule</span></a>
+                <a href="/GandA/TopServlet"><img src="img/other/Schedule.png"><span class="first-text">S</span><span>chedule</span></a>
             </p>
             <p>
-                <a href="/GandA/RecipeServlet"><img src="Cooking.png"><span class="first-text">C</span><span>ooking</span></a>
+                <a href="/GandA/RecipeServlet"><img src="img/other/recipe.png"><span class="first-text">C</span><span>ooking</span></a>
             </p>
             <p>
-                <a href="/GandA/TravelServlet"><img src="Travel.png"><span class="first-text">T</span><span>ravel</span></a>
+                <a href="/GandA/TravelServlet"><img src="img/other/travel.png"><span class="first-text">T</span><span>ravel</span></a>
             </p>
         </div>
 

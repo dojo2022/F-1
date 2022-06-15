@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.TravelDAO;
-import model.Travel;
 
 /**
  * Servlet implementation class TravelServlet
@@ -51,22 +49,23 @@ public class TravelServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 
-		String site_place = request.getParameter("sitePlace");
+		/*String site_place = request.getParameter("sitePlace");
 		String site_food = request.getParameter("siteFood");
 		String site_spot = request.getParameter("siteSpot");
 		String site_location = request.getParameter("siteLocation");
 		String site_hotel = request.getParameter("siteHotel");
 		String site_budget = request.getParameter("siteBudget");
 		String site_image = request.getParameter("siteImage");
-		int site_month = Integer.parseInt(request.getParameter("siteMonth"));
+		int site_month = Integer.parseInt(request.getParameter("siteMonth"));*/
 
-		// ピックアップ処理を行う？
-		TravelDAO traDao = new TravelDAO();
+		// ピックアップ表示処理？
+		/*TravelDAO traDao = new TravelDAO();
 		List<Travel> travelList = traDao.select(new Travel( site_place, site_food, site_spot, site_location, site_hotel, site_budget, site_image, site_month));
+        */
 
-
-		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("travelList", travelList);
+		// pic検索したデータをセッションスコープに格納する
+		TravelDAO tradao = new TravelDAO();
+		session.setAttribute("travelList", tradao);
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/travel.jsp");

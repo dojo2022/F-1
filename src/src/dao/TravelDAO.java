@@ -13,7 +13,7 @@ import model.Travel;
 //import java.sql.Connection;
 
 public class TravelDAO {
-	public List<Travel> select(Travel param) {
+	public List<Travel> select() {
 		Connection conn = null;
 		List<Travel> travelList = new ArrayList<Travel>();
 
