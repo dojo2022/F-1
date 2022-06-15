@@ -33,8 +33,9 @@ public class CalendarServlet extends HttpServlet {
 //			return;
 //		}
 		Calendar cal = Calendar.getInstance();
-		String dateNow = "" + cal.get(Calendar.YEAR) + "/" + "0"+ (cal.get(Calendar.MONTH)+1);
-
+		int yearNow = cal.get(Calendar.YEAR);
+		int monthNow = cal.get(Calendar.MONTH)+1;
+		String dateNow = "" + yearNow + "/" + monthNow;
 
 		// 検索処理を行う
 		CalendarDAO bDao = new CalendarDAO();
@@ -42,6 +43,8 @@ public class CalendarServlet extends HttpServlet {
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
+		
+		
 
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
@@ -52,8 +55,12 @@ public class CalendarServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+//		if (session.getAttribute("id") == null) {
+//			response.sendRedirect("/simpleBC/LoginServlet");
+//			return;
+//		}
 	}
 
 }

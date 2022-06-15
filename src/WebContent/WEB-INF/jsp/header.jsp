@@ -16,7 +16,7 @@
             <div class="images-icon">
 
                 <!--メインアイコン-->
-                <div><a href="/GandA/TopServlet"><img src="images/icon_main.png" alt="G&Alogo" id="icon-main"></a></div>
+                <div><a href="/GandA/TopServlet"><img src="img/other/icon_main.png" alt="G&Alogo" id="icon-main"></a></div>
                 <!--名前、時間-->
                 <div class="text-header">
                     Name:

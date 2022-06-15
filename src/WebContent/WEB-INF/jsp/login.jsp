@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-  <link rel="stylesheet" type="text/css" href="login.css">
+<link rel="stylesheet" type="text/css" href="/GandA/css/login.css">
 </head>
 <body>
   <!--ヘッダーここから-->
@@ -70,7 +70,7 @@
 
     //新規登録ボタンを押したときの処理
     document.getElementById("regist_user").addEventListener("click", function () {
-      location.replace("regist_user.html");
+      location.replace("/GandA/UserRegisterServlet");
     }, false);
   </script>
   <!--JavaScriptここまで-->
