@@ -11,9 +11,12 @@ import java.util.List;
 import model.Schedule;
 
 public class CalendarDAO {
-	public List<Schedule> select(Schedule param) {
+	public String[] select(Schedule param) {
 		Connection conn = null;
 		List<Schedule> cardList = new ArrayList<Schedule>();
+		List<String> dateList = new ArrayList<String>();
+		String[] datearray;
+		datearray = new String[31];
 
 		try {
 			// JDBCドライバを読み込む
@@ -51,6 +54,11 @@ public class CalendarDAO {
 				rs.getString("SUB")
 				);
 				cardList.add(card);
+				dateList.add(rs.getString("DATE"));
+			}
+			int i;
+			for (i = 0; i < dateList.size(); i++) {
+				datearray[i] = dateList.get(i);
 			}
 		}
 		catch (SQLException e) {
@@ -75,7 +83,7 @@ public class CalendarDAO {
 		}
 
 		// 結果を返す
-		return cardList;
+		return datearray;
 	}
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す

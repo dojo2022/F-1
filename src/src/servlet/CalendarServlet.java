@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,22 +30,16 @@ public class CalendarServlet extends HttpServlet {
 //			response.sendRedirect("/simpleBC/LoginServlet");
 //			return;
 //		}
-		Calendar cal = Calendar.getInstance();
-		int yearNow = cal.get(Calendar.YEAR);
-		int monthNow = cal.get(Calendar.MONTH)+1;
-		String dateNow = "" + yearNow + "/" + monthNow;
 
 		// 検索処理を行う
 		CalendarDAO bDao = new CalendarDAO();
-		List<Schedule> cardList = bDao.select(new Schedule(0,dateNow,""));
+		String[] dateList = bDao.select(new Schedule(0,"",""));
 
 		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("cardList", cardList);
-		
-		
+		request.setAttribute("dateList", dateList);
 
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp?date1=1");
 		dispatcher.forward(request, response);
 	}
 

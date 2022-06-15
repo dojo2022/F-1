@@ -1,15 +1,18 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 
-<head>
+<head >
     <meta charset="UTF-8">
     <title>カレンダー | G＆A</title>
     <link rel="stylesheet" href="/GandA/css/schedule.css">
 </head>
 
-<body>
+<body onload="todayCalendar(); setScheduleDate('${dateList[0]}');">
+
     <div class="wrapper-calendar">
         <!-- ヘッダー（ここから） -->
         <header>
@@ -50,11 +53,16 @@
                 </div>
             </div>
         </main>
-        <p>${cardList[0].id}</p>
+        <div id="schedule"></div>
+        <c:forEach var="e" items="${dateList}" >
+        	${e}
+        </c:forEach>
+        <%= request.getParameter("dateList") %>
+        ${dateList[0]}
         <a href="/GandA/ScheduleRegisterServlet">戻る</a>
         <!-- メイン（ここまで） -->
         <!-- フッター（ここから） -->
-        <footer>
+        <footer onload="today()">
 
         </footer>
         <!-- フッター（ここまで） -->
@@ -69,9 +77,15 @@
                 return years;
             }
 
-            //予定がある日を設定
-            var scheduleDay = [];
-
+            function setScheduleDate(dateSchedule) {
+            	var schedule = "";
+            	console.log(dateSchedule);
+            	//for (var i = 0; i < dateSchedule.length; i++) {
+                    //schedule += "<p>" + dateSchedule + "</p>";
+                    //console.log(dateSchedule);
+                //}
+            	//document.querySelector('#schedule').innerHTML = schedule;
+            }
 
             var selectYear = document.getElementById("year");
             var selectMonth = document.getElementById("month");
@@ -84,9 +98,9 @@
             var showDate = new Date(today.getFullYear(), today.getMonth(), 1);
 
             // 初期表示
-            window.onload = function () {
+            function todayCalendar() {
                 showProcess(today, calendar);
-            };
+            }
             // 前の月表示
             function prev() {
                 showDate.setMonth(showDate.getMonth() - 1);
@@ -150,9 +164,9 @@
                             if (year == today.getFullYear()
                                 && month == (today.getMonth())
                                 && count == today.getDate()) {
-                                calendar += "<td class='today'>" + count + "<span class='day-schedule'>・</span></td>";
+                                calendar += "<td class='today'>" + count + "<span class='day-schedule'>･</span></td>";
                             } else {
-                                calendar += "<td class='day-" + count + "'>" + count + "<span class='day-schedule'>・</span></td>";
+                                calendar += "<td class='day-" + count + "'>" + count + "<span class='day-schedule'>･</span></td>";
                             }
                         }
                     }

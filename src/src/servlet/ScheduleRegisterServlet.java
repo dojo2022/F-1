@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.CalendarDAO;
+import dao.ScheduleRegisterDAO;
 import model.Schedule;
 
 /**
@@ -38,14 +38,14 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		String dateNow = "" + yearNow + "/" + monthNow;
 
 		// 検索処理を行う
-		CalendarDAO bDao = new CalendarDAO();
+		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
 		List<Schedule> cardList = bDao.select(new Schedule(0,dateNow,""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
 
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_register.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_register.jsp?str=1");
 		dispatcher.forward(request, response);
 	}
 
