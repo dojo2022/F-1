@@ -79,29 +79,32 @@ body {
 
 .text_menu {
   margin: 0;
-  font-size: 0;
+  height: 40px;
+  background-color: #3C3B6E;
 }
 
-a {
+#menu-in-icon {
   text-decoration: none;
+  height:30px;
 }
 
-span{
+#second-text {
   color: white;
   font-size: 20px;
 }
-.first-text {
+#first-text {
   color: #B22234;
   font-size: 30px;
 }
 
-p {
+#box-menu {
   font-size: 20px;
   display: inline-block;
-  width: 25%;
-  line-height: 30px;
+  width: 10%;
+
   vertical-align: auto;
-  margin-top: 80px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   letter-spacing: 0;
   text-align: center;
   background-color: #3C3B6E;
