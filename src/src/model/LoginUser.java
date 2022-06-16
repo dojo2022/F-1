@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 public class LoginUser implements Serializable {
 	private int id;// ID
-	private String user_id;// ログイン時のUSER
+	private String userId;// ログイン時のUSER
 
 	public LoginUser() {
-		this.user_id="";
+		this.userId="";
 	}
 
-	public LoginUser(String user_id) {
-		this.user_id = user_id;
+	public LoginUser(String userId) {
+		this.userId = userId;
 	}
 
 	public int getId() {
@@ -23,11 +23,11 @@ public class LoginUser implements Serializable {
 	}
 
 	public String getUserId() {
-		return user_id;
+		return userId;
 	}
 
-	public void setId(String user_id) {
-		this.user_id = user_id;
+	public void setId(String userId) {
+		this.userId = userId;
 	}
 
 }

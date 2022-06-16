@@ -23,21 +23,14 @@ public class ScheduleRegisterDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select * from Schedule WHERE DATE LIKE ? AND SUB LIKE ? ORDER BY ID";
+			String sql = "select * from Schedule WHERE USER LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (param.getDate() != null) {
-				pStmt.setString(1, "%" + param.getDate() + "%");
-			}
-			else {
+			if (param.getUser() != null) {
+				pStmt.setString(1, param.getUser());
+			} else {
 				pStmt.setString(1, "%");
-			}
-			if (param.getSub() != null) {
-				pStmt.setString(2, "%" + param.getSub() + "%");
-			}
-			else {
-				pStmt.setString(2, "%");
 			}
 
 			// SQL文を実行し、結果表を取得する
@@ -46,9 +39,12 @@ public class ScheduleRegisterDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Schedule card = new Schedule(
-				rs.getInt("ID"),
+				rs.getString("USER"),
 				rs.getString("DATE"),
-				rs.getString("SUB")
+				rs.getString("SUB"),
+				rs.getString("TITLE"),
+				rs.getString("START_TIME"),
+				rs.getString("END_TIME")
 				);
 				cardList.add(card);
 			}
@@ -91,21 +87,39 @@ public class ScheduleRegisterDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 			// SQL文を準備する
-			String sql = "insert into Schedule (DATE, SUB) values (?, ?)";
+			String sql = "insert into Schedule (USER, DATE, SUB, TITLE, START_TIME, END_TIME) values (?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getDate() != null && !card.getDate().equals("")) {
-				pStmt.setString(1, card.getDate());
-			}
-			else {
+			if (card.getUser() != null && !card.getUser().equals("")) {
+				pStmt.setString(1, card.getUser());
+			} else {
 				pStmt.setString(1, "");
 			}
-			if (card.getSub() != null && !card.getSub().equals("")) {
-				pStmt.setString(2, card.getSub());
-			}
-			else {
+			if (card.getDate() != null && !card.getDate().equals("")) {
+				pStmt.setString(2, card.getDate());
+			} else {
 				pStmt.setString(2, "");
+			}
+			if (card.getSub() != null && !card.getSub().equals("")) {
+				pStmt.setString(3, card.getSub());
+			} else {
+				pStmt.setString(3, "");
+			}
+			if (card.getTitle() != null && !card.getTitle().equals("")) {
+				pStmt.setString(4, card.getTitle());
+			} else {
+				pStmt.setString(4, "");
+			}
+			if (card.getStartTime() != null && !card.getStartTime().equals("")) {
+				pStmt.setString(5, card.getStartTime());
+			} else {
+				pStmt.setString(5, "");
+			}
+			if (card.getEndTime() != null && !card.getEndTime().equals("")) {
+				pStmt.setString(6, card.getEndTime());
+			} else {
+				pStmt.setString(6, "");
 			}
 
 			// SQL文を実行する
@@ -148,23 +162,36 @@ public class ScheduleRegisterDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 			// SQL文を準備する
-			String sql = "update Schedule set DATE=?, SUB=? where ID=?";
+			String sql = "update Schedule set DATE=?, SUB=?, TITLE=?, START_TIME=?, END_TIME=? where USER=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 			if (card.getDate() != null && !card.getDate().equals("")) {
 				pStmt.setString(1, card.getDate());
-			}
-			else {
+			} else {
 				pStmt.setString(1, "");
 			}
 			if (card.getSub() != null && !card.getSub().equals("")) {
 				pStmt.setString(2, card.getSub());
-			}
-			else {
+			} else {
 				pStmt.setString(2, "");
 			}
-			pStmt.setString(3, String.valueOf(card.getId()));
+			if (card.getTitle() != null && !card.getTitle().equals("")) {
+				pStmt.setString(3, card.getTitle());
+			} else {
+				pStmt.setString(3, "");
+			}
+			if (card.getStartTime() != null && !card.getStartTime().equals("")) {
+				pStmt.setString(4, card.getStartTime());
+			} else {
+				pStmt.setString(4, "");
+			}
+			if (card.getEndTime() != null && !card.getEndTime().equals("")) {
+				pStmt.setString(5, card.getEndTime());
+			} else {
+				pStmt.setString(5, "");
+			}
+			pStmt.setString(6, card.getUser());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -206,7 +233,7 @@ public class ScheduleRegisterDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 			// SQL文を準備する
-			String sql = "delete from Schedule where ID=?";
+			String sql = "delete from Schedule where USER=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

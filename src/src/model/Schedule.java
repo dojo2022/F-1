@@ -7,16 +7,16 @@ public class Schedule implements Serializable {
 	private String date;
 	private String sub;
 	private String title;
-	private String start_time;
-	private String end_time;
+	private String startTime;
+	private String endTime;
 
-	public Schedule(String user, String date, String sub,String title,String start_time,String end_time) {
+	public Schedule(String user, String date, String sub,String title,String startTime,String endTime) {
 		this.user = user;
 		this.date = date;
 		this.sub = sub;
 		this.title = title;
-		this.start_time = start_time;
-		this.end_time = end_time;
+		this.startTime = startTime;
+		this.endTime = endTime;
 	}
 
 	public Schedule() {
@@ -24,8 +24,8 @@ public class Schedule implements Serializable {
 		this.date = "";
 		this.sub = "";
 		this.title = "";
-		this.start_time = "";
-		this.end_time = "";
+		this.startTime = "";
+		this.endTime = "";
 	}
 
 	public String getUser() {
@@ -58,18 +58,18 @@ public class Schedule implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getStart_time() {
-		return start_time;
+	public String getStartTime() {
+		return startTime;
 	}
 
-	public void setStart_time(String start_time) {
-		this.start_time = start_time;
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
 	}
-	public String getEnd_time() {
-		return end_time;
+	public String getEndTime() {
+		return endTime;
 	}
 
-	public void setEnd_time(String end_time) {
-		this.end_time = end_time;
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 }

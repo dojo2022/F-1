@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,7 +34,7 @@ public class CalendarServlet extends HttpServlet {
 
 		// 検索処理を行う
 		CalendarDAO bDao = new CalendarDAO();
-		String[] dateList = bDao.select(new Schedule("","","","","",""));
+		List<String> dateList = bDao.select(new Schedule("a","","","","",""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("dateList", dateList);

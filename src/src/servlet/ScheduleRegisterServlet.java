@@ -39,7 +39,7 @@ public class ScheduleRegisterServlet extends HttpServlet {
 
 		// 検索処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
-		List<Schedule> cardList = bDao.select(new Schedule(0,dateNow,""));
+		List<Schedule> cardList = bDao.select(new Schedule("",dateNow,"","","",""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
