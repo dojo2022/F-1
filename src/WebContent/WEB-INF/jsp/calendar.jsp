@@ -1,15 +1,20 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+
 <!DOCTYPE html>
 <html>
 
-<head>
+<head >
     <meta charset="UTF-8">
     <title>カレンダー | G＆A</title>
     <link rel="stylesheet" href="/GandA/css/schedule.css">
 </head>
 
-<body>
+<body onload="setScheduleDate(); todayCalendar();">
+
     <div class="wrapper-calendar">
         <!-- ヘッダー（ここから） -->
         <header>
@@ -50,29 +55,25 @@
                 </div>
             </div>
         </main>
-        <p>${cardList[0].id}</p>
+        <div id="schedule"></div>
+        <c:forEach var="e" items="${dateList}" >
+        	<p>${e}</p>
+        </c:forEach>
+        <p>${dateList}</p>
         <a href="/GandA/ScheduleRegisterServlet">戻る</a>
         <!-- メイン（ここまで） -->
         <!-- フッター（ここから） -->
-        <footer>
+        <footer onload="today()">
 
         </footer>
         <!-- フッター（ここまで） -->
         <!--jsプログラム-->
         <script>
-            //日付指定の年の範囲指定
-            function generateYearRange(start, end) {
-                var years = "";
-                for (var year = start; year <= end; year++) {
-                    years += "<option value='" + year + "'>" + year + "</option>";
-                }
-                return years;
-            }
 
-            //予定がある日を設定
-            var scheduleDay = [];
-
-
+        	var dateCount = 0;
+        	var scheduleYear = [""];
+        	var scheduleMonth = [""];
+        	var scheduleDay = [""];
             var selectYear = document.getElementById("year");
             var selectMonth = document.getElementById("month");
             var createYear = generateYearRange(1970, 2200);
@@ -84,25 +85,70 @@
             var showDate = new Date(today.getFullYear(), today.getMonth(), 1);
 
             // 初期表示
-            window.onload = function () {
+            function todayCalendar() {
                 showProcess(today, calendar);
-            };
+            }
             // 前の月表示
             function prev() {
                 showDate.setMonth(showDate.getMonth() - 1);
                 showProcess(showDate);
             }
-
             // 次の月表示
             function next() {
                 showDate.setMonth(showDate.getMonth() + 1);
                 showProcess(showDate);
             }
-
+            //指定した月表示
             function jump() {
                 showDate.setMonth(parseInt(selectMonth.value));
                 showDate.setYear(parseInt(selectYear.value));
                 showProcess(showDate);
+            }
+
+            //日付指定の年の範囲指定
+            function generateYearRange(start, end) {
+                var years = "";
+                for (var year = start; year <= end; year++) {
+                    years += "<option value='" + year + "'>" + year + "</option>";
+                }
+                return years;
+            }
+
+            //予定がある日を設定
+            function setScheduleDate() {
+            	dateCount = 0;
+            	var i = 0;
+            	console.log("DATE:" +"${fn:length(dateList)}");
+            	console.log("DATE:" +"${dateList}");
+            	<c:forEach var="e" items="${dateList}">
+	            	//console.log("${e}");
+	            	<c:forEach var="str" items="${fn:split(e,'/')}">
+	            		//console.log("${str}");
+	            		if (i == 0){
+	            			scheduleYear[dateCount]  = "${str}";
+	            		}else if (i == 1){
+	            			scheduleMonth[dateCount] = "${str}";
+	            		}else if (i == 2){
+	            			scheduleDay[dateCount]   = "${str}";
+	            		}else{
+	            			scheduleYear[dateCount]  = "";
+	            			scheduleMonth[dateCount] = "";
+	            			scheduleDay[dateCount]   = "";
+	            		}
+	            		i++;
+	            	</c:forEach>
+	            	i = 0;
+            		dateCount++;
+	            </c:forEach>
+            	//<c:forEach var="str" items="${fn:split(dateList,'/')}">
+            	//<p>${str}</p>
+            	//</c:forEach>
+
+	            //for (i = 0; i < "${fn:length(dateList)}"; i++){
+	            	//for (j = 0; j < ){
+
+	            	//}
+	            //}
             }
 
             // カレンダー表示
@@ -126,12 +172,14 @@
                 }
                 calendar += "</tr>";
 
+                var judgeYear  = parseInt(selectYear.value);
+                var judgeMonth = parseInt(selectMonth.value) + 1;
+
                 var count = 0;
                 var startDayOfWeek = new Date(year, month, 1).getDay();
                 var endDate = new Date(year, month + 1, 0).getDate();
                 var lastMonthEndDate = new Date(year, month, 0).getDate();
                 var row = Math.ceil((startDayOfWeek + endDate) / week.length);
-
                 // 1行ずつ設定
                 for (var i = 0; i < row; i++) {
                     calendar += "<tr>";
@@ -150,15 +198,37 @@
                             if (year == today.getFullYear()
                                 && month == (today.getMonth())
                                 && count == today.getDate()) {
-                                calendar += "<td class='today'>" + count + "<span class='day-schedule'>・</span></td>";
+                                calendar += "<td class='today'><a href='/GandA/ScheduleRegisterServlet'>" + count + "</a>";
+                                for (var k = 0; k < dateCount; k++){
+                                	console.log(parseInt(scheduleYear[k]));
+                                	console.log(parseInt(scheduleMonth[k]));
+                                	console.log(parseInt(scheduleDay[k]));
+                                	console.log(judgeYear);
+                                	console.log(judgeMonth);
+                                	console.log(count);
+                                	if (judgeYear == scheduleYear[k] && judgeMonth == scheduleMonth[k]
+                                		&& count == parseInt(scheduleDay[k])){
+                                    	calendar += "<span class='day-schedule'>･</span>";
+                                    	break;
+                                    }
+                                }
+                                calendar += "</td>";
                             } else {
-                                calendar += "<td class='day-" + count + "'>" + count + "<span class='day-schedule'>・</span></td>";
+                            	calendar += "<td class='other'><a href='/GandA/ScheduleRegisterServlet'>" + count + "</a>";
+                                for (var k = 0; k < dateCount; k++){
+                                	if (judgeYear == scheduleYear[k] && judgeMonth == scheduleMonth[k]
+                                		&& count == parseInt(scheduleDay[k])){
+                                		calendar += "<span class='day-schedule'>･</span>";
+                                    	break;
+                                    }
+                                }
+                                calendar += "</td>";
                             }
                         }
                     }
                     calendar += "</tr>";
                 }
-                calendar += "</table>"
+                calendar += "</table>";
                 return calendar;
             }
         </script>
