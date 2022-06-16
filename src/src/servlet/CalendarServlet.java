@@ -33,7 +33,7 @@ public class CalendarServlet extends HttpServlet {
 
 		// 検索処理を行う
 		CalendarDAO bDao = new CalendarDAO();
-		String[] dateList = bDao.select(new Schedule(0,"",""));
+		String[] dateList = bDao.select(new Schedule("","","","","",""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("dateList", dateList);

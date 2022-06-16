@@ -6,15 +6,15 @@ public class Schedule implements Serializable {
 	private String user;
 	private String date;
 	private String sub;
-	private String tittle;
+	private String title;
 	private String start_time;
 	private String end_time;
 
-	public Schedule(String user, String date, String sub,String tittle,String start_time,String end_time) {
+	public Schedule(String user, String date, String sub,String title,String start_time,String end_time) {
 		this.user = user;
 		this.date = date;
 		this.sub = sub;
-		this.tittle = tittle;
+		this.title = title;
 		this.start_time = start_time;
 		this.end_time = end_time;
 	}
@@ -23,7 +23,7 @@ public class Schedule implements Serializable {
 		this.user = "";
 		this.date = "";
 		this.sub = "";
-		this.tittle = "";
+		this.title = "";
 		this.start_time = "";
 		this.end_time = "";
 	}
@@ -51,12 +51,12 @@ public class Schedule implements Serializable {
 	public void setSub(String sub) {
 		this.sub = sub;
 	}
-	public String getTittle() {
-		return tittle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTittle(String tittle) {
-		this.tittle = tittle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getStart_time() {
 		return start_time;

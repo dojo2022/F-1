@@ -26,7 +26,7 @@ public class CalendarDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select * from Schedule WHERE DATE LIKE ? AND SUB LIKE ? ORDER BY ID";
+			String sql = "select  from Schedule WHERE DATE LIKE ? AND SUB LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -49,7 +49,10 @@ public class CalendarDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Schedule card = new Schedule(
-				rs.getInt("ID"),
+				rs.getString("USER"),
+				rs.getString("DATE"),
+				rs.getString("SUB"),
+				rs.getString("TITLE"),
 				rs.getString("DATE"),
 				rs.getString("SUB")
 				);
@@ -172,7 +175,7 @@ public class CalendarDAO {
 			else {
 				pStmt.setString(2, "");
 			}
-			pStmt.setString(3, String.valueOf(card.getId()));
+			pStmt.setString(3, getUser());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
