@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="model.Recipe" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
-<%
-    List<Recipe> recipeList = (List<Recipe>)request.getAttribute("recipeList");
-%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -29,19 +23,19 @@
                 <!-- 料理表示 -->
                 <c:forEach var="e" items="${recipeList}" >
 	                <div class="dish">
-	                    <p class="name-dish">【${e.nameDish}】</p>
+	                    <h2 class="name-dish"><a href="${e.link}">【${e.nameDish}】</a></h2>
 	                    <div class="space-detail">
-	                        <img src="img/recipe/${e.imageRecipe}" alt="料理の画像" class="image-dish">
+	                        <a href="${e.link}"><img src="${e.imageRecipe}" alt="料理の画像" class="image-dish"></a>
 
 	                        <!-- 料理の詳細 -->
 	                        <div class="detail-dish">
-	                            <h2>Genre</h2>
+	                            <h3>Genre</h3>
 	                            <p>
 	                                ${e.genre}
 	                            </p>
-	                            <h2>Time</h2>
-	                            <p>約${e.timeCooking}分</p>
-	                            <h2>Ingredient</h2>
+	                            <h3>Time</h3>
+	                            <p>${e.timeCooking}</p>
+	                            <h3>Ingredient</h3>
 	                            <p>
 	                                ${e.ingredient}
 	                            </p>

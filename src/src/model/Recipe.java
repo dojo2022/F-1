@@ -6,18 +6,18 @@ public class Recipe implements Serializable {
 	private String nameDish;
 	private String genre;
 	private String ingredient;
-	private int timeCooking;
-	private String season;
+	private String timeCooking;
+	private String link;
 	private String subRecipe;
 	private String imageRecipe;
 
-	public Recipe(String nameDish, String genre, String ingredient, int timeCooking,
-			String season, String subRecipe, String imageRecipe) {
+	public Recipe(String nameDish, String genre, String ingredient, String timeCooking,
+			String link, String subRecipe, String imageRecipe) {
 		this.nameDish = nameDish;
 		this.genre = genre;
 		this.ingredient = ingredient;
 		this.timeCooking = timeCooking;
-		this.season = season;
+		this.link = link;
 		this.subRecipe = subRecipe;
 		this.imageRecipe = imageRecipe;
 	}
@@ -26,8 +26,8 @@ public class Recipe implements Serializable {
 		this.nameDish = "";
 		this.genre = "";
 		this.ingredient = "";
-		this.timeCooking = 0;
-		this.season = "";
+		this.timeCooking = "";
+		this.link = "";
 		this.subRecipe = "";
 		this.imageRecipe = "";
 	}
@@ -56,20 +56,20 @@ public class Recipe implements Serializable {
 		this.ingredient = ingredient;
 	}
 
-	public int getTimeCooking() {
+	public String getTimeCooking() {
 		return timeCooking;
 	}
 
-	public void setTimeCooking(int timeCooking) {
+	public void setTimeCooking(String timeCooking) {
 		this.timeCooking = timeCooking;
 	}
 
-	public String getSeason() {
-		return season;
+	public String getLink() {
+		return link;
 	}
 
-	public void setSeason(String season) {
-		this.season = season;
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	public String getSubRecipe() {

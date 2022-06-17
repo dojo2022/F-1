@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="model.Recipe" %>
-<%@ page import ="java.util.ArrayList" %>
-<%@ page import = "java.util.List" %>
-<%
-	List<Recipe> recipeList = (List<Recipe>)request.getAttribute("recipeList");
-%>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -26,7 +21,7 @@
             <div class="pick-menu">
                 <h1>【今日の献立】</h1>
                 <div class="pick">
-                    <c:forEach var="e" items="${recipeList}" >
+                    <c:forEach var="e" items="${pickMenu}" >
                         <div class="space-detail">
                             <h2><a href="https://recipe.rakuten.co.jp/${e.link}">【${e.nameDish}】</a></h2>
                             <a href="https://recipe.rakuten.co.jp/${e.link}"><img src="${e.imageRecipe}" alt="料理の画像" class="image-pick"></a>
