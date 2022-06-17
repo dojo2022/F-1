@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.Recipe" %>
 <%@ page import ="java.util.ArrayList" %>
 <%@ page import = "java.util.List" %>
@@ -22,25 +23,15 @@
 
         <main>
             <!-- おすすめ料理表示 -->
-            <div class="pick">
-                <h1>【<%= recipeList.get(0).getNameDish() %>】</h1>
-                <div class="space-detail">
-                    <img src="img/recipe/<%= recipeList.get(0).getImageRecipe() %>" alt="料理の画像" id="image-pick">
-
-                    <!-- 料理の詳細 -->
-                    <div class="detail-pick">
-                        <h2>Genre</h2>
-                        <p><%= recipeList.get(0).getGenre() %></p>
-                        <h2>Time</h2>
-                        <p>約<%= recipeList.get(0).getTimeCooking() %>分</p>
-                        <h2>Ingredient</h2>
-                       	<p><%= recipeList.get(0).getIngredient() %></p>
-                    </div>
-                </div>
-
-                <!-- 料理の説明 -->
-                <div class="explain-pick">
-                    <p><%= recipeList.get(0).getSubRecipe() %></p>
+            <div class="pick-menu">
+                <h1>【今日の献立】</h1>
+                <div class="pick">
+                    <c:forEach var="e" items="${recipeList}" >
+                        <div class="space-detail">
+                            <h2><a href="https://recipe.rakuten.co.jp/${e.link}">【${e.nameDish}】</a></h2>
+                            <a href="https://recipe.rakuten.co.jp/${e.link}"><img src="${e.imageRecipe}" alt="料理の画像" class="image-pick"></a>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
 
@@ -53,19 +44,17 @@
                 <!-- 検索フォーム -->
                 <div id="space-search">
                     <form method="POST" action="/GandA/RecipeSearchServlet">
-                        <label>Name<span id="balloon-pop-name">料理名</span><input type="text" size="15" name="NAMEDISH" id="name"></label>
-                        <label>Genre<br><span id="balloon-pop-genre">ジャンル</span><select name="GENRE" id="genre">
-                                <option>指定なし</option>
-                                <option>和食</option>
-                                <option>洋食</option>
-                            </select></label>
-                        <label>Ingredient<span id="balloon-pop-ingredient">具材</span><input type="text" size="15"
-                                name="INGREDIENT" id="ingredient"></label>
-                        <label>Time<br><span id="balloon-pop-time">調理時間</span><select name="TIMECOOKING" id="time-cooking">
-                                <option>指定なし</option>
-                                <option>30</option>
-                                <option>60</option>
-                            </select></label>
+                        <label>Genre<span id="balloon-pop-genre">ジャンル</span><input type="text" size="15" name="GENRE" id="genre"></label>
+                        <label>Ingredient<span id="balloon-pop-ingredient">具材</span><input type="text" size="15" name="INGREDIENT" id="ingredient"></label>
+                        <label>Time<br><span id="balloon-pop-time">調理時間</span>
+                        	<select name="TIMECOOKING" id="time-cooking">
+                                <option value = "0">指定なし</option>
+                                <option value = "1">5分以内</option>
+                                <option value = "2">約10分</option>
+                                <option value = "3">約15分</option>
+                                <option value = "4">約30分</option>
+                            </select>
+                        </label>
                         <input type="submit" value="search" id="search">
                     </form>
                 </div>
