@@ -61,4 +61,51 @@ public class LoginDAO {
 		return loginResult;
 	}
 
+	public String select(String userid) {
+		Connection conn = null;
+		String user="";
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+
+			// SELECT文を準備する
+			String sql = "select user from ACCOUNT where USER_ID =?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1,userid);
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
+			rs.next();
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			user ="";
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			user ="";
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				user ="";
+				}
+			}
+		}
+
+		// 結果を返す
+		return user;
+	}
+
 }

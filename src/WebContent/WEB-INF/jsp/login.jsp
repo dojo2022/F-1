@@ -5,6 +5,56 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+img#main_pict {
+	position:absolute;
+    top: 0px;
+	left: 0px;
+	width:100vw;
+	height:auto;
+	max-height:900px;
+}
+.content::-webkit-scrollbar{
+  display: block;
+}
+#fade_xos{
+    opacity: 0;
+    -webkit-transition: all 4s;
+    -moz-transition: all 4s;
+    -o-transition: all 4s;
+    -ms-transition: all 4s;
+    transition: all 4s;
+	/*margin: 100px auto 30px;
+	padding:20px;
+	text-align:center;
+	border: solid 1px  #33764F;
+	width: 450px;*/
+}
+
+.fa{
+    animation-name:akarin;
+    animation-duration:2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes akarin {
+
+0%{
+opacity: 1;
+transform: translateY(0px);
+}
+50%{
+opacity: 1;
+transform: translateX(0px);
+}
+100%{
+opacity:0;
+transform: translateY(-450px);
+}
+}
+</style>
+
 <link rel="stylesheet" type="text/css" href="/GandA/css/login.css">
 </head>
 <body>
@@ -15,10 +65,12 @@
   <!--ヘッダーここまで-->
   <!--メインここから-->
   <div id="login_box">
+  <div class="content">
+		<div id="fade_xos">
     <form id="login_form" name="Form1" method="POST" action="/GandA/LoginServlet">
 
       <div class="icon_main">
-        <img src="img/other/icon_main.png" alt="アイコン画像" width="120" height="100">
+        <img id="logo" src="img/other/icon_main.png" alt="アイコン画像" width="120" height="100">
       </div>
       <div id="input_box">
         <p>ID:<br>
@@ -26,7 +78,10 @@
         </p>
         <p>Password:<br>
           <input type="password" name="password" id="password">
+          <input type="button" id="buttonPassword" value="表示" onclick="pushHideButton();">
         </p>
+
+
         <p>
           <input type="submit" value="Log In" class="submit">
 
@@ -34,7 +89,14 @@
         </p>
       </div>
     </form>
+       </div>
   </div>
+  <div style="clear:both"></div>
+
+<img id="main_pict" src="img/other/test10.gif">
+
+
+</div>
   <!--メインここまで-->
   <!--フッターここから-->
   <footer>
@@ -72,6 +134,32 @@
     document.getElementById("regist_user").addEventListener("click", function () {
       location.replace("/GandA/UserRegisterServlet");
     }, false);
+    //表示ボタンを押した時の処理
+    function pushHideButton() {
+        var txtPass = document.getElementById("password");
+        var btnPass = document.getElementById("buttonPassword");
+        if (txtPass.type === "text") {
+          txtPass.type = "password";
+          btnPass.value = "表示";
+        } else {
+          txtPass.type = "text";
+          btnPass.value = "非表示";
+        }
+      }
+
+
+      $(function(){
+        	  $(window).click(function (e){
+        	     $("#fade_xos").css("opacity",1);
+        		 $("img#main_pict").addClass("fa");
+        		 //画像を透明にしただけでは実態は消えない。アニメーションが終わってから消す。
+        		 window.setTimeout(skelton,2500);
+        	  });
+      });
+
+       const skelton =()=>{
+        	     $("img#main_pict").css("display","none")
+      }
   </script>
   <!--JavaScriptここまで-->
 </body>
