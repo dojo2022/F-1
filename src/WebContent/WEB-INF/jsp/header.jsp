@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="/GandA/css/common.css">
-</head>
 
-<body>
-    <!-- ヘッダー部分 -->
+    <link rel="stylesheet" href="css/common.css">
+
+    <!-- ヘッダー部分  -->
     <div class="wrapper-header">
         <header id="header" class="header">
             <div class="images-icon">
@@ -20,35 +14,53 @@
                 <!--名前、時間-->
                 <div class="text-header">
                     Name:
-                        <span id="text-username"></span>
+                        <div id="text-username"></div>
 
                     Time:
-                        <span id="text-time"></span>
+                        <div id="text-time"></div>
 
                 </div>
                 <!--ログアウトアイコン-->
                 <div id="box-logout"><a href="/GandA/LogoutServlet"><img src="img/other/icon_logout.png" alt="logoutlogo" id="icon-logout"></a>
                 </div>
 
-
+            </div>
         <!-- メニューバー部分 -->
 
         <div id="text_menu">
-            <p>
-                <a href="/GandA/CalendarServlet"> <img src="img/other/Calendar.png"><span class="first-text">C</span><span>alendar</span></a>
-            </p>
-            <p>
-                <a href="/GandA/TopServlet"><img src="img/other/Schedule.png"><span class="first-text">S</span><span>chedule</span></a>
-            </p>
-            <p>
-                <a href="/GandA/RecipeServlet"><img src="img/other/recipe.png"><span class="first-text">C</span><span>ooking</span></a>
-            </p>
-            <p>
-                <a href="/GandA/TravelServlet"><img src="img/other/travel.png"><span class="first-text">T</span><span>ravel</span></a>
-            </p>
-        </div>
+                <nav>
+                <ul class="menu-flex">
 
+                    <li id="box-menu">
+                        <a href="/GandA/CalendarServlet" class="link-menu">
+                            <img id="menu-in-icon" src="img/other/calendar.png">
+                            <span id="first-text">C</span><span id="second-text">alendar</span>
+                        </a>
+                    </li>
+                    <li id="box-menu">
+                        <a href="/GandA/TopServlet" class="link-menu">
+                            <img id="menu-in-icon" src="img/other/menu.png">
+                            <span id="first-text">S</span><span id="second-text">chedule</span>
+                        </a>
+                    </li>
+                    <li id="box-menu">
+                        <a href="/GandA/RecipeServlet" class="link-menu">
+                            <img id="menu-in-icon" src="img/other/recipe.png">
+                            <span id="first-text">C</span><span id="second-text">ooking</span>
+                        </a>
+                    </li>
+                    <li id="box-menu">
+                        <a href="/GandA/TravelServlet" class="link-menu">
+                            <img id="menu-in-icon" src="img/other/travel.png">
+                            <span id="first-text">T</span><span id="second-text">ravel</span>
+                        </a>
+                    </li>
+
+                </ul>
+                </nav>
             </div>
+
+
         </header>
 
 
@@ -56,6 +68,7 @@
             //現在時刻表示
             'use strict';
 
+            window.onload = function() {
             const now = new Date();
             const year = now.getFullYear();
             const month = now.getMonth();
@@ -70,10 +83,10 @@
                 min = "0" + min;
             }
 
-            const output = `${year}/${month + 1}/${date} ${hour}:${min}`;
+            const output = year + "/" + (month + 1) + "/" + date + "   " + hour + ":" + min;
             document.getElementById("text-time").textContent = output;
-            //console.log(output);
 
+            }
 
 
             //ここからスクロールの表示非表示処理
@@ -120,7 +133,3 @@
         </script>
 
   </div>
-</body>
-
-
-</html>

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.TravelDAO;
 import model.Travel;
+
 
 /**
  * Servlet implementation class TravelServlet
@@ -31,7 +33,27 @@ public class TravelServlet extends HttpServlet {
 			response.sendRedirect("/GandA/LoginServlet");
 			return;
 		}
-	*/	// 旅行ページにフォワードする
+    */
+
+
+		//現在の月を取得
+		Calendar c = Calendar.getInstance();
+		int month = (int)(c.get(Calendar.MONTH) + 1);
+		session.setAttribute("picMonth", (int)month);
+
+
+
+		// ピックアップ表示処理？
+		TravelDAO traDao = new TravelDAO();
+		List<Travel> travelList = traDao.select(month);
+
+
+
+
+
+		//pic検索したデータをセッションスコープに格納する
+		session.setAttribute("travelList", travelList);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/travel.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -52,13 +74,19 @@ public class TravelServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 
+/*		Calendar c = Calendar.getInstance();
+		int month = (int)(c.get(Calendar.MONTH) + 1);
+		session.setAttribute("picMonth", (int)month);
+
+
+
 		// ピックアップ表示処理？
 		TravelDAO traDao = new TravelDAO();
-		List<Travel> travelList = traDao.select();
+		List<Travel> travelList = traDao.select(month);
 
 
 		//pic検索したデータをセッションスコープに格納する
-		session.setAttribute("travelList", travelList);
+		session.setAttribute("travelList", travelList);    */
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/travel.jsp");

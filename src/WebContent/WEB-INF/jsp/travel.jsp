@@ -10,38 +10,46 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="/GandA/css/travel.css">
+
 </head>
 
 
 
 <body>
+
+
+<script>
+	console.log("${travelList.get(0).sitePlace}");
+</script>
+
     <div class="wrapper-travel">
         <header>
-
+       <jsp:include page="/WEB-INF/jsp/header.jsp" flush="true"/>
         </header>
 
         <main>
-            <h1 id="title-travel">【${travelList[0].site_place}】</h1>
+            <h1 id="title-travel">【 ${travelList.get(0).sitePlace} 】</h1>
             <div class="flex-travel">
 
-                <!--おすすめ旅行先の説明-->
+                <!--おすすめ旅行先の説明 -->
                 <div id="text-pickup">
 
                     <h2 id="picmenu-food">≪food≫</h2>
-                      <p id="explain-food">${travelList[0].site_food}</p>
+                      <p id="explain-food">${travelList.get(0).siteFood}</p>
                     <h2 id="picmenu-spot">≪spot≫</h2>
-                      <p id="explain-spot">${travelList[0].site_spot}</p>
+                      <p id="explain-spot">${travelList.get(0).siteSpot}</p>
                     <h2 id="picmenu-hotel">≪hotel≫</h2>
-                      <p id="explain-hotel">${travelList[0].site_hotel}</p>
+                      <p id="explain-hotel">${travelList.get(0).siteHotel}</p>
                     <h2 id="picmenu-budget">≪budget≫</h2>
-                      <p id="explain-budget">${travelList[0].site_budget}</p>
+                      <p id="explain-budget">${travelList.get(0).siteBudget}</p>
                     <h2 id="picmenu-location">≪location≫</h2>
-                      <p id="explain-location">${travelList[0].site_location}</p>
+                      <p id="explain-location">${travelList.get(0).siteLocation}</p>
                 </div>
 
                 <!--旅行先写真 -->
                 <div id="picture-travel">
-                    <img src="img/travel/${travelList[0].siteLocation}" alt="image-spot">
+                    <img src="img/travel/${travelList.get(0).siteImage}" alt="image-spot">
+
 
 
                     <!--旅行先の季節アイコン-->
@@ -49,18 +57,34 @@
                       <h1 id="title-season">Season: </h1>
 
                       <c:choose>
-                      <c:when test="${travelList[0].siteMonth >= 1} && ${travelList[0].siteMonth <= 4}">
+                      <c:when test="${travelList.get(0).siteMonth <= 4}">
                       <div id="season-spring"><img src="img/travel/spring.png" alt="icon-spring"></div>
                       </c:when>
-                      <c:when test="${travelList[0].siteMonth >= 5} && ${travelList[0].siteMonth <= 7}">
+
+                      <c:when test="${travelList.get(0).siteMonth == 5}">
                       <div id="season-summer"><img src="img/travel/summer.png" alt="icon-summer"></div>
                       </c:when>
-                      <c:when test="${travelList[0].siteMonth >= 8} && ${travelList[0].siteMonth <= 10}">
+                      <c:when test="${travelList.get(0).siteMonth == 6}">
+                      <div id="season-summer"><img src="img/travel/summer.png" alt="icon-summer"></div>
+                      </c:when>
+                      <c:when test="${travelList.get(0).siteMonth == 7}">
+                      <div id="season-summer"><img src="img/travel/summer.png" alt="icon-summer"></div>
+                      </c:when>
+
+                      <c:when test="${travelList.get(0).siteMonth == 8}">
                       <div id="season-autumn"><img src="img/travel/autumn.png" alt="icon-autumn"></div>
                       </c:when>
-                      <c:when test="${travelList[0].siteMonth >= 11} && ${travelList[0].siteMonth <= 12}">
-                      <div id="season-winter"><img src="img/travel/winter.png" alt="icon-winter"></div>
+                      <c:when test="${travelList.get(0).siteMonth == 9}">
+                      <div id="season-autumn"><img src="img/travel/autumn.png" alt="icon-autumn"></div>
                       </c:when>
+                      <c:when test="${travelList.get(0).siteMonth == 10}">
+                      <div id="season-autumn"><img src="img/travel/autumn.png" alt="icon-autumn"></div>
+                      </c:when>
+
+
+                      <c:otherwise>
+                      <div id="season-winter"><img src="img/travel/winter.png" alt="icon-winter"></div>
+                      </c:otherwise>
                       </c:choose>
                    </div>
                 </div>

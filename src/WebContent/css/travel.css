@@ -1,13 +1,14 @@
 @charset "UTF-8";
 
 
-/*旅行先の名前*/
+/*旅行先の名前 */
 #title-travel {
     background-color: #F8F8F8;
     width: fit-content;
-    margin: 10px 0px -30px 45px;
-    z-index: 100;
-    position: relative;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+    font-weight: 600;
 }
 
 /*説明ブロック、写真の配置と間隔*/
@@ -17,10 +18,10 @@
 }
 
 #text-pickup {
-    width: 620px;
+    width: 48%;
     height: auto;
     padding: 10px;
-    padding-top: 30px;
+    padding-top: 10px;
 
     overflow-wrap: break-word;
     border: dashed;
@@ -56,29 +57,30 @@
 
 
 /*説明文中の細かな説明*/
+
 #explain-food {
     margin: 0px 5px 0px 20px;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 #explain-spot {
     margin: 0px 5px 0px 20px;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 #explain-hotel {
     margin: 0px 5px 0px 20px;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 #explain-budget {
     margin: 0px 5px 0px 20px;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 #explain-location {
     margin: 0px 5px 0px 20px;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 
@@ -137,3 +139,4 @@
     height: 60px;
     margin-left: 20px;
 }
+

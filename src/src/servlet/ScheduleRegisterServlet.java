@@ -36,16 +36,20 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		int yearNow = cal.get(Calendar.YEAR);
 		int monthNow = cal.get(Calendar.MONTH) + 1;
 		String dateNow = "" + yearNow + "/" + monthNow;
+		String date;
+
+		date = request.getParameter("date");
+
 
 		// 検索処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
-		List<Schedule> cardList = bDao.select(new Schedule("",dateNow,"","","",""));
+		List<Schedule> cardList = bDao.select(new Schedule("a",dateNow,"","","",""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
 
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_register.jsp?str=1");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_register.jsp?date=" + date);
 		dispatcher.forward(request, response);
 	}
 
