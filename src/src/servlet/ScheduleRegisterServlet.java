@@ -36,9 +36,8 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		int yearNow = cal.get(Calendar.YEAR);
 		int monthNow = cal.get(Calendar.MONTH) + 1;
 		String dateNow = "" + yearNow + "/" + monthNow;
-		String date;
 
-		date = request.getParameter("date");
+
 
 
 		// 検索処理を行う
@@ -49,7 +48,7 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		request.setAttribute("cardList", cardList);
 
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_register.jsp?date=" + date);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_register.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -57,8 +56,22 @@ public class ScheduleRegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String user = "a";
+		String date = request.getParameter("DATE");
+		String sub = request.getParameter("SUB");
+		String title = request.getParameter("TITLE");
+		String start = request.getParameter("START");
+		String end = request.getParameter("END");
+
+		// 登録処理を行う
+		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
+		bDao.insert(new Schedule(user, date, sub, title, start, end));
+
+		//登録サーブレットにリダイレクトする
+		response.sendRedirect("/GandA/ScheduleRegisterServlet");
 	}
 
 }

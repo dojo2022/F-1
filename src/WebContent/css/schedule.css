@@ -2,46 +2,44 @@
 
 /*calendar.html*/
 .wrapper-calendar {
-    margin: 0 auto;
-    max-width: 630px;
+	margin: 0 auto;
+	max-width: 630px;
 }
 
 .wrapper-calendar .wrapper {
-    margin: 0 auto;
-    color: #666;
+	margin: 0 auto;
+	color: #666;
 }
 
 .wrapper-calendar #header {
-    text-align: center;
-    font-size: 24px;
-    width: 100%;
-    margin: 1rem 0 0;
+	text-align: center;
+	font-size: 24px;
+	width: 100%;
+	margin: 1rem 0 0;
 }
 
-/*カレンダー*/
 .wrapper-calendar #calendar {
-    text-align: center;
-    width: 100%;
+	text-align: center;
+	width: 100%;
 }
 
 .wrapper-calendar table {
-    outline: 2px solid #ddd;
-    border-collapse: collapse;
-    width: 100%;
+	outline: 2px solid #ddd;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 .wrapper-calendar th {
-    color: #000;
+	color: #000;
 }
 
 .wrapper-calendar th,
 .wrapper-calendar td {
-    outline: 1px solid #ddd;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    width: 50px;
-
+	outline: 1px solid #ddd;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	width: 50px;
 }
 
 .wrapper-calendar a {
@@ -62,177 +60,179 @@
 
 /*日曜日*/
 .wrapper-calendar td:first-child {
-    color: red;
+	color: red;
 }
 
 /*土曜日*/
 .wrapper-calendar td:last-child {
-    color: blue;
+	color: blue;
 }
 
 /*前後月の日付*/
 .wrapper-calendar td.disabled {
-    color: #ccc;
+	color: #ccc;
 }
 
 /*本日*/
 .wrapper-calendar td.today {
-    background-color: #ff9191;
-    color: #fff;
+	background-color: #ff9191;
+	color: #fff;
 }
 
 /*ボタン*/
 .wrapper-calendar #next-prev-button {
-    position: relative;
-    margin-bottom: 10px;
+	position: relative;
+	margin-bottom: 10px;
 }
 
 .wrapper-calendar #next-prev-button button {
-    cursor: pointer;
-    background: #00a2b7;
-    color: #fff;
-    border: 1px solid #0aa2b5;
-    border-radius: 4px;
-    font-size: 1rem;
-    padding: 0.5rem 2rem;
+	cursor: pointer;
+	background: #00a2b7;
+	color: #fff;
+	border: 1px solid #0aa2b5;
+	border-radius: 4px;
+	font-size: 1rem;
+	padding: 0.5rem 2rem;
 }
 
 .wrapper-calendar #next-prev-button button:hover {
-    background-color: #abd0d6;
-    border-color: #abd0d6;
+	background-color: #abd0d6;
+	border-color: #abd0d6;
 }
 
 .wrapper-calendar #prev {
-    float: left;
+	float: left;
 }
 
 .wrapper-calendar #next {
-    float: right;
+	float: right;
 }
 
 .wrapper-calendar .footer-container-calendar {
-    margin-top: 1em;
-    border-top: 1px solid #dadada;
-    padding: 10px 0;
+	margin-top: 1em;
+	border-top: 1px solid #dadada;
+	padding: 10px 0;
 }
 
 .wrapper-calendar .footer-container-calendar select {
-    cursor: pointer;
-    display: inline-block;
-    zoom: 1;
-    background: #ffffff;
-    color: #454545;
-    border: 1px solid #bfc5c5;
-    border-radius: 3px;
-    padding: 5px 1em;
+	cursor: pointer;
+	display: inline-block;
+	zoom: 1;
+	background: #ffffff;
+	color: #454545;
+	border: 1px solid #bfc5c5;
+	border-radius: 3px;
+	padding: 5px 1em;
 }
+
+
 
 /*schedule.html*/
 .wrapper-schedule {
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
-.wrapper_schedule .time-schedule {
-    overflow-y: scroll;
-    max-height: 350px;
-    max-width: 800px;
-    margin: auto;
+.wrapper-schedule #register-date {
+	text-align: center;
 }
 
-.wrapper_schedule .time-schedule p {
-    overflow: hidden;
-    display: flex;
-    position: relative;
+.wrapper-schedule .time-schedule {
+	overflow-y: scroll;
+	max-height: 350px;
+	max-width: 1000px;
+	margin: auto;
 }
 
-.wrapper_schedule .time {
-    display: flex;
-    padding: 0 1.5em 0 0.5em;
-    position: relative;
-    margin-top: 1rem;
+.wrapper-schedule .time-schedule p {
+	overflow: hidden;
+	display: flex;
+	position: relative;
 }
 
-.wrapper_schedule .time:after {
-    border-top: 1px solid;
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 99em;
+.wrapper-schedule .time {
+	display: flex;
+	padding: 0 1.5em 0 0.5em;
+	position: relative;
+	margin-top: 1rem;
 }
 
-.wrapper_schedule .time:after {
-    left: 100%;
+.wrapper-schedule .time:after {
+	border-top: 1px solid;
+	content: "";
+	position: absolute;
+	top: 50%;
+	width: 99em;
 }
 
-.wrapper_schedule .time-schedule input {
-    display: none;
-    outline: none;
+.wrapper-schedule .time:after {
+	left: 100%;
 }
 
-.wrapper_schedule .time-schedule .line0 {
-    display: flex;
-    position: relative;
-    background-color: red;
-    border: none;
-    border-radius: 7px;
-    z-index: 100;
-    width: 300px;
+.wrapper-schedule .time-schedule input {
+	outline: none;
+	display: flex;
+	position: relative;
+	background-color: red;
+	border: none;
+	border-radius: 7px;
+	z-index: 10;
+	width: 300px;
+	height: 51px;
+	margin-bottom: -53px;
+	left: 80px;
+}
+
+.wrapper-schedule .time-schedule .line0 {
+	/*一番上の位置が-1370px*/
+	top: -1370px;
+}
+
+.wrapper-schedule .time-schedule .line1 {
+	/*1時間増えるごとに56px増やす*/
+	top: -1314px;
+}
+
+.wrapper-schedule .time-schedule .line2 {
+	/*1時間増えるごとに56px増やす*/
+	top: -1258px;
+}
+.wrapper-schedule .time-schedule .line3 {
+	/*1時間増えるごとに56px増やす*/
+	top: -1202px;
+}
+
+.wrapper-schedule .time-schedule .line4 {
+	/*1時間増えるごとに56px増やす*/
+	top: -1146px;
+}
+
+.wrapper-schedule .time-schedule .line5 {
     /*1時間増えるごとに56px増やす*/
-    height: 51px;
-    /*-(height + 2)px*/
-    margin-bottom: -53px;
-    /*一番上の位置が-1370px*/
-    top: -1370px;
-    left: 90px;
+    top: -1090px;
 }
 
-.wrapper_schedule .time-schedule .line2 {
-    display: flex;
-    position: relative;
-    background-color: blue;
-    border: none;
-    border-radius: 7px;
-    z-index: 100;
-    width: 300px;
-    /*1時間増えるごとに56px増やす*/
-    height: 163px;
-    /*-(height + 2)px*/
-    margin-bottom: -165px;
-    margin-top: 0;
-    /*1時間増えるごとに56px増やす*/
-    top: -1146px;
-    left: 90px;
+/*登録用フォーム*/
+.wrapper-schedule #form-register-show {
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+
 }
 
-.wrapper_schedule .time-schedule .line7 {
-    display: flex;
-    position: relative;
-    background-color: green;
-    border: none;
-    border-radius: 7px;
-    z-index: 100;
-    width: 300px;
-    /*1時間増えるごとに56px増やす*/
-    height: 163px;
-    /*-(height + 2)px*/
-    margin-bottom: -165px;
-    /*1時間増えるごとに56px増やす*/
-    top: -810px;
-    left: 90px;
+.wrapper-schedule #space-register {
+	position: relative;
+	background-color: white;
+	box-shadow: 2px 2px 2px 2px #a8a8a8;
+	z-index: 30;
+	width: 400px;
+	height: 200px;
+	margin-bottom: -200px;
+	left: 150px;
 }
 
-.wrapper_schedule .time-schedule .line15 {
-    display: flex;
-    position: relative;
-    background-color: yellow;
-    border: none;
-    border-radius: 7px;
-    z-index: 100;
-    width: 300px;
-    /*1時間増えるごとに56px増やす*/
-    height: 107px;
-    margin-bottom: -109px;
-    /*1時間増えるごとに56px増やす*/
-    top: -530px;
-    left: 90px;
+.special {
+	/*1時間増えるごとに56px増やす*/
+	height: 51px;
+	/*-(height + 2)px*/
+	margin-bottom: -53px;
 }

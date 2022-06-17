@@ -15,7 +15,6 @@
 </head>
 
 <body onload="setScheduleDate(); todayCalendar();">
-
 	<div class="wrapper-calendar">
 		<!-- ヘッダー（ここから） -->
 		<header> </header>
@@ -57,7 +56,6 @@
 			<p>${e}</p>
 		</c:forEach>
 		<p>${dateList}</p>
-		<a href="/GandA/ScheduleRegisterServlet">戻る</a>
 		<!-- メイン（ここまで） -->
 		<!-- フッター（ここから） -->
 		<footer onload="today()"> </footer>
@@ -72,6 +70,7 @@
 	var selectYear = document.getElementById("year");
 	var selectMonth = document.getElementById("month");
 	var createYear = generateYearRange(1970, 2200);
+
 	document.getElementById("year").innerHTML = createYear;
 
 	const week = ["日", "月", "火", "水", "木", "金", "土"];
@@ -109,115 +108,114 @@
 		return years;
 	}
 
-//予定がある日を設定
-function setScheduleDate() {
-	dateCount = 0;
-	var i = 0;
-	console.log("DATE:" +"${fn:length(dateList)}");
-	console.log("DATE:" +"${dateList}");
-	<c:forEach var="e" items="${dateList}">
- 	//console.log("${e}");
- 	<c:forEach var="str" items="${fn:split(e,'/')}">
- 		//console.log("${str}");
- 		if (i == 0){
- 			scheduleYear[dateCount]  = "${str}";
- 		}else if (i == 1){
- 			scheduleMonth[dateCount] = "${str}";
- 		}else if (i == 2){
- 			scheduleDay[dateCount]   = "${str}";
- 		}else{
- 			scheduleYear[dateCount]  = "";
- 			scheduleMonth[dateCount] = "";
- 			scheduleDay[dateCount]   = "";
- 		}
- 		i++;
- 	</c:forEach>
- 	i = 0;
+	//予定がある日を設定
+	function setScheduleDate() {
+		dateCount = 0;
+		var i = 0;
+		console.log("DATE:" +"${fn:length(dateList)}");
+		console.log("DATE:" +"${dateList}");
+		<c:forEach var="e" items="${dateList}">
+	 	//console.log("${e}");
+	 	<c:forEach var="str" items="${fn:split(e,'/')}">
+	 		//console.log("${str}");
+	 		if (i == 0){
+	 			scheduleYear[dateCount]  = "${str}";
+	 		}else if (i == 1){
+	 			scheduleMonth[dateCount] = "${str}";
+	 		}else if (i == 2){
+	 			scheduleDay[dateCount]   = "${str}";
+	 		}else{
+	 			scheduleYear[dateCount]  = "";
+	 			scheduleMonth[dateCount] = "";
+	 			scheduleDay[dateCount]   = "";
+	 		}
+	 		i++;
+	 	</c:forEach>
+	 	i = 0;
 		dateCount++;
- </c:forEach>
-}
+	 </c:forEach>
+	}
 
-// カレンダー表示
-function showProcess(date) {
-    var year = date.getFullYear();
-    var month = date.getMonth();
-    selectYear.value = year;
-    selectMonth.value = month;
-    document.querySelector('#header').innerHTML = year + "年 " + (month + 1) + "月";
+	// カレンダー表示
+	function showProcess(date) {
+		var year = date.getFullYear();
+		var month = date.getMonth();
+		selectYear.value = year;
+		selectMonth.value = month;
+		document.querySelector('#header').innerHTML = year + "年 " + (month + 1) + "月";
 
-    var calendar = createProcess(year, month);
-    document.querySelector('#calendar').innerHTML = calendar;
-}
+		var calendar = createProcess(year, month);
+		document.querySelector('#calendar').innerHTML = calendar;
+	}
+		// カレンダー作成
+		function createProcess(year, month) {
+		// 曜日
+		var calendar = "<table><tr class='dayOfWeek'>";
+		for (var i = 0; i < week.length; i++) {
+			calendar += "<th>" + week[i] + "</th>";
+		}
+		calendar += "</tr>";
 
-// カレンダー作成
-function createProcess(year, month) {
-    // 曜日
-    var calendar = "<table><tr class='dayOfWeek'>";
-    for (var i = 0; i < week.length; i++) {
-        calendar += "<th>" + week[i] + "</th>";
-    }
-    calendar += "</tr>";
+		var judgeYear  = parseInt(selectYear.value);
+		var judgeMonth = parseInt(selectMonth.value) + 1;
 
-    var judgeYear  = parseInt(selectYear.value);
-    var judgeMonth = parseInt(selectMonth.value) + 1;
-
-    var count = 0;
-    var startDayOfWeek = new Date(year, month, 1).getDay();
-    var endDate = new Date(year, month + 1, 0).getDate();
-    var lastMonthEndDate = new Date(year, month, 0).getDate();
-    var row = Math.ceil((startDayOfWeek + endDate) / week.length);
-    // 1行ずつ設定
-    for (var i = 0; i < row; i++) {
-        calendar += "<tr>";
-        // 1colum単位で設定
-        for (var j = 0; j < week.length; j++) {
-            if (i == 0 && j < startDayOfWeek) {
-                // 1行目で1日まで先月の日付を設定
-                calendar += "<td class='disabled'>" + (lastMonthEndDate - startDayOfWeek + j + 1) + "</td>";
-            } else if (count >= endDate) {
-                // 最終行で最終日以降、翌月の日付を設定
-                count++;
-                calendar += "<td class='disabled'>" + (count - endDate) + "</td>";
-            } else {
-                // 当月の日付を曜日に照らし合わせて設定
-                count++;
-                if (year == today.getFullYear()
-                    && month == (today.getMonth())
-                    && count == today.getDate()) {
-                    calendar += "<td class='today'><a href='/GandA/ScheduleRegisterServlet?date=' + count>" + count +"</a>";
-                    for (var k = 0; k < dateCount; k++){
-                    	console.log(parseInt(scheduleYear[k]));
-                    	console.log(parseInt(scheduleMonth[k]));
-                    	console.log(parseInt(scheduleDay[k]));
-                    	console.log(judgeYear);
-                    	console.log(judgeMonth);
-                    	console.log(count);
-                    	if (judgeYear == scheduleYear[k] && judgeMonth == scheduleMonth[k]
-                    		&& count == parseInt(scheduleDay[k])){
-                        	calendar += "<span class='day-schedule'>･</span>";
-                        	break;
-                        }
-                    }
-                    calendar += "</td>";
-                } else {
-                	calendar += "<td class='other'><a href='/GandA/ScheduleRegisterServlet'>" + count + "</a>";
-                    for (var k = 0; k < dateCount; k++){
-                    	if (judgeYear == scheduleYear[k] && judgeMonth == scheduleMonth[k]
-                    		&& count == parseInt(scheduleDay[k])){
-                    A		calendar += "<span class='day-schedule'>･</span>";
-                        	break;
-                        }
-                    }
-                    calendar += "</td>";
-                }
-            }
-        }
-        calendar += "</tr>";
-    }
-    calendar += "</table>";
-    return calendar;
-}
-</script>
+		var count = 0;
+		var startDayOfWeek = new Date(year, month, 1).getDay();
+		var endDate = new Date(year, month + 1, 0).getDate();
+		var lastMonthEndDate = new Date(year, month, 0).getDate();
+		var row = Math.ceil((startDayOfWeek + endDate) / week.length);
+		// 1行ずつ設定
+		for (var i = 0; i < row; i++) {
+			calendar += "<tr>";
+			// 1colum単位で設定
+			for (var j = 0; j < week.length; j++) {
+				if (i == 0 && j < startDayOfWeek) {
+					// 1行目で1日まで先月の日付を設定
+					calendar += "<td class='disabled'>" + (lastMonthEndDate - startDayOfWeek + j + 1) + "</td>";
+				} else if (count >= endDate) {
+					// 最終行で最終日以降、翌月の日付を設定
+					count++;
+					calendar += "<td class='disabled'>" + (count - endDate) + "</td>";
+				} else {
+					// 当月の日付を曜日に照らし合わせて設定
+					count++;
+					if (year == today.getFullYear()
+						&& month == (today.getMonth())
+						&& count == today.getDate()) {
+						calendar += "<td class='today'><a href='/GandA/ScheduleRegisterServlet?year=" + judgeYear + "&month=" + judgeMonth + "&day=" + count + "'>" + count + "</a>";
+						for (var k = 0; k < dateCount; k++){
+							//console.log(parseInt(scheduleYear[k]));
+							//console.log(parseInt(scheduleMonth[k]));
+							//console.log(parseInt(scheduleDay[k]));
+							//console.log(judgeYear);
+							//console.log(judgeMonth);
+							//console.log(count);
+							if (judgeYear == scheduleYear[k] && judgeMonth == scheduleMonth[k]
+								&& count == parseInt(scheduleDay[k])){
+								calendar += "<span class='day-schedule'>･</span>";
+								break;
+							}
+						}
+						calendar += "</td>";
+					} else {
+						calendar += "<td class='other'><a href='/GandA/ScheduleRegisterServlet?year=" + judgeYear + "&month=" + judgeMonth + "&day=" + count + "'>" + count + "</a>";
+						for (var k = 0; k < dateCount; k++){
+							if (judgeYear == scheduleYear[k] && judgeMonth == scheduleMonth[k]
+								&& count == parseInt(scheduleDay[k])){
+								calendar += "<span class='day-schedule'>･</span>";
+								break;
+							}
+						}
+						calendar += "</td>";
+					}
+				}
+			}
+			calendar += "</tr>";
+		}
+		calendar += "</table>";
+		return calendar;
+	}
+	</script>
 </body>
 
 </html>
