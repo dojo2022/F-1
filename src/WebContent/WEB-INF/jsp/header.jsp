@@ -28,19 +28,37 @@
         <!-- メニューバー部分 -->
 
         <div id="text_menu">
-            <p id="box-menu">
-                <a href="/GandA/CalendarServlet"><img src="img/other/calendar.png" id="menu-in-icon"><span id="first-text">C</span><span id="second-text">alendar</span></a>
-            </p>
-            <p id="box-menu">
-                <a href="/GandA/TopServlet"><img src="img/other/menu.png" id="menu-in-icon"><span id="first-text">S</span><span id="second-text">chedule</span></a>
-            </p>
-            <p id="box-menu">
-                <a href="/GandA/RecipeServlet"><img src="img/other/recipe.png" id="menu-in-icon"><span id="first-text">C</span><span id="second-text">ooking</span></a>
-            </p>
-            <p id="box-menu">
-                <a href="/GandA/TravelServlet"><img src="img/other/travel.png" id="menu-in-icon"><span id="first-text">T</span><span id="second-text">ravel</span></a>
-            </p>
-        </div>
+                <nav>
+                <ul class="menu-flex">
+
+                    <li id="box-menu">
+                        <a href="/GandA/CalendarServlet" class="link-menu">
+                            <img id="menu-in-icon" src="img/other/calendar.png">
+                            <span id="first-text">C</span><span id="second-text">alendar</span>
+                        </a>
+                    </li>
+                    <li id="box-menu">
+                        <a href="/GandA/TopServlet" class="link-menu">
+                            <img id="menu-in-icon" src="img/other/menu.png">
+                            <span id="first-text">S</span><span id="second-text">chedule</span>
+                        </a>
+                    </li>
+                    <li id="box-menu">
+                        <a href="/GandA/RecipeServlet" class="link-menu">
+                            <img id="menu-in-icon" src="img/other/recipe.png">
+                            <span id="first-text">C</span><span id="second-text">ooking</span>
+                        </a>
+                    </li>
+                    <li id="box-menu">
+                        <a href="/GandA/TravelServlet" class="link-menu">
+                            <img id="menu-in-icon" src="img/other/travel.png">
+                            <span id="first-text">T</span><span id="second-text">ravel</span>
+                        </a>
+                    </li>
+
+                </ul>
+                </nav>
+            </div>
 
 
         </header>
@@ -50,6 +68,7 @@
             //現在時刻表示
             'use strict';
 
+            window.onload = function() {
             const now = new Date();
             const year = now.getFullYear();
             const month = now.getMonth();
@@ -64,10 +83,10 @@
                 min = "0" + min;
             }
 
-            const output = `${year}/${month + 1}/${date} ${hour}:${min}`;
+            const output = year + "/" + (month + 1) + "/" + date + "   " + hour + ":" + min;
             document.getElementById("text-time").textContent = output;
-            //console.log(output);
 
+            }
 
 
             //ここからスクロールの表示非表示処理

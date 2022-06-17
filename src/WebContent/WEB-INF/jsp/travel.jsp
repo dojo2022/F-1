@@ -17,6 +17,7 @@
 
 <body>
 
+
 <script>
 	console.log("${travelList.get(0).sitePlace}");
 </script>
@@ -27,7 +28,7 @@
         </header>
 
         <main>
-            <h1 id="title-travel">${travelList.get(0).sitePlace}</h1>
+            <h1 id="title-travel">【 ${travelList.get(0).sitePlace} 】</h1>
             <div class="flex-travel">
 
                 <!--おすすめ旅行先の説明 -->
