@@ -39,6 +39,7 @@ public class ScheduleRegisterDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Schedule card = new Schedule(
+				//データベースのカラム名を代入
 				rs.getString("USER"),
 				rs.getString("DATE"),
 				rs.getString("SUB"),

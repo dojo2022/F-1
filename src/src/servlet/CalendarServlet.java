@@ -40,7 +40,7 @@ public class CalendarServlet extends HttpServlet {
 		request.setAttribute("dateList", dateList);
 
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp?date1=1");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
 		dispatcher.forward(request, response);
 	}
 
