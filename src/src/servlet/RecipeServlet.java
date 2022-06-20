@@ -41,15 +41,14 @@ public class RecipeServlet extends HttpServlet {
 		 * }
 		 */
 
-		//毎回スクレイピングしていた場合、sessionに格納する
-		//if(session.getAttribute("pickMenu") == null){
-			//今日の曜日取得
+		 //献立の検索は最初の一回のみで十分であるため
+		if(session.getAttribute("pickMenu") == null){
+			//今日の曜日取得(取得される値は1(日曜)から7(土曜))
 			Calendar dayOfWeek = Calendar.getInstance();
-			int day = dayOfWeek.get(Calendar.DAY_OF_WEEK) - 1;
-			if(day == 0) {
+			int day = dayOfWeek.get(Calendar.DAY_OF_WEEK) - 2;
+			//日曜は献立の最後であるため日曜(-1)の時はdayを6にする
+			if(day == -1) {
 				day = 6;
-			}else {
-				day--;
 			}
 
 			// スクレイピング
@@ -83,22 +82,17 @@ public class RecipeServlet extends HttpServlet {
 				nameDish = dishes.get(i).text();
 				imagePath = images.get(i).attr("src");
 				link = links.get(i).attr("href");
-				// リストに追加（リクエストスコープへの格納に使用）
+				// リストに追加（スコープへの格納に使用）
 				pickMenu.add(new Recipe(nameDish, "", "", "", link, "", imagePath));
 			}
 
-			// 検索処理を行う
-			/*
-			 * RecipeDAO reDao = new RecipeDAO();
-			 * List<Recipe> recipeList = reDao.select(new Recipe("", "", "", "", "", "",
-			 * ""));
-			 */
+
 			// 検索結果をリクエストスコープに格納する
-			request.setAttribute("pickMenu", pickMenu);
+			//request.setAttribute("pickMenu", pickMenu);
 
 			// 検索結果をセッションスコープに格納する
-			//session.setAttribute("pickMenu", pickMenu);
-		//}
+			session.setAttribute("pickMenu", pickMenu);
+		}
 		// レシピページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/recipe.jsp");
 		dispatcher.forward(request, response);

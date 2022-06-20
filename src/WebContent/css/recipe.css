@@ -53,10 +53,6 @@
 
 }
 
-#wrapper-recipe h2 {
-	height: 4em;
-}
-
 #wrapper-recipe .explain-pick {
     width: 910px;
     margin-top: 10px;
@@ -247,4 +243,23 @@
     padding: 8px 10px 8px 10px;
     margin-left: 10px;
     font-size: 1em;
+}
+
+#wrapper-search-recipe #not-found {
+	height: 120px;
+	width: 500px;
+	text-align: center;
+	background-color: white;
+	margin-left: 150px;
+	padding-top: 50px;
+}
+
+#wrapper-search-recipe #not-found p {
+	font-size: 1.3em;
+	margin-bottom: 0;
+}
+
+#wrapper-search-recipe #not-found-image {
+	height: 60px;
+	width: 60px;
 }

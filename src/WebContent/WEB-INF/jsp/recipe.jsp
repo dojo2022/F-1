@@ -7,13 +7,14 @@
 <head>
     <meta charset="UTF-8">
     <title>レシピ</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/recipe.css">
 </head>
 
 <body>
     <div id="wrapper-recipe">
         <header>
-
+        	<jsp:include page="/WEB-INF/jsp/header.jsp" flush="true"/>
         </header>
 
         <main>
@@ -23,8 +24,8 @@
                 <div class="pick">
                     <c:forEach var="e" items="${pickMenu}" >
                         <div class="space-detail">
-                            <h2><a href="https://recipe.rakuten.co.jp/${e.link}">【${e.nameDish}】</a></h2>
                             <a href="https://recipe.rakuten.co.jp/${e.link}"><img src="${e.imageRecipe}" alt="料理の画像" class="image-pick"></a>
+                            <h2><a href="https://recipe.rakuten.co.jp/${e.link}">【${e.nameDish}】</a></h2>
                         </div>
                     </c:forEach>
                 </div>
