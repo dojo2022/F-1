@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -32,17 +31,11 @@ public class ScheduleRegisterServlet extends HttpServlet {
 //			response.sendRedirect("/simpleBC/LoginServlet");
 //			return;
 //		}
-		Calendar cal = Calendar.getInstance();
-		int yearNow = cal.get(Calendar.YEAR);
-		int monthNow = cal.get(Calendar.MONTH) + 1;
-		String dateNow = "" + yearNow + "/" + monthNow;
-
-
 
 
 		// 検索処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
-		List<Schedule> cardList = bDao.select(new Schedule("a",dateNow,"","","",""));
+		List<Schedule> cardList = bDao.select(new Schedule("a","","","","",""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
@@ -57,6 +50,13 @@ public class ScheduleRegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+//		if (session.getAttribute("id") == null) {
+//			response.sendRedirect("/simpleBC/LoginServlet");
+//			return;
+//		}
+
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String user = "a";
@@ -65,6 +65,14 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		String title = request.getParameter("TITLE");
 		String start = request.getParameter("START");
 		String end = request.getParameter("END");
+
+		String[] dateNow = new String[3];
+		dateNow[0] = request.getParameter("year");
+		dateNow[1] = request.getParameter("month");
+		dateNow[2] = request.getParameter("day");
+
+		// 検索結果をリクエストスコープに格納する
+		session.setAttribute("dateNow", dateNow);
 
 		// 登録処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
