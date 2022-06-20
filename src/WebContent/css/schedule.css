@@ -327,3 +327,9 @@
 	/*-(height + 2)px*/
 	margin-bottom: -53px;
 }
+
+.wrapper-schedule #year,
+.wrapper-schedule #month,
+.wrapper-schedule #day {
+	display: none;
+}

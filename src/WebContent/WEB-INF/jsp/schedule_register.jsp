@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/GandA/css/schedule.css">
 </head>
 
-<body>
+<body onload="todaySchedule();">
 	<div class="wrapper-schedule">
 		<!-- ヘッダー（ここから） -->
 		<header> </header>
@@ -27,6 +27,10 @@
 						<label>内容<input type="text" maxlength="100" name="SUB" id="sub"></label><br>
 						<label>開始<select name="START" id="start"></select></label>
 						<label>終了<select name="END" id="end"></select></label><br>
+						<input name="year" id="year">
+						<input name="month" id="month">
+						<input name="day" id="day">
+
 						<input type="submit" value="登録" id="register">
 					</form>
 				</div>
@@ -154,36 +158,49 @@
 		var startTime = setTimeRange(0, 23);
 		var endTime = setTimeRange(1, 24);
 
-		//日付取得
-		if(queryString){
-			queryString = queryString.substring(1);
-			var parameters = queryString.split('&');
+		function todaySchedule(){
+			//日付取得
+			if(queryString){
+				queryString = queryString.substring(1);
+				var parameters = queryString.split('&');
 
-			for (var i = 0; i < parameters.length; i++) {
-				var element = parameters[i].split('=');
-				var paramName = decodeURIComponent(element[0]);
-				var paramValue = decodeURIComponent(element[1]);
+				for (var i = 0; i < parameters.length; i++) {
+					var element = parameters[i].split('=');
+					var paramName = decodeURIComponent(element[0]);
+					var paramValue = decodeURIComponent(element[1]);
 
-				queryObject[paramName] = paramValue;
-				console.log(queryObject[paramName]);
-				if (i == 0) {
-					year = queryObject[paramName];
-				} else if (i == 1) {
-					month = queryObject[paramName];
-				} else {
-					day = queryObject[paramName];
+					queryObject[paramName] = paramValue;
+					console.log(queryObject[paramName]);
+					if (i == 0) {
+						year = queryObject[paramName];
+					} else if (i == 1) {
+						month = queryObject[paramName];
+					} else {
+						day = queryObject[paramName];
+					}
 				}
+				document.querySelector('#year').value = year;
+				document.querySelector('#month').value = month;
+				document.querySelector('#day').value = day;
+			}else{
+				year = "${dateNow[0]}";
+				month = "${dateNow[1]}";
+				day = "${dateNow[2]}";
+				document.querySelector('#year').value = year;
+				document.querySelector('#month').value = month;
+				document.querySelector('#day').value = day;
 			}
+			//日付表示
+			document.querySelector('#register-date').innerHTML = year + "年 " + month + "月" + day + "日";
+			if (month <= 9){
+				month = 0 + month;
+			}
+			if (day <= 9){
+				day = 0 + day;
+			}
+			document.getElementById("date").value = year + "/" + month + "/" + day;
 		}
-		//日付表示
-		document.querySelector('#register-date').innerHTML = year + "年 " + month + "月" + day + "日";
-		if (month <= 9){
-			month = 0 + month;
-		}
-		if (day <= 9){
-			day = 0 + day;
-		}
-		document.getElementById("date").value = year + "/" + month + "/" + day;
+
 
 		function setTimeRange(start, end) {
 			var times = "";

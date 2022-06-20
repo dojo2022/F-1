@@ -71,15 +71,15 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		dateNow[1] = request.getParameter("month");
 		dateNow[2] = request.getParameter("day");
 
-		// 検索結果をリクエストスコープに格納する
-		session.setAttribute("dateNow", dateNow);
-
 		// 登録処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
 		bDao.insert(new Schedule(user, date, sub, title, start, end));
 
-		//登録サーブレットにリダイレクトする
-		response.sendRedirect("/GandA/ScheduleRegisterServlet");
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("dateNow", dateNow);
+		// 登録ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_register.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
