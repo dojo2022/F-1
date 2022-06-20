@@ -24,7 +24,7 @@ public class TopDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 				// SQL文を準備する
-				String sql1 = "SELECT * from Schedule WHERE USER LIKE ?";
+				String sql1 = "SELECT * from Schedule WHERE USER =?AND WHERE date >= CURRENT_DATE"  ;
 				//String sql2 = "SELECT * from schedule WHERE user =? and date_sub(CURRENT_DATE,INTERVAL 1 DAY)";
 
 				PreparedStatement pStmt1 = conn.prepareStatement(sql1);
@@ -101,8 +101,8 @@ public class TopDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 				// SQL文を準備する
-				String sql1 = "INSERT INTO Bc( user,date,sub,title,startTime,endTime) values (?, ?, ?, ?,?,?,)";
-				String sql2 = "INSERT INTO Bc( user,date,sub,title,startTime,endTime) values (?, ?, ?, ?,?,?,)";
+				String sql1 = "INSERT INTO Schedule( user,date,sub,title,startTime,endTime) values (?, ?, ?, ?,?,?)";
+				String sql2 = "INSERT INTO Schedule( user,date,sub,title,startTime,endTime) values (?, ?, ?, ?,?,?)";
 
 				PreparedStatement pStmt1 = conn.prepareStatement(sql1);
 				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
@@ -221,8 +221,8 @@ public class TopDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 				// SQL文を準備する
-				String sql1 = "update Bc set user=? date=? sub=? title=? startTime=? endTime=?  WHERE user=? AND WHERE date >= CURRENT_DATE";
-				String sql2 = "update Bc set user=? date=? sub=? title=? startTime=? endTime=?  WHERE user =? and date_sub(CURRENT_DATE,INTERVAL 1 DAY)";
+				String sql1 = "update Schedule set user=?, date=?, sub=?, title=?, startTime=?, endTime=?  WHERE user=? AND WHERE date >= CURRENT_DATE";
+				String sql2 = "update Schedule set user=?, date=?, sub=?, title=?, startTime=?, endTime=?  WHERE user =? and date_sub(CURRENT_DATE,INTERVAL 1 DAY)";
 				PreparedStatement pStmt1 = conn.prepareStatement(sql1);
 				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 				// SQL文を完成させる
