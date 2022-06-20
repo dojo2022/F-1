@@ -24,11 +24,11 @@ public class TopDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 				// SQL文を準備する
-				String sql1 = "SELECT date,sub,title,startTime,endTime from schedule WHERE user=? AND WHERE date >= CURRENT_DATE";
-				String sql2 = "SELECT date,sub,title,startTime,endTime from schedule WHERE user =? and date_sub(CURRENT_DATE,INTERVAL 1 DAY)";
+				String sql1 = "SELECT * from Schedule WHERE USER LIKE ?";
+				//String sql2 = "SELECT * from schedule WHERE user =? and date_sub(CURRENT_DATE,INTERVAL 1 DAY)";
 
 				PreparedStatement pStmt1 = conn.prepareStatement(sql1);
-				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+				//PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
 				// SQL文を完成させる
 				if (uid.getUser() != null && !uid.getUser().equals("")) {
@@ -40,28 +40,28 @@ public class TopDAO {
 
 				// SQL文を実行し、結果表を取得する
 				ResultSet rs1 = pStmt1.executeQuery();
-				ResultSet rs2 = pStmt2.executeQuery();
+				//ResultSet rs2 = pStmt2.executeQuery();
 				// 結果表をコレクションにコピーする
 				while (rs1.next()) {
 					Schedule list=new Schedule(
-					rs1.getString("user"),
-					rs1.getString("date"),
-					rs1.getString("sub"),
-					rs1.getString("title"),
-					rs1.getString("startTime"),
-					rs1.getString("endTime"));
+							rs1.getString("USER"),
+							rs1.getString("DATE"),
+							rs1.getString("SUB"),
+							rs1.getString("TITLE"),
+							rs1.getString("START_TIME"),
+							rs1.getString("END_TIME"));
 					todo.add(list);
 				}
-				while (rs2.next()) {
-					Schedule list=new Schedule(
-					rs2.getString("user"),
-					rs2.getString("date"),
-					rs2.getString("sub"),
-					rs2.getString("title"),
-					rs2.getString("startTime"),
-					rs1.getString("endTime"));
-					todo.add(list);
-				}
+//				while (rs2.next()) {
+//					Schedule list=new Schedule(
+//							rs2.getString("USER"),
+//							rs2.getString("DATE"),
+//							rs2.getString("SUB"),
+//							rs2.getString("TITLE"),
+//							rs2.getString("START_TIME"),
+//							rs2.getString("END_TIME"));
+//					todo.add(list);
+//				}
 			}
 			catch (SQLException e) {
 				e.printStackTrace();

@@ -26,14 +26,13 @@ public class TopServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		//HttpSession session = request.getSession();
-//	if (session.getAttribute("id") == null) {
+		HttpSession session = request.getSession();
+//		if (session.getAttribute("id") == null) {
 //			response.sendRedirect("/simpleBC/LoginServlet");
 //			return;
 //		}
 
-//		HttpSession session = request.getSession();
-//	String user_id = (session.getAttribute("user_id")).toString();
+//		String user_id = (session.getAttribute("user_id")).toString();
 
 //
 
@@ -46,13 +45,13 @@ public class TopServlet extends HttpServlet {
 		request.setAttribute("todoList", todoList);
 
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp?str=1");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 		dispatcher.forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-//	if (session.getAttribute("id") == null) {
+//		if (session.getAttribute("id") == null) {
 //			response.sendRedirect("/simpleBC/LoginServlet");
 //			return;
 //		}
@@ -77,6 +76,9 @@ public class TopServlet extends HttpServlet {
 				// 登録処理を行う
 				TopDAO toDao = new TopDAO();
 				boolean todoList = toDao.insert(new Schedule("a","","","","",""));
+
+				// 検索結果をリクエストスコープに格納する
+				request.setAttribute("todoList", todoList);
 
 				//登録サーブレットにリダイレクトする
 				response.sendRedirect("/GandA/TopServlet");

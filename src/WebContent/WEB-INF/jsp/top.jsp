@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +27,13 @@
 				</div>
 			</div>
 		</div>
-		<p>${todoList }</p>
+		<c:forEach var="e" items="${todoList}">
+			<p>${e.date}</p>
+		</c:forEach>
 	</div>
-<script >
-console.log("${todoList }");
-</script>
+	<script>
+		console.log("${todoList[0].date}");
+		console.log("aaa");
+	</script>
 </body>
 </html>

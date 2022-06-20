@@ -147,14 +147,8 @@ public class RecipeSearchServlet extends HttpServlet {
 				sub = "";
 			}
 		} else {   //検索が見つからなかった場合
-			recipeList.add(new Recipe("", "", "", "", "", "", ""));
+			recipeList.add(new Recipe("not found", "", "", "", "", "", ""));
 		}
-
-		// 検索処理を行う
-		/* RecipeDAO reDao = new RecipeDAO();
-		   List<Recipe> recipeList = reDao.select(new Recipe(nameDish, genre,
-		 ingredient, timeCooking, "", "", ""));
-		*/
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("recipeList", recipeList);

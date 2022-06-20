@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="model.Recipe" %>
+<%@ page import ="java.util.ArrayList" %>
+<%@ page import = "java.util.List" %>
+<%
+	List<Recipe> recipeList = (List<Recipe>)request.getAttribute("recipeList");
+%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -7,6 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>レシピ検索</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/recipe.css">
 </head>
 
@@ -18,7 +25,7 @@
 
         <main>
             <!-- 検索結果表示 -->
-            <div class="list-dish">
+            <div id="list-dish">
 
                 <!-- 料理表示 -->
                 <c:forEach var="e" items="${recipeList}" >
@@ -50,7 +57,7 @@
 				</c:forEach>
             </div>
 
-            <!-- topへの遷移とbackについて -->
+            <!-- topへの遷移ボタンとbackボタン -->
             <div class="transition">
                 <a href="#wrapper-search-recipe"><img src="img/recipe/top.png" alt="topへ" id="top" width="40px"
                         height="40px"></a>
@@ -63,6 +70,9 @@
         </footer>
 
         <script>
+            if(<%= recipeList.get(0).getNameDish().equals("not found") %>){
+                document.getElementById("list-dish").innerHTML = "<div id=\"not-found\"><p>該当するレシピがありませんでした</p><img src=\"img/recipe/dogeza.png\" alt=\"土下座の画像\" id=\"not-found-image\"></div>";
+            }
         </script>
     </div>
 </body>
