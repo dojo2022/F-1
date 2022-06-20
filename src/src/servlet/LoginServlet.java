@@ -36,6 +36,11 @@ public class LoginServlet extends HttpServlet {
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
 			session.setAttribute("userid", (new LoginUser(userid)).getUserId());
+
+
+			session.setAttribute("name", iDao.select(userid));
+
+
 			// トップサーブレットにリダイレクトする
 			response.sendRedirect("/GandA/TopServlet");
 		}

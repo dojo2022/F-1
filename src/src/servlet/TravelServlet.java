@@ -29,11 +29,11 @@ public class TravelServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+/*		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/GandA/LoginServlet");
 			return;
 		}
-
+*/
 
 
 		//現在の月を取得
@@ -65,11 +65,11 @@ public class TravelServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-	if (session.getAttribute("id") == null) {
+/*	if (session.getAttribute("id") == null) {
 			response.sendRedirect("/GandA/LoginServlet");
 			return;
 		}
-
+*/
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 

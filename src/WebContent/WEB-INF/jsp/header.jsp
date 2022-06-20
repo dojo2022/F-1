@@ -14,7 +14,7 @@
                 <!--名前、時間-->
                 <div class="text-header">
                     Name:
-                        <div id="text-username"></div>
+                        <div id="text-username">${name}</div>
 
                     Time:
                         <div id="text-time"></div>

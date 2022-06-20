@@ -19,7 +19,7 @@ public class LoginDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/GandA", "sa", "");
 
 			// SELECT文を準備する
 			String sql = "select count(*) from ACCOUNT where PASSWORD = ? and USER_ID = ?";
@@ -75,6 +75,7 @@ public class LoginDAO {
 			// SELECT文を準備する
 			String sql = "select user from ACCOUNT where USER_ID =?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+			System.out.println("USER:"+userid);
 			pStmt.setString(1,userid);
 
 			// SELECT文を実行し、結果表を取得する
@@ -82,6 +83,7 @@ public class LoginDAO {
 
 			// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
 			rs.next();
+			user = rs.getString("USER");
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -106,6 +108,7 @@ public class LoginDAO {
 
 		// 結果を返す
 		return user;
+		//return "竹入偽もの";
 	}
 
 }
