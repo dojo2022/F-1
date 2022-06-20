@@ -39,7 +39,6 @@ body {
 }
 
 p {
-    /*display: inline-block;*/
     font-size: 18px;
     text-align: left;
     font-weight: bold;
@@ -87,3 +86,7 @@ p {
     background: #FFFFFF;
     margin-left: 20px;
 }
+#buttonPassword{
+    margin-left: 320px;
+margin: initial;
+};
