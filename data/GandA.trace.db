@@ -282,3 +282,159 @@ sub varchar(100)) [50004-200]
 	at org.h2.server.web.WebThread.process(WebThread.java:178)
 	at org.h2.server.web.WebThread.run(WebThread.java:94)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2022-06-20 11:30:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "TRAVEL" が見つかりません
+Table "TRAVEL" not found; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'貴船神社', '鳥居横の「鳥居茶屋」では、名物である鮎料理として鮎茶漬け、うなぎ丼、貴船そばなどが楽しめる', '1～2月の積雪期間は限定でライトアップイベントが開催。静寂のなかで幻想的な風景を堪能できる。※イベント開催は当日15時に公表', '京都市左京区鞍馬貴船町180 電話:075-741-2016', 'ホテルタビノス京都、京都ガーデンパレスなど', '約17,000円', '1_kihunejinjya.png', '1') [42102-200]
+2022-06-20 11:36:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: 列 "SITE_FOOD VARCHAR(30)" の値が長過ぎます: "STRINGDECODE('\u9ce5\u5c45\u6a2a\u306e\u300c\u9ce5\u5c45\u8336\u5c4b\u300d\u3067\u306f\u3001\u540d\u7269\u3067\u3042\u308b\u9b8e... (45)"
+Value too long for column "SITE_FOOD VARCHAR(30)": "STRINGDECODE('\u9ce5\u5c45\u6a2a\u306e\u300c\u9ce5\u5c45\u8336\u5c4b\u300d\u3067\u306f\u3001\u540d\u7269\u3067\u3042\u308b\u9b8e... (45)"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'貴船神社', '鳥居横の「鳥居茶屋」では、名物である鮎料理として鮎茶漬け、うなぎ丼、貴船そばなどが楽しめる', '1～2月の積雪期間は限定でライトアップイベントが開催。静寂のなかで幻想的な風景を堪能できる。※イベント開催は当日15時に公表', '京都市左京区鞍馬貴船町180 電話:075-741-2016', 'ホテルタビノス京都、京都ガーデンパレスなど', '約17,000円', '1_kihunejinjya.png', '1') [22001-200]
+2022-06-20 11:41:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: 列 "SITE_BUDGET VARCHAR(10)" の値が長過ぎます: "STRINGDECODE('\u5bbf\u6cca\u4ee3\u3001\u4ea4\u901a\u8cbb(\u6771\u4eac\u304b\u3089):\u7d0420,000\u5186') (22)"
+Value too long for column "SITE_BUDGET VARCHAR(10)": "STRINGDECODE('\u5bbf\u6cca\u4ee3\u3001\u4ea4\u901a\u8cbb(\u6771\u4eac\u304b\u3089):\u7d0420,000\u5186') (22)"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', '宿泊代、交通費(東京から):約20,000円', '2_nagasakilantan.png', 2) [22001-200]
+2022-06-20 11:42:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png[*]', 2);"
+Syntax error in SQL statement "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png[*]', 2);"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png', 2); [42000-200]
+2022-06-20 11:44:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png[*]', 2);"
+Syntax error in SQL statement "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png[*]', 2);"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png', 2); [42000-200]
+2022-06-20 11:45:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png[*]', 2)"
+Syntax error in SQL statement "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png[*]', 2)"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png', 2) [42000-200]
+2022-06-20 11:46:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png', '2[*]');"
+Syntax error in SQL statement "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png', '2[*]');"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'長崎ランタンフェスティバル',  '中華街では「福砂屋」の元祖長崎カステラ、ご当地グルメとしては「サバサンド」、「角煮まん」などが有名。', '長崎新地中華街をはじめとした中心部が、15,000個にも及ぶ色鮮やかなランタンや光のオブジェによって包まれる。2月の旅行先にぜひ。', '長崎市内中心部', '出島の湯ドーミーイン長崎、東横イン長崎駅前など', 約20,000円', '2_nagasakilantan.png', '2'); [42000-200]
+2022-06-20 11:56:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県　掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄　掛川」など, '約25,000円', '3_kakekawazyou.png[*]', 3);"
+Syntax error in SQL statement "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県　掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄　掛川」など, '約25,000円', '3_kakekawazyou.png[*]', 3);"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県　掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄　掛川」など, '約25,000円', '3_kakekawazyou.png', 3); [42000-200]
+2022-06-20 11:57:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県　掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄掛川」など, '約25,000円', '3_kakekawazyou.png[*]', 3);"
+Syntax error in SQL statement "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県　掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄掛川」など, '約25,000円', '3_kakekawazyou.png[*]', 3);"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県　掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄掛川」など, '約25,000円', '3_kakekawazyou.png', 3); [42000-200]
+2022-06-20 11:58:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄掛川」など, '約25,000円', '3_kakekawazyou.png[*]', 3);"
+Syntax error in SQL statement "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄掛川」など, '約25,000円', '3_kakekawazyou.png[*]', 3);"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄掛川」など, '約25,000円', '3_kakekawazyou.png', 3); [42000-200]
+2022-06-20 11:59:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄掛川」など, '約25,000円', '3_kakekawazyou.png', '3[*]');"
+Syntax error in SQL statement "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄掛川」など, '約25,000円', '3_kakekawazyou.png', '3[*]');"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'掛川城', '掛川名物「丁葛」、おでんや肉厚のうなぎといったグルメのほか、二の丸茶室では風情溢れるお茶会を利用できる。', '掛川城公園ではソメイヨシノ、掛川桜など150本以上の華やかさを堪能できる。早咲きの春を感じましょう。', '静岡県掛川市掛川1138-24', '掛川グランドホテル、ビジネスホテル「玄掛川」など, '約25,000円', '3_kakekawazyou.png', '3'); [42000-200]
+2022-06-20 13:10:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: 列 "SITE_HOTEL VARCHAR(30)" の値が長過ぎます: "STRINGDECODE(' \u9928\u6797\u30b0\u30e9\u30f3\u30c9\u30db\u30c6\u30eb\u3001OYO Tatebayashi Station Hotel\u306a\u3069') (42)"
+Value too long for column "SITE_HOTEL VARCHAR(30)": "STRINGDECODE(' \u9928\u6797\u30b0\u30e9\u30f3\u30c9\u30db\u30c6\u30eb\u3001OYO Tatebayashi Station Hotel\u306a\u3069') (42)"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'鯉のぼりの里まつり','群馬三大うどんに数えられるひとつ「館林うどん」、群馬の郷土料理「おっきりこみ」、川魚料理などが主な名物。','鶴生田河を主な会場として、4000匹を超える鯉のぼりが見られる。掲揚数で世界記録にも認定された規模は圧巻で、夜にはライトアップも行われるため、時間帯によって一味ちがった楽しみ方ができる。','鶴生田川、近藤沼、旧つつじが岡パークイン・茂林寺川・多々良沼など５か所',' 館林グランドホテル、OYO Tatebayashi Station Hotelなど','約16,000円','4_koinobori.png',4
+) [22001-200]
+2022-06-20 13:13:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'八木山動物園フジサキの社','（園内）「グーグーテラス」では動物園ならではの洋食を、「森の食堂」では和食を楽しめる。また軽食を楽しみたい方はぜひ「アフリカ売店」へ！','約125種600頭をほこる、東北最大級の動物園。複数の動物種を一目で見渡せる「アフリカ圏」は必見で、「猛獣舎」ではホッキョクグマやライオンを拝むことができる。また、餌やりやふれあい体験もでき、子供と一緒に楽しむには最適です。','宮城県仙台市太白区八木山本町1-43',' アパヴィラホテル（仙台駅五橋）、ホテルグランバッハ仙台など','約15,000円,'5_huzisaki.png[*]',5
+);"
+Syntax error in SQL statement "INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'八木山動物園フジサキの社','（園内）「グーグーテラス」では動物園ならではの洋食を、「森の食堂」では和食を楽しめる。また軽食を楽しみたい方はぜひ「アフリカ売店」へ！','約125種600頭をほこる、東北最大級の動物園。複数の動物種を一目で見渡せる「アフリカ圏」は必見で、「猛獣舎」ではホッキョクグマやライオンを拝むことができる。また、餌やりやふれあい体験もでき、子供と一緒に楽しむには最適です。','宮城県仙台市太白区八木山本町1-43',' アパヴィラホテル（仙台駅五橋）、ホテルグランバッハ仙台など','約15,000円,'5_huzisaki.png[*]',5
+);"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'八木山動物園フジサキの社','（園内）「グーグーテラス」では動物園ならではの洋食を、「森の食堂」では和食を楽しめる。また軽食を楽しみたい方はぜひ「アフリカ売店」へ！','約125種600頭をほこる、東北最大級の動物園。複数の動物種を一目で見渡せる「アフリカ圏」は必見で、「猛獣舎」ではホッキョクグマやライオンを拝むことができる。また、餌やりやふれあい体験もでき、子供と一緒に楽しむには最適です。','宮城県仙台市太白区八木山本町1-43',' アパヴィラホテル（仙台駅五橋）、ホテルグランバッハ仙台など','約15,000円,'5_huzisaki.png',5
+); [42000-200]
+2022-06-20 13:14:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: 列 "SITE_SPOT VARCHAR(100)" の値が長過ぎます: "STRINGDECODE('\u7d04125\u7a2e600\u982d\u3092\u307b\u3053\u308b\u3001\u6771\u5317\u6700\u5927\u7d1a\u306e\u52d5\u7269\u5712\u3002... (112)"
+Value too long for column "SITE_SPOT VARCHAR(100)": "STRINGDECODE('\u7d04125\u7a2e600\u982d\u3092\u307b\u3053\u308b\u3001\u6771\u5317\u6700\u5927\u7d1a\u306e\u52d5\u7269\u5712\u3002... (112)"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'八木山動物園フジサキの社','（園内）「グーグーテラス」では動物園ならではの洋食を、「森の食堂」では和食を楽しめる。また軽食を楽しみたい方はぜひ「アフリカ売店」へ！','約125種600頭をほこる、東北最大級の動物園。複数の動物種を一目で見渡せる「アフリカ圏」は必見で、「猛獣舎」ではホッキョクグマやライオンを拝むことができる。また、餌やりやふれあい体験もでき、子供と一緒に楽しむには最適です。','宮城県仙台市太白区八木山本町1-43',' アパヴィラホテル（仙台駅五橋）、ホテルグランバッハ仙台など','約15,000円','5_huzisaki.png',5
+) [22001-200]
+2022-06-20 13:22:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: 列 "SITE_HOTEL VARCHAR(30)" の値が長過ぎます: "STRINGDECODE(' \u30d5\u30a1\u30fc\u30e0\u5bcc\u7530\r\n(\u5bcc\u826f\u91ce\u99c5\u5468\u8fba)\u3000\u30db\u30c6\u30eb \u30c8\u30... (41)"
+Value too long for column "SITE_HOTEL VARCHAR(30)": "STRINGDECODE(' \u30d5\u30a1\u30fc\u30e0\u5bcc\u7530\r\n(\u5bcc\u826f\u91ce\u99c5\u5468\u8fba)\u3000\u30db\u30c6\u30eb \u30c8\u30... (41)"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'ラベンダーイースト','ウェルカムハウス「ラワーレの舎」ではオリジナル商品が買えます。さらに屋根付きのテラス席でラベンダー畑を眺めながら味わうラベンダーソフトクリームはおすすめの一品です！','７月限定で一般公開されるラベンダー畑。北海道観光と一緒に、紫一色で染められる壮大な景色をぜひ。天候によってはちょっと違ったラベンダーの色も楽しめるかも？','北海道空知郡上富良野町東6線北16号',' ファーム富田
+(富良野駅周辺)　ホテル トマール、富良野ナチュラクスホテルなど','約22,000円','7_lavender.png',7
+) [22001-200]
+2022-06-20 13:22:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: 列 "SITE_HOTEL VARCHAR(30)" の値が長過ぎます: "STRINGDECODE(' \u30d5\u30a1\u30fc\u30e0\u5bcc\u7530\r\n\u30db\u30c6\u30eb \u30c8\u30de\u30fc\u30eb\u3001\u5bcc\u826f\u91ce\u30ca... (32)"
+Value too long for column "SITE_HOTEL VARCHAR(30)": "STRINGDECODE(' \u30d5\u30a1\u30fc\u30e0\u5bcc\u7530\r\n\u30db\u30c6\u30eb \u30c8\u30de\u30fc\u30eb\u3001\u5bcc\u826f\u91ce\u30ca... (32)"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'ラベンダーイースト','ウェルカムハウス「ラワーレの舎」ではオリジナル商品が買えます。さらに屋根付きのテラス席でラベンダー畑を眺めながら味わうラベンダーソフトクリームはおすすめの一品です！','７月限定で一般公開されるラベンダー畑。北海道観光と一緒に、紫一色で染められる壮大な景色をぜひ。天候によってはちょっと違ったラベンダーの色も楽しめるかも？','北海道空知郡上富良野町東6線北16号',' ファーム富田
+ホテル トマール、富良野ナチュラクスホテルなど','約22,000円','7_lavender.png',7
+) [22001-200]
+2022-06-20 13:25:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: 列 "SITE_HOTEL VARCHAR(30)" の値が長過ぎます: "STRINGDECODE(' \u30d5\u30a1\u30fc\u30e0\u5bcc\u7530\r\n(\u5bcc\u826f\u91ce\u99c5\u5468\u8fba)\u3001\u5bcc\u826f\u91ce\u30ca\u30c... (32)"
+Value too long for column "SITE_HOTEL VARCHAR(30)": "STRINGDECODE(' \u30d5\u30a1\u30fc\u30e0\u5bcc\u7530\r\n(\u5bcc\u826f\u91ce\u99c5\u5468\u8fba)\u3001\u5bcc\u826f\u91ce\u30ca\u30c... (32)"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'ラベンダーイースト','ウェルカムハウス「ラワーレの舎」ではオリジナル商品が買えます。さらに屋根付きのテラス席でラベンダー畑を眺めながら味わうラベンダーソフトクリームはおすすめの一品です！','7月限定で一般公開されるラベンダー畑。北海道観光と一緒に、紫一色で染められる壮大な景色をぜひ。天候によってはちょっと違ったラベンダーの色も楽しめるかも？','北海道空知郡上富良野町東6線北16号',' ファーム富田
+(富良野駅周辺)、富良野ナチュラクスホテルなど','約22,000円','7_lavender.png',7
+) [22001-200]
+2022-06-20 13:28:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: 列 "SITE_SPOT VARCHAR(100)" の値が長過ぎます: "STRINGDECODE('\u65e7\u66a6\u306e\u4e03\u5915\u306b\u3042\u305f\u308b\uff18\u6708\u306b\u3001\u4eac\u90fd\u5404\u5730\u3067\u958b... (111)"
+Value too long for column "SITE_SPOT VARCHAR(100)": "STRINGDECODE('\u65e7\u66a6\u306e\u4e03\u5915\u306b\u3042\u305f\u308b\uff18\u6708\u306b\u3001\u4eac\u90fd\u5404\u5730\u3067\u958b... (111)"; SQL statement:
+INSERT INTO TRAVEL (SITE_PLACE, SITE_FOOD, SITE_SPOT, SITE_LOCATION, SITE_HOTEL, SITE_BUDGET, SITE_IMAGE, SITE_MONTH)
+VALUES(
+'京の七夕','一度は味わっておきたい京料理、ご当地グルメ「にしんそば」や「みたらし団子」、「わらび餅」など、秋の京都は食べ物も豊富。七夕ならではの食事も趣深い。','旧暦の七夕にあたる８月に、京都各地で開催される。堀川/梅小路/鴨川/岡崎/北野紙屋川の５エリアを中心に、願いごとをお焚き上げで天に届ける。また、伝統産業製品の販売や工芸体験なども実施。七夕ならではの一日を、ぜひ大切な人と。','京都駅周辺','三井ガーデンホテル、ヴィアイン京都駅八条口など','約22,000円','8_tanabata.png',8
+) [22001-200]
