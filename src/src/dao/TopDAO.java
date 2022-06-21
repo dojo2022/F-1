@@ -24,7 +24,7 @@ public class TopDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 				// SQL文を準備する
-				String sql1 = "SELECT * from Schedule WHERE USER =? "  ;
+				String sql1 = "SELECT * from Schedule WHERE USER =? ORDER BY DATE"  ;
 				//String sql2 = "SELECT * from schedule WHERE user =? and date_sub(CURRENT_DATE,INTERVAL 1 DAY)";
 
 				PreparedStatement pStmt1 = conn.prepareStatement(sql1);

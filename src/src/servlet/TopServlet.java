@@ -32,13 +32,14 @@ public class TopServlet extends HttpServlet {
 //			return;
 //		}
 
-//		String user_id = (session.getAttribute("user_id")).toString();
+		//String user_id = (String)session.getAttribute("userid");
+		String user_id = "a";
 
 //
 
 		// 検索処理を行う
 		TopDAO toDao = new TopDAO();
-		List<Schedule> todoList = toDao.selectTodo(new Schedule("a","","","","",""));
+		List<Schedule> todoList = toDao.selectTodo(new Schedule(user_id,"","","","",""));
 		//List<Schedule> cardList = toDao.selectTodo(new Schedule(user,date,sub,title,start_time,end_time));
 
 		// 検索結果をリクエストスコープに格納する
@@ -58,24 +59,16 @@ public class TopServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String user = "a";
+				String user = (String)session.getAttribute("userid");
 				String date = request.getParameter("DATE");
 				String sub = request.getParameter("SUB");
 				String title = request.getParameter("TITLE");
 				String start_time = request.getParameter("START_TIME");
 				String end_time = request.getParameter("END_TIME");
 
-				String[] dateNow = new String[3];
-				dateNow[0] = request.getParameter("year");
-				dateNow[1] = request.getParameter("month");
-				dateNow[2] = request.getParameter("day");
-
-				// 検索結果をリクエストスコープに格納する
-				session.setAttribute("dateNow", dateNow);
-
 				// 登録処理を行う
 				TopDAO toDao = new TopDAO();
-				boolean todoList = toDao.insert(new Schedule("a","","","","",""));
+				boolean todoList = toDao.insert(new Schedule(user,"","","","",""));
 
 				// 検索結果をリクエストスコープに格納する
 				request.setAttribute("todoList", todoList);

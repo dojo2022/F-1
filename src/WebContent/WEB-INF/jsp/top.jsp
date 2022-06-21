@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="model.Schedule" %>
+<%@ page import ="java.util.ArrayList" %>
+<%@ page import = "java.util.List" %>
+<%
+	List<Schedule> todoList = (List<Schedule>)request.getAttribute("todoList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,11 +49,11 @@
 	</c:forEach>
 
 	<script>
-		document.querySelector('#h1').innerHTML = "${todoList[0].date}";
-		console.log("${todoList[0].date}");
+		//document.querySelector('#h1').innerHTML = "${todoList[0].date}";
+		//console.log("${todoList[0].date}");
 
-		document.querySelector('#h2').innerHTML = "${todoList[0].date}";
-		console.log("${todoList[0].date}");
+		//document.querySelector('#h2').innerHTML = "${todoList[1].date}";
+		//console.log("${todoList[0].date}");
 
 
 		//今日が6/15
@@ -61,28 +67,55 @@
 
 		//今日以降の直近の２日分を変数に入れる
 		//配列の中身を全部調べて今日以降で小さい２つを変数に代入
-		var display1 = 0;
-		var display2 = 0;
-		var today = 0;
-		for (i = 0; i < 0; i++){
-			if (today <= todoList[i]){
+		var date = [<%= todoList.size() %>];
+		//取得した日付（文字列）を数値に変換
+		<% int i,j; %>
+		<% for(i = 0; i < todoList.size(); i++){ %>
+			date[<%= i %>] = new Array(3);
+			//year
+			date[<%= i %>][0] = <%= Integer.parseInt(todoList.get(i).getDate().substring(0, 4)) %>;
+			//month
+			date[<%= i %>][1] = <%= Integer.parseInt(todoList.get(i).getDate().substring(5, 7)) %>;
+			//day
+			date[<%= i %>][2] = <%= Integer.parseInt(todoList.get(i).getDate().substring(8)) %>;
 
-				if (display1 == 0){
-					display1 = todoList[i];
-				}else if (display2 == 0){
-					if (display1 != display2){
-						display2 = todoList[i];
-					}
-				}else{
-					if ((display1 > todoList[i]) && (display1 != display2)){
-						display1 = todoList[i];
-					}else if ((display2 > todoList[i]) && (display1 != display2)){
-						display2 = todoList[i];
-					}
-				}
+		<% } %>
 
+		var display1 = new Array(5).fill(0);
+		var display2 = [5];
+		var today = new Date();
+		var schedule_date;
+		var i,j,count;
+		var size = <%= todoList.size() %>;
+
+		//直近のスケジュール検索
+		<% i = 0; %>
+		for (i = 0; i < size; i++){
+			schedule_date = date[i][0] * 10000 + date[i][1] * 100 + date[i][2];
+			if (today <= schedule_date){
+				display1[0] = "<%= todoList.get(i).getDate() %>";
+				break;
 			}
+			<% i++; %>
 		}
+
+
+		display1[1] = "<%= todoList.get(i-1).getSub() %>";
+		display1[2] = "<%= todoList.get(i-1).getTitle() %>";
+		display1[3] = "<%= todoList.get(i-1).getStartTime() %>";
+		display1[4] = "<%= todoList.get(i-1).getEndTime() %>";
+		document.querySelector('#h1').innerHTML = display1[0];
+
+
+		display2[0] = "<%= todoList.get(i).getDate() %>";
+		display2[1] = "<%= todoList.get(i).getSub() %>";
+		display2[2] = "<%= todoList.get(i).getTitle() %>";
+		display2[3] = "<%= todoList.get(i).getStartTime() %>";
+		display2[4] = "<%= todoList.get(i).getEndTime() %>";
+		document.querySelector('#h2').innerHTML = display2[0];
+
+
+
 		$(function(){
 			  // 変数に要素を入れる
 			  var open = $('.modal-open'),
@@ -104,6 +137,6 @@
 			    }
 			  });
 			});
-</script>
+	</script>
 </body>
 </html>
