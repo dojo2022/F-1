@@ -32,10 +32,17 @@ public class ScheduleRegisterServlet extends HttpServlet {
 //			return;
 //		}
 
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String user = "a";
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+		String day = request.getParameter("day");
+		String date = year + "/" + month + "/" + day;
 
 		// 検索処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
-		List<Schedule> cardList = bDao.select(new Schedule("a","","","","",""));
+		List<Schedule> cardList = bDao.select(new Schedule(user,date,"","","",""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
@@ -60,7 +67,6 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String user = "a";
-		String date = request.getParameter("DATE");
 		String sub = request.getParameter("SUB");
 		String title = request.getParameter("TITLE");
 		String start = request.getParameter("START");
@@ -70,13 +76,18 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		dateNow[0] = request.getParameter("year");
 		dateNow[1] = request.getParameter("month");
 		dateNow[2] = request.getParameter("day");
+		String date = dateNow[0] + "/" + dateNow[1] + "/" + dateNow[2];
 
 		// 登録処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
-		bDao.insert(new Schedule(user, date, sub, title, start, end));
+		boolean isInsert = bDao.insert(new Schedule(user, date, sub, title, start, end));
+		List<Schedule> cardList = bDao.select(new Schedule(user,date,"","","",""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("dateNow", dateNow);
+		request.setAttribute("isInsert",isInsert);
+		request.setAttribute("cardList", cardList);
+
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_register.jsp");
 		dispatcher.forward(request, response);

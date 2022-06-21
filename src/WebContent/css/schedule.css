@@ -172,14 +172,22 @@
 	outline: none;
 	display: flex;
 	position: relative;
-	background-color: red;
 	border: none;
 	border-radius: 7px;
-	z-index: 10;
 	width: 300px;
+	left: 80px;
+}
+
+.wrapper-schedule .time-schedule .line {
+	background-color: white;
+	z-index: 10;
 	height: 51px;
 	margin-bottom: -53px;
-	left: 80px;
+}
+
+.wrapper-schedule .time-schedule .line-add {
+	background-color: red;
+	z-index: 20;
 }
 
 .wrapper-schedule .time-schedule .line0 {

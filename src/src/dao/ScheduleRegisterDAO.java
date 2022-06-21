@@ -23,7 +23,7 @@ public class ScheduleRegisterDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select * from Schedule WHERE USER LIKE ?";
+			String sql = "select * from Schedule WHERE USER LIKE ? AND DATE LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -31,6 +31,11 @@ public class ScheduleRegisterDAO {
 				pStmt.setString(1, param.getUser());
 			} else {
 				pStmt.setString(1, "%");
+			}
+			if (param.getDate() != null) {
+				pStmt.setString(2, param.getDate());
+			} else {
+				pStmt.setString(2, "%");
 			}
 
 			// SQL文を実行し、結果表を取得する
@@ -95,32 +100,32 @@ public class ScheduleRegisterDAO {
 			if (card.getUser() != null && !card.getUser().equals("")) {
 				pStmt.setString(1, card.getUser());
 			} else {
-				pStmt.setString(1, "");
+				pStmt.setString(1, null);
 			}
 			if (card.getDate() != null && !card.getDate().equals("")) {
 				pStmt.setString(2, card.getDate());
 			} else {
-				pStmt.setString(2, "");
+				pStmt.setString(2, null);
 			}
 			if (card.getSub() != null && !card.getSub().equals("")) {
 				pStmt.setString(3, card.getSub());
 			} else {
-				pStmt.setString(3, "");
+				pStmt.setString(3, null);
 			}
 			if (card.getTitle() != null && !card.getTitle().equals("")) {
 				pStmt.setString(4, card.getTitle());
 			} else {
-				pStmt.setString(4, "");
+				pStmt.setString(4, null);
 			}
 			if (card.getStartTime() != null && !card.getStartTime().equals("")) {
 				pStmt.setString(5, card.getStartTime());
 			} else {
-				pStmt.setString(5, "");
+				pStmt.setString(5, null);
 			}
 			if (card.getEndTime() != null && !card.getEndTime().equals("")) {
 				pStmt.setString(6, card.getEndTime());
 			} else {
-				pStmt.setString(6, "");
+				pStmt.setString(6, null);
 			}
 
 			// SQL文を実行する

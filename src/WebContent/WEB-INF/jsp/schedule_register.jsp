@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +11,7 @@
 <link rel="stylesheet" href="/GandA/css/schedule.css">
 </head>
 
-<body onload="todaySchedule();">
+<body onload="todaySchedule(); displaySchedule();">
 	<div class="wrapper-schedule">
 		<!-- ヘッダー（ここから） -->
 		<header> </header>
@@ -31,40 +32,40 @@
 						<input name="month" id="month">
 						<input name="day" id="day">
 
-						<input type="submit" value="登録" id="register">
+						<input type="submit" value="登録" id="register" onclick="judgeTime()">
 					</form>
 				</div>
 			</div>
 			<div class="time-schedule">
 				<p>
-					<span class="time">&nbsp&nbsp0:00</span>
+					<span class="time">00:00</span>
 				</p>
 				<p>
-					<span class="time">&nbsp&nbsp1:00</span>
+					<span class="time">01:00</span>
 				</p>
 				<p>
-					<span class="time">&nbsp&nbsp2:00</span>
+					<span class="time">02:00</span>
 				</p>
 				<p>
-					<span class="time">&nbsp&nbsp3:00</span>
+					<span class="time">03:00</span>
 				</p>
 				<p>
-					<span class="time">&nbsp&nbsp4:00</span>
+					<span class="time">04:00</span>
 				</p>
 				<p>
-					<span class="time">&nbsp&nbsp5:00</span>
+					<span class="time">05:00</span>
 				</p>
 				<p>
-					<span class="time">&nbsp&nbsp6:00</span>
+					<span class="time">06:00</span>
 				</p>
 				<p>
-					<span class="time">&nbsp&nbsp7:00</span>
+					<span class="time">07:00</span>
 				</p>
 				<p>
-					<span class="time">&nbsp&nbsp8:00</span>
+					<span class="time">08:00</span>
 				</p>
 				<p>
-					<span class="time">&nbsp&nbsp9:00</span>
+					<span class="time">09:00</span>
 				</p>
 				<p>
 					<span class="time">10:00</span>
@@ -136,7 +137,7 @@
 				<input type="text" class="line line21" readonly onclick="show(21)">
 				<input type="text" class="line line22" readonly onclick="show(22)">
 				<input type="text" class="line line23" readonly onclick="show(23)">
-
+				<div id="schedule-add"></div>
 			</div>
 			<a href="/GandA/CalendarServlet">戻る</a>
 		</main>
@@ -148,6 +149,7 @@
 	<!--jsプログラム-->
 	<script>
 		console.log("kaisi");
+
 		var queryString = window.location.search;
 		var queryObject = new Object();
 		var year = 0;
@@ -160,7 +162,7 @@
 
 		function todaySchedule(){
 			//日付取得
-			if(queryString){
+			if(queryString) {
 				queryString = queryString.substring(1);
 				var parameters = queryString.split('&');
 
@@ -170,7 +172,6 @@
 					var paramValue = decodeURIComponent(element[1]);
 
 					queryObject[paramName] = paramValue;
-					console.log(queryObject[paramName]);
 					if (i == 0) {
 						year = queryObject[paramName];
 					} else if (i == 1) {
@@ -179,33 +180,78 @@
 						day = queryObject[paramName];
 					}
 				}
-				document.querySelector('#year').value = year;
-				document.querySelector('#month').value = month;
-				document.querySelector('#day').value = day;
-			}else{
+
+				console.log(year);
+				console.log(month);
+				console.log(day);
+				console.log("${fn:length(cardList)}");
+			} else {
 				year = "${dateNow[0]}";
 				month = "${dateNow[1]}";
 				day = "${dateNow[2]}";
-				document.querySelector('#year').value = year;
-				document.querySelector('#month').value = month;
-				document.querySelector('#day').value = day;
+
+				console.log(year);
+				console.log(month);
+				console.log(day);
+				console.log("${isInsert}");
+				console.log("${fn:length(cardList)}");
+			}
+
+			document.querySelector('#year').value = year;
+			document.querySelector('#month').value = month;
+			document.querySelector('#day').value = day;
+
+			if (month.slice(0,1) == "0"){
+				month = month.slice(1);
+			}
+			if (day.slice(0,1) == "0"){
+				day = day.slice(1);
 			}
 			//日付表示
 			document.querySelector('#register-date').innerHTML = year + "年 " + month + "月" + day + "日";
-			if (month <= 9){
-				month = 0 + month;
-			}
-			if (day <= 9){
-				day = 0 + day;
-			}
 			document.getElementById("date").value = year + "/" + month + "/" + day;
 		}
 
+		//スケジュール表示
+		function displaySchedule(){
+			var schedule = "";
+			var startTime = "";
+			var endTime = "";
+			var i = 0;
+			<c:forEach var="e" items="${cardList}">
+				console.log("${e.title}");
+				console.log("${e.sub}");
+				console.log("${e.startTime}");
+				console.log("${e.endTime}");
+				startTime = "${e.startTime}".substr(0,2);
+				endTime = "${e.endTime}".substr(0,2);
+				console.log("-----");
+				console.log(startTime);
+				console.log(endTime);
+				schedule += "<input type='text' class='line-add add" + i + "' readonly>";
+				i++;
+			</c:forEach>
+			var sss = -1370;
+			var add = "add0";
+			document.getElementById("schedule-add").innerHTML = schedule;
+			document.getElementsByClassName(add)[0].style.top = "-1370px";
+			//document.querySelector('.add0').style.top = "-1370px";
+			document.querySelector('.add0').style.height = "107px";
+			document.querySelector('.add0').style.marginBottom = "-109px";
+			document.querySelector('.add1').style.top = "-1258px";
+			document.querySelector('.add1').style.height = "51px";
+			document.querySelector('.add1').style.marginBottom = "-53px";
+
+		}
 
 		function setTimeRange(start, end) {
 			var times = "";
 			for (var time = start; time <= end; time++) {
-				times += "<option value='" + time + ":00'>" + time + ":00</option>";
+				if (time <= 9){
+					times += "<option value='0" + time + ":00'>0" + time + ":00</option>";
+				} else{
+					times += "<option value='" + time + ":00'>" + time + ":00</option>";
+				}
 			}
 			return times;
 		}
@@ -218,8 +264,17 @@
 		//検索欄表示用のボタンが押された時の処理
 		function show(time) {
 			const show_flag = document.getElementById("space-register");
-			selectStart.value = time + ":00";
-			selectEnd.value = time + 1 + ":00";
+			if (time <= 8){
+				selectStart.value = "0" + time + ":00";
+				selectEnd.value = "0" + (time + 1) + ":00";
+			} else if (time == 9){
+				selectStart.value = "0" + time + ":00";
+				selectEnd.value = time + 1 + ":00";
+			} else {
+				selectStart.value = time + ":00";
+				selectEnd.value = time + 1 + ":00";
+			}
+
 			if (show_flag.style.display == "block") {
 				//block(表示)のときnone(非表示)にする
 				show_flag.style.display = "none";
@@ -227,6 +282,9 @@
 				//none(非表示)のときblock(表示)にする
 				show_flag.style.display = "block";
 			}
+		}
+		function judgeTime(){
+			console.log("judge");
 		}
 	</script>
 </body>
