@@ -65,29 +65,29 @@
 
 
         <script>
-            /*現在時刻表示
+            //現在時刻表示
             'use strict';
 
-            window.onload = function() {
-            const now = new Date();
-            const year1 = now.getFullYear();
-            const month1 = now.getMonth();
-            const date = now.getDate();
-            var hour = now.getHours();
-            var min = now.getMinutes();
+            function set2fig(num) {
+	        // 桁数が1桁だったら先頭に0を加えて2桁に調整する
+	        var ret;
+	        if( num < 10 ) { ret = "0" + num; }
+	        else {
+	          ret = num;
+	        }
+	        return ret;
+	        }
 
-            if (hour < 10) {
-                hour = "0" + hour;
-            }
-            if (min < 10) {
-                min = "0" + min;
-            }
+	        function showClock2() {
+	          var nowTime = new Date();
+	          var nowHour = set2fig( nowTime.getHours() );
+	          var nowMin  = set2fig( nowTime.getMinutes() );
 
-            const output = year1 + "/" + (month1 + 1) + "/" + date + "   " + hour + ":" + min;
-            document.getElementById("text-time").textContent = output;
+	          var msg =  nowHour + ":" + nowMin;
+	          document.getElementById('text-time').innerHTML = msg;
+	        }
+	        setInterval('showClock2()',1000);
 
-            }
-*/
 
             //ここからスクロールの表示非表示処理
 
