@@ -39,6 +39,10 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
 		String date = year + "/" + month + "/" + day;
+		String[] dateNow = new String[3];
+		dateNow[0] = request.getParameter("year");
+		dateNow[1] = request.getParameter("month");
+		dateNow[2] = request.getParameter("day");
 
 		// 検索処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
@@ -46,6 +50,7 @@ public class ScheduleRegisterServlet extends HttpServlet {
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
+		request.setAttribute("dateNow", dateNow);
 
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_register.jsp");
@@ -71,6 +76,8 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		String title = request.getParameter("TITLE");
 		String start = request.getParameter("START");
 		String end = request.getParameter("END");
+		String oldTitle =  request.getParameter("oldTitle");
+		String oldStart =  request.getParameter("oldStart");
 
 		String[] dateNow = new String[3];
 		dateNow[0] = request.getParameter("year");
@@ -80,17 +87,15 @@ public class ScheduleRegisterServlet extends HttpServlet {
 
 		// 登録処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
-		boolean isInsert = bDao.insert(new Schedule(user, date, sub, title, start, end));
-		List<Schedule> cardList = bDao.select(new Schedule(user,date,"","","",""));
+		if (request.getParameter("SUBMIT").equals("登録")) {
+			bDao.insert(new Schedule(user, date, sub, title, start, end));
+		} else if (request.getParameter("SUBMIT").equals("更新")){
+			bDao.update(new Schedule(user, date, sub, title, start, end),oldTitle,oldStart);
+		}
 
-		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("dateNow", dateNow);
-		request.setAttribute("isInsert",isInsert);
-		request.setAttribute("cardList", cardList);
-
-		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_register.jsp");
-		dispatcher.forward(request, response);
+		//編集サーブレットにリダイレクトする
+		response.sendRedirect("/GandA/ScheduleRegisterServlet?year=" + dateNow[0] + "&month=" + dateNow[1] + "&day=" + dateNow[2]);
+		return;
 	}
 
 }

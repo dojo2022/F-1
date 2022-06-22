@@ -156,7 +156,7 @@ public class ScheduleRegisterDAO {
 	}
 
 	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
-	public boolean update(Schedule card) {
+	public boolean update(Schedule card,String oldTitle,String oldStart) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -168,7 +168,7 @@ public class ScheduleRegisterDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 			// SQL文を準備する
-			String sql = "update Schedule set DATE=?, SUB=?, TITLE=?, START_TIME=?, END_TIME=? where USER=?";
+			String sql = "update Schedule set DATE=?, SUB=?, TITLE=?, START_TIME=?, END_TIME=? where USER=? and DATE=? and TITLE=? and START_TIME=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -198,6 +198,9 @@ public class ScheduleRegisterDAO {
 				pStmt.setString(5, "");
 			}
 			pStmt.setString(6, card.getUser());
+			pStmt.setString(7, card.getDate());
+			pStmt.setString(8, oldTitle);
+			pStmt.setString(9, oldStart);
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

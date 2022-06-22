@@ -32,7 +32,24 @@
 						<input name="month" id="month">
 						<input name="day" id="day">
 
-						<input type="submit" value="登録" id="register" onclick="judgeTime()">
+						<input type="submit" name="SUBMIT" value="登録" id="register" onclick="judgeTime()">
+					</form>
+				</div>
+				<div id="space-register-add">
+					<form method="POST" action="/GandA/ScheduleRegisterServlet">
+						<label>日付<input type="text" name="DATE" id="date-add" readonly></label><br>
+						<label>タイトル<input type="text" maxlength="20" name="TITLE" id="title-add"></label><br>
+						<label>内容<input type="text" maxlength="100" name="SUB" id="sub-add"></label><br>
+						<label>開始<select name="START" id="start-add"></select></label>
+						<label>終了<select name="END" id="end-add"></select></label><br>
+						<input name="year" id="year-add">
+						<input name="month" id="month-add">
+						<input name="day" id="day-add">
+						<input name="oldTitle" id="oldTitle">
+						<input name="oldStart" id="oldStart">
+
+						<input type="submit" name="SUBMIT" value="更新" id="update" onclick="judgeTime()">
+						<input type="submit" name="SUBMIT" value="削除" id="delete" onclick="judgeTime()">
 					</form>
 				</div>
 			</div>
@@ -155,10 +172,16 @@
 		var year = 0;
 		var month = 0;
 		var day = 0;
+		var title = [];
+		var sub = [];
 		var selectStart = document.getElementById("start");
 		var selectEnd = document.getElementById("end");
+		var selectStartAdd = document.getElementById("start-add");
+		var selectEndAdd = document.getElementById("end-add");
 		var startTime = setTimeRange(0, 23);
 		var endTime = setTimeRange(1, 24);
+		var startTimeAdd = setTimeRange(0, 23);
+		var endTimeAdd = setTimeRange(1, 24);
 
 		function todaySchedule(){
 			//日付取得
@@ -200,6 +223,11 @@
 			document.querySelector('#year').value = year;
 			document.querySelector('#month').value = month;
 			document.querySelector('#day').value = day;
+			document.querySelector('#year-add').value = year;
+			document.querySelector('#month-add').value = month;
+			document.querySelector('#day-add').value = day;
+			document.querySelector('#month-add').value = month;
+			document.querySelector('#day-add').value = day;
 
 			if (month.slice(0,1) == "0"){
 				month = month.slice(1);
@@ -210,6 +238,7 @@
 			//日付表示
 			document.querySelector('#register-date').innerHTML = year + "年 " + month + "月" + day + "日";
 			document.getElementById("date").value = year + "/" + month + "/" + day;
+			document.getElementById("date-add").value = year + "/" + month + "/" + day;
 		}
 
 		//スケジュール表示
@@ -223,24 +252,31 @@
 				console.log("${e.sub}");
 				console.log("${e.startTime}");
 				console.log("${e.endTime}");
+				title[i] = "${e.title}";
+				sub[i] = "${e.sub}";
 				startTime = "${e.startTime}".substr(0,2);
 				endTime = "${e.endTime}".substr(0,2);
 				console.log("-----");
+				console.log(title[i]);
+				console.log(sub[i]);
 				console.log(startTime);
 				console.log(endTime);
-				schedule += "<input type='text' class='line-add add" + i + "' readonly>";
+				schedule += "<input type='text' class='line-add add" + i + "' readonly onclick='showAdd(" + startTime +  "," + endTime + "," + i + ")'>";
 				i++;
 			</c:forEach>
 			var sss = -1370;
 			var add = "add0";
+			var add1 = "add1";
 			document.getElementById("schedule-add").innerHTML = schedule;
+
+
 			document.getElementsByClassName(add)[0].style.top = "-1370px";
 			//document.querySelector('.add0').style.top = "-1370px";
-			document.querySelector('.add0').style.height = "107px";
-			document.querySelector('.add0').style.marginBottom = "-109px";
-			document.querySelector('.add1').style.top = "-1258px";
-			document.querySelector('.add1').style.height = "51px";
-			document.querySelector('.add1').style.marginBottom = "-53px";
+			document.getElementsByClassName(add)[0].style.height = "107px";
+			document.getElementsByClassName(add)[0].style.marginBottom = "-109px";
+			document.getElementsByClassName(add1)[0].style.top = "-1258px";
+			document.getElementsByClassName(add1)[0].style.height = "51px";
+			document.getElementsByClassName(add1)[0].style.marginBottom = "-53px";
 
 		}
 
@@ -258,9 +294,12 @@
 
 		document.getElementById("start").innerHTML = startTime;
 		document.getElementById("end").innerHTML = endTime;
+		document.getElementById("start-add").innerHTML = startTimeAdd;
+		document.getElementById("end-add").innerHTML = endTimeAdd;
 
 		//検索フォームは最初非表示
 		document.getElementById("space-register").style.display = "none";
+		document.getElementById("space-register-add").style.display = "none";
 		//検索欄表示用のボタンが押された時の処理
 		function show(time) {
 			const show_flag = document.getElementById("space-register");
@@ -274,6 +313,35 @@
 				selectStart.value = time + ":00";
 				selectEnd.value = time + 1 + ":00";
 			}
+
+			if (show_flag.style.display == "block") {
+				//block(表示)のときnone(非表示)にする
+				show_flag.style.display = "none";
+			} else {
+				//none(非表示)のときblock(表示)にする
+				show_flag.style.display = "block";
+			}
+		}
+		function showAdd(start,end,i) {
+			const show_flag = document.getElementById("space-register-add");
+
+			console.log(start);
+			console.log(end);
+			console.log(title[i]);
+			console.log(sub[i]);
+
+			if (start <= 9) {
+				selectStartAdd.value = "0" + start + ":00";
+			} else {
+				selectStartAdd.value = start + ":00";
+			}
+			if (end <= 9) {
+				selectEndAdd.value = "0" + end + ":00";
+			} else {
+				selectEndAdd.value = end + ":00";
+			}
+			document.getElementById("title-add").value = title[i];
+			document.getElementById("sub-add").value = sub[i];
 
 			if (show_flag.style.display == "block") {
 				//block(表示)のときnone(非表示)にする
