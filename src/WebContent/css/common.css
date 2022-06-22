@@ -20,7 +20,7 @@ body {
     transition: -webkit-transform .4s ease;
     transition: transform .4s ease;
     transition: transform .4s ease, -webkit-transform .4s ease;
-
+    z-index: 10000;
 }
 
 .header--unpinned {

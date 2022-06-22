@@ -65,13 +65,13 @@
 
 
         <script>
-            //現在時刻表示
+            /*現在時刻表示
             'use strict';
 
             window.onload = function() {
             const now = new Date();
-            const year = now.getFullYear();
-            const month = now.getMonth();
+            const year1 = now.getFullYear();
+            const month1 = now.getMonth();
             const date = now.getDate();
             var hour = now.getHours();
             var min = now.getMinutes();
@@ -83,11 +83,11 @@
                 min = "0" + min;
             }
 
-            const output = year + "/" + (month + 1) + "/" + date + "   " + hour + ":" + min;
+            const output = year1 + "/" + (month1 + 1) + "/" + date + "   " + hour + ":" + min;
             document.getElementById("text-time").textContent = output;
 
             }
-
+*/
 
             //ここからスクロールの表示非表示処理
 

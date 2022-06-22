@@ -15,9 +15,12 @@
 </head>
 
 <body onload="setScheduleDate(); todayCalendar();">
+
 	<div class="wrapper-calendar">
 		<!-- ヘッダー（ここから） -->
-		<header> </header>
+		<header>
+		 <jsp:include page="/WEB-INF/jsp/header.jsp" flush="true"/>
+		</header>
 		<!-- ヘッダー（ここまで） -->
 		<!-- メイン（ここから） -->
 		<main>
@@ -27,7 +30,7 @@
 					<button id="prev" onclick="prev()">‹</button>
 					<button id="next" onclick="next()">›</button>
 					<!-- xxxx年xx月を表示 -->
-					<h1 id="header"></h1>
+					<h1 id="header-title"></h1>
 				</div>
 
 				<!-- カレンダー -->
@@ -142,7 +145,7 @@
 			var month = date.getMonth();
 			selectYear.value = year;
 			selectMonth.value = month;
-			document.querySelector('#header').innerHTML = year + "年 " + (month + 1) + "月";
+			document.querySelector('#header-title').innerHTML = year + "年 " + (month + 1) + "月";
 
 			var calendar = createProcess(year, month);
 			document.querySelector('#calendar').innerHTML = calendar;
