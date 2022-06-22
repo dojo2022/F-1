@@ -17,21 +17,30 @@
 </head>
 <body>
 	<div class="wrapper_top">
+		<header>
+		<jsp:include page="/WEB-INF/jsp/header.jsp" flush="true"/>
+		</header>
+		<main>
 		<div id="text_top">
 			<div id="text_left">
-				<h2 id="h1">aaa</h2>
+				<!--
+				<h2 id="h1"></h2>
 				<div class="box scroll">
-					<span class="first-text">12:00</span><span class="first-text2"><a
-						class="modal-open">打合せ</a></span> <span class="first-text"></span><span
-						class="first-text2"></span>
+
+					<span class="first-text">12:00</span><span class="first-text2"><a class="modal-open">打合せ</a></span>
+					<span class="first-text"></span><span class="first-text2"></span>
+
 				</div>
+				-->
 			</div>
 			<div id="text_right">
+				<!--
 				<h2 id="h2"></h2>
 				<div class="box scroll">
 					<span class="first-text"> </span><span class="first-text2"></span>
 					<span class="first-text"></span><span class="first-text2"></span>
 				</div>
+				-->
 			</div>
 		</div>
 		<div class="modal-container">
@@ -42,6 +51,7 @@
 				</div>
 			</div>
 		</div>
+		</main>>
 	</div>
 
 	<c:forEach var="e" items="${todoList}">
@@ -67,53 +77,61 @@
 
 		//今日以降の直近の２日分を変数に入れる
 		//配列の中身を全部調べて今日以降で小さい２つを変数に代入
-		var date = [<%= todoList.size() %>];
+		var schedule = [<%= todoList.size() %>];
 		//取得した日付（文字列）を数値に変換
-		<% int i,j; %>
+		<% int i; %>
 		<% for(i = 0; i < todoList.size(); i++){ %>
-			date[<%= i %>] = new Array(3);
-			//year
-			date[<%= i %>][0] = <%= Integer.parseInt(todoList.get(i).getDate().substring(0, 4)) %>;
-			//month
-			date[<%= i %>][1] = <%= Integer.parseInt(todoList.get(i).getDate().substring(5, 7)) %>;
-			//day
-			date[<%= i %>][2] = <%= Integer.parseInt(todoList.get(i).getDate().substring(8)) %>;
+			schedule[<%= i %>] = new Array(5);
+			//日付
+			schedule[<%= i %>][0] = "<%= todoList.get(i).getDate() %>";
+			//内容
+			schedule[<%= i %>][1] = "<%= todoList.get(i).getSub() %>";
+			//タイトル
+			schedule[<%= i %>][2] = "<%= todoList.get(i).getTitle() %>";
+			//
+			schedule[<%= i %>][3] = "<%= todoList.get(i).getStartTime() %>";
+			//
+			schedule[<%= i %>][4] = "<%= todoList.get(i).getEndTime() %>";
 
 		<% } %>
 
-		var display1 = new Array(5).fill(0);
-		var display2 = [5];
-		var today = new Date();
-		var schedule_date;
-		var i,j,count;
+		var display1 = "直近のスケジュールがありません";
+		var display2 = "直近のスケジュールがありません";
+		var i,j;
 		var size = <%= todoList.size() %>;
 
 		//直近のスケジュール検索
-		<% i = 0; %>
-		for (i = 0; i < size; i++){
-			schedule_date = date[i][0] * 10000 + date[i][1] * 100 + date[i][2];
-			if (today <= schedule_date){
-				display1[0] = "<%= todoList.get(i).getDate() %>";
-				break;
+		if(size >= 1){
+			display1 = "<h2 id=\"h1\">" + (schedule[0][0].replace(/(\/0{1})/g, '/')) + "</h2><div class=\"box scroll\">";
+			display1 +=
+				"<span class=\"first-text\">" + schedule[0][3] + "</span><span class=\"first-text2\"><a class=\"modal-open\">" + schedule[0][2] + "</a></span>";
+			for(i = 1; i < size; i++){
+				if(schedule[0][0] != schedule[i][0]){
+					break;
+				}
+				display1 +=
+				"<span class=\"first-text\">" + schedule[i][3] + "</span><span class=\"first-text2\"><a class=\"modal-open\">" + schedule[i][2] + "</a></span>";
 			}
-			<% i++; %>
+			display1 += "</div>";
+
+			if(i < size){
+				display2 ="<h2 id=\"h2\">" + schedule[0][0] + "</h2><div class=\"box scroll\">";
+				display2 +=
+					"<span class=\"first-text\">" + schedule[i][3] + "</span><span class=\"first-text2\"><a class=\"modal-open\">" + schedule[i][2] + "</a></span>";
+				i += 1;
+				for(j = i + 1; j < size; j++){
+					if(schedule[i][0] != schedule[j][0]){
+						break;
+					}
+					display2 +=
+					"<span class=\"first-text\">" + schedule[i][3] + "</span><span class=\"first-text2\"><a class=\"modal-open\">" + schedule[i][2] + "</a></span>";
+				}
+				display2 += "</div>";
+			}
+
 		}
-
-
-		display1[1] = "<%= todoList.get(i-1).getSub() %>";
-		display1[2] = "<%= todoList.get(i-1).getTitle() %>";
-		display1[3] = "<%= todoList.get(i-1).getStartTime() %>";
-		display1[4] = "<%= todoList.get(i-1).getEndTime() %>";
-		document.querySelector('#h1').innerHTML = display1[0];
-
-
-		display2[0] = "<%= todoList.get(i).getDate() %>";
-		display2[1] = "<%= todoList.get(i).getSub() %>";
-		display2[2] = "<%= todoList.get(i).getTitle() %>";
-		display2[3] = "<%= todoList.get(i).getStartTime() %>";
-		display2[4] = "<%= todoList.get(i).getEndTime() %>";
-		document.querySelector('#h2').innerHTML = display2[0];
-
+		document.querySelector('#text_left').innerHTML = display1;
+		document.querySelector('#text_right').innerHTML = display2;
 
 
 		$(function(){

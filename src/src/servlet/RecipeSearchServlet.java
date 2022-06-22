@@ -79,7 +79,7 @@ public class RecipeSearchServlet extends HttpServlet {
 		Document recipes;
 		Element image, dish, time, comment;
 		Elements dishIngredients, ingredientQuantity, instructions;
-		int i = 0, j = 0;
+		int i = 0, j = 0, data_num = 0;
 		String nameDish = "", sub = "", timeCooking = "", link = "", imagePath = "";
 		ingredient = "";
 		List<Recipe> recipeList = new ArrayList<Recipe>();
@@ -87,7 +87,12 @@ public class RecipeSearchServlet extends HttpServlet {
 		//検索が見つかった場合
 		if (elements.size() != 0) {
 			// 該当ページを基に必要情報取得
-			for (i = 0; i < 10; i++) {
+			if(elements.size() < 10) {
+				data_num = elements.size();
+			}else {
+				data_num = 10;
+			}
+			for (i = 0; i < data_num; i++) {
 				// 料理ごとのレシピページにGETリクエストを送る
 				recipes = Jsoup.connect(elements.get(i).absUrl("href")).get();
 

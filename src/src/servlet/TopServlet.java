@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -32,14 +33,15 @@ public class TopServlet extends HttpServlet {
 //			return;
 //		}
 
-		//String user_id = (String)session.getAttribute("userid");
-		String user_id = "a";
-
+		String user_id = (String)session.getAttribute("userid");
+		//String user_id = "a";
+		Calendar today = Calendar.getInstance();
+		String date = String.format("%d/%02d/%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1,today. get(Calendar.DATE));
 //
 
 		// 検索処理を行う
 		TopDAO toDao = new TopDAO();
-		List<Schedule> todoList = toDao.selectTodo(new Schedule(user_id,"","","","",""));
+		List<Schedule> todoList = toDao.selectTodo(new Schedule(user_id, date,"","","",""));
 		//List<Schedule> cardList = toDao.selectTodo(new Schedule(user,date,sub,title,start_time,end_time));
 
 		// 検索結果をリクエストスコープに格納する

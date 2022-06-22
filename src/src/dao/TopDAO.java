@@ -24,10 +24,10 @@ public class TopDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 				// SQL文を準備する
-				String sql1 = "SELECT * from Schedule WHERE USER =? ORDER BY DATE"  ;
+				String sql = "SELECT * FROM SCHEDULE WHERE USER = ? AND DATE >= ? ORDER BY DATE limit 2"  ;
 				//String sql2 = "SELECT * from schedule WHERE user =? and date_sub(CURRENT_DATE,INTERVAL 1 DAY)";
 
-				PreparedStatement pStmt1 = conn.prepareStatement(sql1);
+				PreparedStatement pStmt1 = conn.prepareStatement(sql);
 				//PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
 				// SQL文を完成させる
@@ -36,6 +36,12 @@ public class TopDAO {
 				} else {
 					pStmt1.setString(1, "");
 				}
+				if (uid.getDate() != null && !uid.getDate().equals("")) {
+					pStmt1.setString(2, uid.getDate());
+				} else {
+					pStmt1.setString(2, "");
+				}
+
 				//チームメンバーに確認取る
 
 				// SQL文を実行し、結果表を取得する
