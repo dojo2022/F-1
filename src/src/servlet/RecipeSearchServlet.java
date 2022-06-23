@@ -59,19 +59,19 @@ public class RecipeSearchServlet extends HttpServlet {
 		// の該当ページ(検索内容に応じたページ)にGETリクエストを送る
 		if (!genre.isEmpty() || !ingredient.isEmpty()) {
 			if(guide == 0) { //調理時間が選択させていない場合
-				source = Jsoup.connect("https://recipe.rakuten.co.jp/search/" + searchString).get();
+				source = Jsoup.connect("https://recipe.rakuten.co.jp/search/" + searchString).userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A").get();
 			}else {         //調理時間が選択されている場合
-				source = Jsoup.connect("https://recipe.rakuten.co.jp/search/" + searchString + "/?time=" + guide).get();
+				source = Jsoup.connect("https://recipe.rakuten.co.jp/search/" + searchString + "/?time=" + guide).userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A").get();
 			}
 			elements = source.select(".recipe_ranking__item a");
 		} else if(guide != 0){
 			//乱数をもとにカテゴリーのページ決定
 			//ページを選択された調理時間の目安で絞り込む
-			source = Jsoup.connect("https://recipe.rakuten.co.jp/category/" + category + "/?time=" + guide).get();
+			source = Jsoup.connect("https://recipe.rakuten.co.jp/category/" + category + "/?time=" + guide).userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A").get();
 			elements = source.select(".recipe_ranking__item a");
 		}else {
 			//何も入力、選択されていない場合
-			source = Jsoup.connect("https://recipe.rakuten.co.jp/").get();
+			source = Jsoup.connect("https://recipe.rakuten.co.jp/").userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A").get();
 			elements = source.select(".weekly_recipe__list a");
 		}
 
@@ -94,7 +94,7 @@ public class RecipeSearchServlet extends HttpServlet {
 			}
 			for (i = 0; i < data_num; i++) {
 				// 料理ごとのレシピページにGETリクエストを送る
-				recipes = Jsoup.connect(elements.get(i).absUrl("href")).get();
+				recipes = Jsoup.connect(elements.get(i).absUrl("href")).userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A").get();
 
 				//料理ごとのレシピページのURL格納
 				link = elements.get(i).absUrl("href");
