@@ -127,12 +127,10 @@
   overflow-y: scroll;
 }
 
-.wrapper_top #date{
-	border: none;
+.wrapper_top #date-show{
 	text-align:center;
-	pointer-events: none;
 	font-size: 1.2em;
-	width: 100%;
+	margin-bottom: 0;
 }
 
 .wrapper_top #start-time {

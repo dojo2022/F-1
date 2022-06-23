@@ -28,16 +28,14 @@ public class TopServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/simpleBC/LoginServlet");
-//			return;
-//		}
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/simpleBC/LoginServlet");
+			return;
+		}
 
-		//String user = (String)session.getAttribute("userid");
-		String user = "a";
+		String user = (String)session.getAttribute("userid");
 		Calendar today = Calendar.getInstance();
 		String date = String.format("%d/%02d/%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1,today. get(Calendar.DATE));
-//
 
 		// 検索処理を行う
 		TopDAO toDao = new TopDAO();
@@ -54,15 +52,14 @@ public class TopServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/simpleBC/LoginServlet");
-//			return;
-//		}
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/simpleBC/LoginServlet");
+			return;
+		}
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		//String user = (String)session.getAttribute("userid");
-		String user = "a";
+		String user = (String)session.getAttribute("userid");
 		String date = request.getParameter("DATE");
 		String sub = request.getParameter("SUB");
 		String title = request.getParameter("TITLE");

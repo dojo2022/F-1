@@ -36,12 +36,13 @@
 					<div class="modal-close"></div>
 					<div class="modal-content">
 						<form method="POST" action="/GandA/TopServlet" id="form">
-							<input type="text" name="DATE" id="date" readonly><br>
+							<input type="hidden" name="DATE" id="date">
+							<p id="date-show"></p>
 							<label>タイトル<br><input type="text" name="TITLE" id="title"></label><br>
 							<label>内容<br><input type="text" name="SUB" id="sub"></label><br>
 							<input type="hidden" name="STARTTIMEOLD" id="start-time-old">
 							<select name="STARTTIME" id="start-time">
-								<option value="0"></option>
+								<option hidden value="0"></option>
 								<option value="00:00">00:00</option>
 								<option value="00:30">00:30</option>
 								<option value="01:00">01:00</option>
@@ -222,10 +223,7 @@
 		document.querySelector('#text_left').innerHTML = display1;
 		document.querySelector('#text_right').innerHTML = display2;
 
-
-		if("${result}" == "更新失敗！"){
-			alert("${result}");
-		}
+		var index = -1;
 
 		$(function () {
 			// 変数に要素を入れる
@@ -233,7 +231,6 @@
 				close = $('.modal-close'),
 				container = $('.modal-container'),
 				clear = $('#clear');
-			var index;
 			//開くボタンをクリックしたらモーダルを表示する
 			open.on('click', function () {
 				container.addClass('active');
@@ -241,6 +238,7 @@
 				//フォーム内のinput、selectのvalueに初期値格納
 				index = event.target.value;
 				document.querySelector('#date').value = schedule[index][0];
+				document.querySelector('#date-show').textContent = (schedule[index][0].replace(/(\/0{1})/g, '/'))
 				document.querySelector('#title').value = schedule[index][2];
 				document.querySelector('#sub').value = schedule[index][1];
 				document.querySelector('#start-time-old').value = schedule[index][3];
@@ -250,6 +248,7 @@
 				document.querySelector('#start-time').options[0].textContent = schedule[index][3];
 				document.querySelector('#end-time').options[0].textContent = schedule[index][4];
 
+				//optionの位置を0番目に設定
 				document.querySelector('#start-time').value = schedule[index][3];
 				document.querySelector('#end-time').value= schedule[index][4];
 
@@ -276,21 +275,49 @@
 				document.querySelector('#start-time').value = "0";
 				document.querySelector('#start-time').value = "0";
 			});
+
+			if("${result}" == "更新失敗！"){
+				alert("${result}");
+			}
 		});
 
 		document.getElementById('form').onsubmit = function(event){
             const update_array = [document.getElementById('form').TITLE.value, document.getElementById('form').SUB.value,
             					   document.getElementById('form').STARTTIME.value, document.getElementById('form').ENDTIME.value];
 
+            if(document.querySelector('#start-time').value >= document.querySelector('#end-time').value){
+            	alert("開始時間を終了時間よりも前の時間にしてください");
+            	return false;
+			}
+
+            var i;
+
+            for(i = 0; i < size; i++){
+            	if(i == index){
+            		continue;
+            	}
+
+            	if(document.getElementById('form').DATE.value == schedule[i][0]){
+            		if(document.getElementById('form').STARTTIME.value >= schedule[i][3] && document.getElementById('form').STARTTIME.value < schedule[i][4]){
+            			alert("予定がかぶっています");
+            			return false;
+            		}else if(document.getElementById('form').ENDTIME.value > schedule[i][3] && document.getElementById('form').ENDTIME.value <= schedule[i][4]){
+            			alert("予定がかぶっています");
+            			return false;
+            		}else if(document.getElementById('form').STARTTIME.value <= schedule[i][3] && document.getElementById('form').ENDTIME.value >= schedule[i][4]){
+            			alert("予定がかぶっています");
+            			return false;
+            		}
+            	}
+            }
+
             if(update_array[0] == "" && update_array[1] == "" && update_array[2] == "" && update_array[3] == ""){
-            	console.log("ok");
             	return true;
             }else if(update_array[0] != "" && update_array[2] != "" && update_array[3] != ""){
-            	console.log("ok2");
             	return true;
             }
-            console.log("bad");
-            document.getElementById('update-check').textContent = "タイトルを入力、開始時間、終了時間を選択してください";
+
+            alert("タイトルを入力、開始時間、終了時間を選択してください");
             return false;
         };
 	</script>

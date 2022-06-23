@@ -225,25 +225,25 @@ public class TopDAO {
 					pStmt.setString(1, list.getSub());
 				}
 				else {
-					pStmt.setString(1, null);
+					pStmt.setString(1, "");
 				}
 				if (list.getTitle() != null && !list.getTitle().equals("")) {
 					pStmt.setString(2, list.getTitle());
 				}
 				else {
-					pStmt.setString(2, null);
+					pStmt.setString(2, "");
 				}
 				if (list.getStartTime() != null && !list.getStartTime().equals("")) {
 					pStmt.setString(3, list.getStartTime());
 				}
 				else {
-					pStmt.setString(3, null);
+					pStmt.setString(3, "");
 				}
 				if (list.getEndTime() != null && !list.getEndTime().equals("")) {
 					pStmt.setString(4, list.getEndTime());
 				}
 				else {
-					pStmt.setString(4, null);
+					pStmt.setString(4, "");
 				}
 
 				pStmt.setString(5, list.getUser());
@@ -252,13 +252,13 @@ public class TopDAO {
 					pStmt.setString(6, list.getDate());
 				}
 				else {
-					pStmt.setString(6, null);
+					pStmt.setString(6, "");
 				}
 				if (oldTime != null && !oldTime.equals("")) {
 					pStmt.setString(7, oldTime);
 				}
 				else {
-					pStmt.setString(7, null);
+					pStmt.setString(7, "");
 				}
 
 				// SQL文を実行する
