@@ -46,36 +46,31 @@
     <!--フッターここまで-->
     <!--JavaScriptここから-->
     <script>
-        //登録ボタンを押した時の処理
-        document.getElementById('regist_user_form').onsubmit = function (event) {
-
-            var flag = 0;
-            if (document.Form1.user_id.value == "" || document.Form1.password.value == "" || document.Form1.password.value == "") {
-                flag = 1;
-            } else if (document.Form1.password.value.length < 8 && document.Form1.user_id.value != "") {
-                flag = 2;
-            }
-            if (flag == 1) {
-                alert("IDとパスワードを入力してください");
-                event.preventDefault();
-                return false;
-            } else if (flag == 2) {
-                alert("パスワードが８文字未満です");
-                event.preventDefault();
-                return false;
-            }
-            else {
-
-                return true;
-
-            }
+  //登録ボタンを押した時の処理
+    document.getElementById('regist_user_form').onsubmit = function (event) {
+        var flag = 0;
+        if (document.Form1.user_id.value == "" || document.Form1.password.value == "" || document.Form1.name.value == "") {
+            flag = 1;
+        } else if (document.Form1.password.value.length < 8 ||document.Form1.user_id.value.length < 8 ) {
+            flag = 2;
         }
-
-
-        //戻るボタンを押した時の処理
-        document.getElementById("back").addEventListener("click", function () {
-            location.replace("/GandA/LoginServlet");
-        }, false);
+        if (flag == 1) {
+            alert("未入力の項目があります");
+            event.preventDefault();
+            return false;
+        } else if (flag == 2) {
+            alert("ユーザーID or パスワードが８文字未満です");
+            event.preventDefault();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    //戻るボタンを押した時の処理
+    document.getElementById("back").addEventListener("click", function () {
+        location.replace("/GandA/LoginServlet");
+    }, false);
     </script>
     <!--JavaScriptここまで-->
 </body>

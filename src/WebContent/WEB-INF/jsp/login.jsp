@@ -106,60 +106,57 @@ transform: translateY(-450px);
   <!--JavaScriptここから-->
   <!--ログイン処理-->
   <script>
-    //ログインボタンを押した時の処理
-    document.getElementById('login_form').onsubmit = function (event) {
-      var flag = 0;
-      if (document.Form1.user_id.value == "" || document.Form1.password.value == "") {
-        flag = 1;
-      } else if (document.Form1.password.value.length < 8 && document.Form1.user_id.value != "") {
-        flag = 2;
-      }
-      if (flag == 1) {
-        // document.getElementById('error_message') = "IDとパスワードを入力してください";
-        alert("IDとパスワードを入力してください");
-        event.preventDefault();
-        return false;
-      } else if (flag == 2) {
-        // document.getElementById('error_message') = "パスワードが８文字未満です";
-        alert("パスワードが８文字未満です");
-        event.preventDefault();
-        return false;
-      }
-      else {
-        return true;
+  //ログインボタンを押した時の処理
+  document.getElementById('login_form').onsubmit = function (event) {
+    var flag = 0;
+    if (document.Form1.user_id.value == "" || document.Form1.password.value == "") {
+      flag = 1;
+    } else if (document.Form1.password.value.length < 8 ||document.Form1.user_id.value.length < 8 ) {
+      flag = 2;
+    }
+    if (flag == 1) {
+      // document.getElementById('error_message') = "IDとパスワードを入力してください";
+      alert("未入力の項目があります");
+      event.preventDefault();
+      return false;
+    } else if (flag == 2) {
+      // document.getElementById('error_message') = "パスワードが８文字未満です";
+      alert("ユーザID or パスワードが８文字未満です");
+      event.preventDefault();
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+  //ログインボタンを押したときの処理
+  document.getElementById("regist_user").addEventListener("click", function () {
+    location.replace("/GandA/UserRegisterServlet");
+  }, false);
+  //表示ボタンを押した時の処理
+  function pushHideButton() {
+      var txtPass = document.getElementById("password");
+      var btnPass = document.getElementById("buttonPassword");
+      if (txtPass.type === "text") {
+        txtPass.type = "password";
+        btnPass.value = "表示";
+      } else {
+        txtPass.type = "text";
+        btnPass.value = "非表示";
       }
     }
-
-    //新規登録ボタンを押したときの処理
-    document.getElementById("regist_user").addEventListener("click", function () {
-      location.replace("/GandA/UserRegisterServlet");
-    }, false);
-    //表示ボタンを押した時の処理
-    function pushHideButton() {
-        var txtPass = document.getElementById("password");
-        var btnPass = document.getElementById("buttonPassword");
-        if (txtPass.type === "text") {
-          txtPass.type = "password";
-          btnPass.value = "表示";
-        } else {
-          txtPass.type = "text";
-          btnPass.value = "非表示";
-        }
-      }
-
-
-      $(function(){
-        	  $(window).click(function (e){
-        	     $("#fade_xos").css("opacity",1);
-        		 $("img#main_pict").addClass("fa");
-        		 //画像を透明にしただけでは実態は消えない。アニメーションが終わってから消す。
-        		 window.setTimeout(skelton,2500);
-        	  });
-      });
-
-       const skelton =()=>{
-        	     $("img#main_pict").css("display","none")
-      }
+//フェードアウトの処理
+    $(function(){
+      	  $(window).click(function (e){
+      	     $("#fade_xos").css("opacity",1);
+      		 $("img#main_pict").addClass("fa");
+      		 //画像を透明にしただけでは実態は消えない。アニメーションが終わってから消す。
+      		 window.setTimeout(skelton,2500);
+      	  });
+    });
+     const skelton =()=>{
+      	     $("img#main_pict").css("display","none")
+    }
   </script>
   <!--JavaScriptここまで-->
 </body>

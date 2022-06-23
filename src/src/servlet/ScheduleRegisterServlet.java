@@ -72,11 +72,10 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String user = "a";
-		String sub = request.getParameter("SUB");
+		String sub = request.getParameter("sub-hide");
 		String title = request.getParameter("TITLE");
 		String start = request.getParameter("START");
 		String end = request.getParameter("END");
-		String oldTitle =  request.getParameter("oldTitle");
 		String oldStart =  request.getParameter("oldStart");
 
 		String[] dateNow = new String[3];
@@ -89,8 +88,10 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
 		if (request.getParameter("SUBMIT").equals("登録")) {
 			bDao.insert(new Schedule(user, date, sub, title, start, end));
-		} else if (request.getParameter("SUBMIT").equals("更新")){
-			bDao.update(new Schedule(user, date, sub, title, start, end),oldTitle,oldStart);
+		} else if (request.getParameter("SUBMIT").equals("更新")) {
+			bDao.update(new Schedule(user, date, sub, title, start, end),oldStart);
+		} else if (request.getParameter("SUBMIT").equals("削除")) {
+			bDao.delete(user,date,oldStart);
 		}
 
 		//編集サーブレットにリダイレクトする
