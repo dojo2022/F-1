@@ -24,33 +24,34 @@
 				<div id="space-register">
 					<form method="POST" action="/GandA/ScheduleRegisterServlet">
 						<label>日付<input type="text" name="DATE" id="date" readonly></label><br>
+						<select name="START" id="start"></select><span>～</span>
+						<select name="END" id="end"></select><br>
 						<label>タイトル<input type="text" maxlength="20" name="TITLE" id="title"></label><br>
-						<label>内容<input type="text" maxlength="100" name="SUB" id="sub"></label><br>
-						<label>開始<select name="START" id="start"></select></label>
-						<label>終了<select name="END" id="end"></select></label><br>
+						<label>内容<textarea name="SUB" id="sub" maxlength="100" rows="5" cols="20"></textarea></label><br>
 						<input name="year" id="year">
 						<input name="month" id="month">
 						<input name="day" id="day">
-
-						<input type="submit" name="SUBMIT" value="登録" id="register" onclick="judgeTime()">
+						<input name="sub-hide" id="sub-hide">
+						<input type="submit" name="SUBMIT" value="登録" id="register">
 					</form>
+					<p id="error"></p>
 				</div>
 				<div id="space-register-add">
 					<form method="POST" action="/GandA/ScheduleRegisterServlet">
 						<label>日付<input type="text" name="DATE" id="date-add" readonly></label><br>
+						<select name="START" id="start-add"></select><span>～</span>
+						<select name="END" id="end-add"></select><br>
 						<label>タイトル<input type="text" maxlength="20" name="TITLE" id="title-add"></label><br>
-						<label>内容<input type="text" maxlength="100" name="SUB" id="sub-add"></label><br>
-						<label>開始<select name="START" id="start-add"></select></label>
-						<label>終了<select name="END" id="end-add"></select></label><br>
+						<label>内容<textarea name="SUB" id="sub-add" maxlength="100" rows="5" cols="20"></textarea></label><br>
 						<input name="year" id="year-add">
 						<input name="month" id="month-add">
 						<input name="day" id="day-add">
-						<input name="oldTitle" id="oldTitle">
 						<input name="oldStart" id="oldStart">
 
-						<input type="submit" name="SUBMIT" value="更新" id="update" onclick="judgeTime()">
-						<input type="submit" name="SUBMIT" value="削除" id="delete" onclick="judgeTime()">
+						<input type="submit" name="SUBMIT" value="更新" id="update">
+						<input type="submit" name="SUBMIT" value="削除" id="delete">
 					</form>
+					<p id="error-add"></p>
 				</div>
 			</div>
 			<div class="time-schedule">
@@ -166,6 +167,8 @@
 	<!--jsプログラム-->
 	<script>
 		console.log("kaisi");
+		var aaaaaaa = "aaa\nbbb\nccc";
+		console.log(aaaaaaa);
 
 		var queryString = window.location.search;
 		var queryObject = new Object();
@@ -174,6 +177,8 @@
 		var day = 0;
 		var title = [];
 		var sub = [];
+		var startTimes = [];
+		var endTimes = [];
 		var selectStart = document.getElementById("start");
 		var selectEnd = document.getElementById("end");
 		var selectStartAdd = document.getElementById("start-add");
@@ -239,45 +244,45 @@
 			document.querySelector('#register-date').innerHTML = year + "年 " + month + "月" + day + "日";
 			document.getElementById("date").value = year + "/" + month + "/" + day;
 			document.getElementById("date-add").value = year + "/" + month + "/" + day;
+
 		}
 
 		//スケジュール表示
 		function displaySchedule(){
 			var schedule = "";
-			var startTime = "";
-			var endTime = "";
-			var i = 0;
+			var count = 0;
 			<c:forEach var="e" items="${cardList}">
 				console.log("${e.title}");
 				console.log("${e.sub}");
 				console.log("${e.startTime}");
 				console.log("${e.endTime}");
-				title[i] = "${e.title}";
-				sub[i] = "${e.sub}";
-				startTime = "${e.startTime}".substr(0,2);
-				endTime = "${e.endTime}".substr(0,2);
+				title[count] = "${e.title}";
+				sub[count] = "${e.sub}";
+				sub[count] = sub[count].replace(/(\^)/g, '\n');
+				startTimes[count] = "${e.startTime}".substr(0,2);
+				endTimes[count] = "${e.endTime}".substr(0,2);
 				console.log("-----");
-				console.log(title[i]);
-				console.log(sub[i]);
-				console.log(startTime);
-				console.log(endTime);
-				schedule += "<input type='text' class='line-add add" + i + "' readonly onclick='showAdd(" + startTime +  "," + endTime + "," + i + ")'>";
-				i++;
+				console.log(title[count]);
+				console.log(sub[count]);
+				console.log(startTimes[count]);
+				console.log(endTimes[count]);
+				schedule += "<input type='text' class='line-add line-sub" + count + "' readonly onclick='showAdd(" + startTimes[count] +  "," + endTimes[count] + "," + count + ")'>";
+				count++;
 			</c:forEach>
-			var sss = -1370;
-			var add = "add0";
-			var add1 = "add1";
 			document.getElementById("schedule-add").innerHTML = schedule;
 
-
-			document.getElementsByClassName(add)[0].style.top = "-1370px";
-			//document.querySelector('.add0').style.top = "-1370px";
-			document.getElementsByClassName(add)[0].style.height = "107px";
-			document.getElementsByClassName(add)[0].style.marginBottom = "-109px";
-			document.getElementsByClassName(add1)[0].style.top = "-1258px";
-			document.getElementsByClassName(add1)[0].style.height = "51px";
-			document.getElementsByClassName(add1)[0].style.marginBottom = "-53px";
-
+			var positionStart = 0;
+			var timeDiff = 0;
+			for (var i = 0; i < count; i++) {
+				var lineSub = "line-sub" + i;
+				positionStart = parseInt(startTimes[i]);
+				timeDiff = parseInt(endTimes[i]) - parseInt(startTimes[i]) - 1;
+				document.getElementsByClassName(lineSub)[0].style.top = -1370 + (positionStart * 56) +"px";
+				document.getElementsByClassName(lineSub)[0].style.height = 51 + (timeDiff * 56) + "px";
+				document.getElementsByClassName(lineSub)[0].style.marginBottom = -53 -(timeDiff * 56) + "px";
+				console.log(document.getElementsByClassName(lineSub)[0].style.marginBottom = -53 -(timeDiff * 56) + "px");
+				document.getElementsByClassName(lineSub)[0].value = title[i];
+			}
 		}
 
 		function setTimeRange(start, end) {
@@ -303,6 +308,8 @@
 		//検索欄表示用のボタンが押された時の処理
 		function show(time) {
 			const show_flag = document.getElementById("space-register");
+			const other_flag = document.getElementById("space-register-add");
+
 			if (time <= 8){
 				selectStart.value = "0" + time + ":00";
 				selectEnd.value = "0" + (time + 1) + ":00";
@@ -321,9 +328,14 @@
 				//none(非表示)のときblock(表示)にする
 				show_flag.style.display = "block";
 			}
+			if (other_flag.style.display == "block") {
+				other_flag.style.display = "none";
+			}
+			document.getElementById('error').textContent = ``;
 		}
 		function showAdd(start,end,i) {
 			const show_flag = document.getElementById("space-register-add");
+			const other_flag = document.getElementById("space-register");
 
 			console.log(start);
 			console.log(end);
@@ -332,8 +344,10 @@
 
 			if (start <= 9) {
 				selectStartAdd.value = "0" + start + ":00";
+				document.getElementById("oldStart").value = "0" + start + ":00";
 			} else {
 				selectStartAdd.value = start + ":00";
+				document.getElementById("oldStart").value = start + ":00";
 			}
 			if (end <= 9) {
 				selectEndAdd.value = "0" + end + ":00";
@@ -341,7 +355,7 @@
 				selectEndAdd.value = end + ":00";
 			}
 			document.getElementById("title-add").value = title[i];
-			document.getElementById("sub-add").value = sub[i];
+			document.getElementById("sub-add").value = sub[i]
 
 			if (show_flag.style.display == "block") {
 				//block(表示)のときnone(非表示)にする
@@ -350,10 +364,56 @@
 				//none(非表示)のときblock(表示)にする
 				show_flag.style.display = "block";
 			}
+			if (other_flag.style.display == "block") {
+				other_flag.style.display = "none";
+			}
+			document.getElementById('error-add').textContent = ``;
 		}
-		function judgeTime(){
-			console.log("judge");
-		}
+
+		 document.getElementById('space-register').onsubmit = function(event) {
+			 //event.preventDefault();
+			 var valueStart = document.getElementById("start").value;
+			 var valueEnd = document.getElementById("end").value;
+			 if (document.getElementById("title").value == ''){
+				 document.getElementById("error").textContent = `タイトルがないです`;
+				 event.preventDefault();
+				 return;
+			 }
+			 if (document.getElementById("start").value >= document.getElementById("end").value){
+				 document.getElementById("error").textContent = `適切な時間を設定してください`;
+				 event.preventDefault();
+				 return;
+			 }
+			 var i = 0;
+			 <c:forEach var="e" items="${cardList}">
+
+				 if (valueStart >= "${e.startTime}" && valueStart < "${e.endTime}") {
+					//console.log(parseInt(startTimes[i]));
+					//console.log(parseInt(endTimes[i]));
+					//console.log("-------");
+					document.getElementById("error").textContent = `時間が被っています`;
+					event.preventDefault();
+					return;
+				 }
+				 if (valueEnd > "${e.startTime}" && valueEnd <= "${e.endTime}") {
+					 document.getElementById("error").textContent = `時間が被っています`;
+					 event.preventDefault();
+					 return;
+				 }
+				 if (valueStart < "${e.startTime}" && valueEnd > "${e.startTime}") {
+					 document.getElementById("error").textContent = `時間が被っています`;
+					 event.preventDefault();
+					 return;
+				 }
+				 console.log(valueStart);
+				 console.log("${e.startTime}");
+				i++;
+			</c:forEach>
+
+			console.log(document.getElementById("sub").value);
+			document.getElementById("sub-hide").value = document.getElementById("sub").value.replace(/\r?\n/g, "^");
+
+		 };
 	</script>
 </body>
 
