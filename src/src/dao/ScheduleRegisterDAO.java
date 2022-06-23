@@ -20,7 +20,7 @@ public class ScheduleRegisterDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/GandA", "sa", "");
 
 			// SQL文を準備する
 			String sql = "select * from Schedule WHERE USER LIKE ? AND DATE LIKE ?";
@@ -90,7 +90,7 @@ public class ScheduleRegisterDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/GandA", "sa", "");
 
 			// SQL文を準備する
 			String sql = "insert into Schedule (USER, DATE, SUB, TITLE, START_TIME, END_TIME) values (?, ?, ?, ?, ?, ?)";
@@ -165,7 +165,7 @@ public class ScheduleRegisterDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/GandA", "sa", "");
 
 			// SQL文を準備する
 			String sql = "update Schedule set DATE=?, SUB=?, TITLE=?, START_TIME=?, END_TIME=? where USER=? and DATE=? and START_TIME=?";
@@ -238,7 +238,7 @@ public class ScheduleRegisterDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/GandA", "sa", "");
 
 			// SQL文を準備する
 			String sql = "delete from Schedule where USER=? and DATE=? and START_TIME=?";

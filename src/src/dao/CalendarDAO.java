@@ -21,7 +21,7 @@ public class CalendarDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/GandA", "sa", "");
 
 			// SQL文を準備する
 			String sql = "select * from Schedule WHERE USER LIKE ?";

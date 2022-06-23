@@ -21,7 +21,7 @@ public class TravelDAO {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/GandA", "sa", "");
 			// SQL文を準備する
 			String sql = "SELECT * FROM TRAVEL WHERE SITE_MONTH = ? ORDER BY RAND() LIMIT 1";
 			PreparedStatement pictravel = conn.prepareStatement(sql);

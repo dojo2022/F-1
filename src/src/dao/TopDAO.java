@@ -21,7 +21,7 @@ public class TopDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/GandA", "sa", "");
 
 				// SQL文を準備する
 				String sql = "SELECT * FROM SCHEDULE WHERE USER = ? AND DATE >= ? ORDER BY DATE";
@@ -85,126 +85,6 @@ public class TopDAO {
 			return todo;
 		}
 
-		// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-		public boolean insert(Schedule list) {
-			Connection conn = null;
-			boolean result = false;
-
-			try {
-				// JDBCドライバを読み込む
-				Class.forName("org.h2.Driver");
-
-				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
-
-				// SQL文を準備する
-				String sql1 = "INSERT INTO Schedule( user,date,sub,title,startTime,endTime) values (?, ?, ?, ?,?,?)";
-				String sql2 = "INSERT INTO Schedule( user,date,sub,title,startTime,endTime) values (?, ?, ?, ?,?,?)";
-
-				PreparedStatement pStmt1 = conn.prepareStatement(sql1);
-				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
-
-				// SQL文を完成させる
-				if (list.getUser() != null && !list.getUser().equals("")) {
-					pStmt1.setString(1, list.getUser());
-				}
-				else {
-					pStmt1.setString(1, null);
-				}
-				if (list.getDate() != null && !list.getDate().equals("")) {
-					pStmt1.setString(2, list.getDate());
-				}
-				else {
-					pStmt1.setString(2, null);
-				}
-				if (list.getSub() != null && !list.getSub().equals("")) {
-					pStmt1.setString(3, list.getSub());
-				}
-				else {
-					pStmt1.setString(3, null);
-				}
-				if (list.getTitle() != null && !list.getTitle().equals("")) {
-					pStmt1.setString(4, list.getTitle());
-				}
-				else {
-					pStmt1.setString(4, null);
-				}
-				if (list.getStartTime() != null && !list.getStartTime().equals("")) {
-					pStmt1.setString(5, list.getStartTime());
-				}
-				else {
-					pStmt1.setString(5, null);
-				}
-				if (list.getEndTime() != null && !list.getEndTime().equals("")) {
-					pStmt1.setString(6, list.getEndTime());
-				}
-				else {
-					pStmt1.setString(6, null);
-				}
-				if (list.getUser() != null) {
-					pStmt2.setString(1, list.getUser());
-				}
-				else {
-					pStmt2.setString(1, null);
-				}
-				if (list.getDate() != null && !list.getDate().equals("")) {
-					pStmt2.setString(2, list.getDate());
-				}
-				else {
-					pStmt2.setString(2, null);
-				}
-				if (list.getSub() != null && !list.getSub().equals("")) {
-					pStmt2.setString(3, list.getSub());
-				}
-				else {
-					pStmt2.setString(3, null);
-				}
-				if (list.getTitle() != null && !list.getTitle().equals("")) {
-					pStmt2.setString(4, list.getTitle());
-				}
-				else {
-					pStmt2.setString(4, null);
-				}
-				if (list.getStartTime() != null && !list.getStartTime().equals("")) {
-					pStmt1.setString(5, list.getStartTime());
-				}
-				else {
-					pStmt1.setString(5, null);
-				}
-				if (list.getEndTime() != null && !list.getEndTime().equals("")) {
-					pStmt1.setString(6, list.getEndTime());
-				}
-				else {
-					pStmt1.setString(6, null);
-				}
-
-				// SQL文を実行する
-				if (pStmt1.executeUpdate() == 1) {
-					result = true;
-				}
-			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			finally {
-				// データベースを切断
-				if (conn != null) {
-					try {
-						conn.close();
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-
-			// 結果を返す
-			return result;
-		}
-
 		// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
 		public boolean update(Schedule list, String oldTime) {
 			Connection conn = null;
@@ -215,7 +95,7 @@ public class TopDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/GandA", "sa", "");
 
 				// SQL文を準備する
 				String sql = "update schedule set sub=?, title=?, start_time=?, end_time=?  WHERE user=? AND date = ? AND start_time=?";
@@ -298,7 +178,7 @@ public class TopDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/GandA", "sa", "");
 
 				// SQL文を準備する
 				String sql = "delete from schedule where user=? AND date=? AND start_time=?";
