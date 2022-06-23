@@ -1,15 +1,16 @@
 @charset "UTF-8";
 body {
-    background-color: #F8F8F8;
+	    background-color: #FcFcFc;
     font-family:'メイリオ', 'Meiryo', sans-serif;
     margin: 0;
-    padding-top: 153px;
+    padding-top: 103px;
 }
+
 
 /*ヘッダーのCSS*/
 /*スクロールでヘッダーを隠す */
 .header {
-	background-color: #F8F8F8;
+	background-color: #FFFFFF;
     position: fixed;
     top: 0;
     left: 0;
@@ -31,25 +32,26 @@ body {
 /*G＆Aアイコン、ユーザーネーム、時間表示、ログアウトアイコンのデザイン*/
 .images-icon {
     display: flex;
+    height: 50px;
 }
 
 #icon-main {
-    width: 150px;
-    height: 100px;
-    margin-right: 200px;
+    width: 120px;
+    height: 70px;
+    /*margin-right: 200px;*/
     align-items: left;
-    position: relative;
-    z-index: 100;
+    /*position: relative;
+    z-index: 100;*/
 }
 .text-header {
     text-align: center;
-    font-size: 24px;
+    font-size: 15px;
     display: flex;
     height: 50px;
     align-items: center;
-   margin-top: auto;
+   /*margin-top: auto;*/
    margin-bottom: 0px;
-    /*margin-left: 50px;*/
+   margin-left: auto;
 }
 #text-username {
     margin: 0px 50px 0px 20px;
@@ -64,24 +66,35 @@ body {
 
 }
 #box-logout {
-    margin-left: auto;
+    margin-left: 20px;
+    border: 2px solid #000000;
+    border-radius: 0.75em;
     margin-right: 10px;
-    margin-top: 5px;
-    width: 120px;
-    height: 40px;
+    margin-top: 0px;
+    width: 65px;
+    height: 22px;
+    text-decoration: none;
+}
+#box-logout:visited {
+	 color: #000000;
 }
 
 
 
-
 /*ここからメニューバーのCSS*/
+.menu-center {
+    text-align: center;
+    margin-left: 1%;
+    font-size: 20px;
+    font-weight: 600;
+}
+
 .menu-flex {
     display: flex;
+    justify-content: center;
     list-style: none;
-    margin-right: auto;
     margin-top: 0%;
     margin-bottom: 0%;
-    align-items: center;
     padding: 0%;
 }
 
@@ -89,15 +102,10 @@ body {
     margin: 0;
     height: auto;
     width: 100%;
-    background-color: #3C3B6E;
   }
-  #menu-in-icon {
-    height:30px;
-    margin-top: 2%;
-  }
+
   #box-menu {
     font-size: 20px;
-    width: 25%;
     margin-top: 0px;
     margin-bottom: 0px;
     letter-spacing: 0px;
@@ -105,15 +113,26 @@ body {
     text-align: center;
   }
   #first-text {
-    color: #B22234;
-    font-size: 30px;
-    font-weight: 600;
+    color: #000000;
+    font-size: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
+    #first-text-pro {
+    color: #000000;
+    font-size: 15px;
+    padding-right: 15px;
+    padding-left: 0px;
+  }
+
     #second-text {
-    color: white;
-    font-size: 20px;
-    font-weight: 600;
+    color: #000000;
+    font-size: 15px;
   }
 .link-menu {
+    height: 40px;
     text-decoration: none;
 }
+.link-menu:hover {
+        font-weight: 600;
+    }

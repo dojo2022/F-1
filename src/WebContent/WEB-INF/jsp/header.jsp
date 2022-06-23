@@ -19,9 +19,9 @@
                     Time:
                         <div id="text-time"></div>
 
-                </div>
+
                 <!--ログアウトアイコン-->
-                <div id="box-logout"><a href="/GandA/LogoutServlet"><img src="img/other/icon_logout.png" alt="logoutlogo" id="icon-logout"></a>
+                <div id="box-logout"><a href="/GandA/LogoutServlet" class="link-menu">Log out</a></div>
                 </div>
 
             </div>
@@ -29,30 +29,30 @@
 
         <div id="text_menu">
                 <nav>
+                <div class="menu-center">M E N U</div>
                 <ul class="menu-flex">
-
                     <li id="box-menu">
                         <a href="/GandA/CalendarServlet" class="link-menu">
-                            <img id="menu-in-icon" src="img/other/calendar.png">
-                            <span id="first-text">C</span><span id="second-text">alendar</span>
-                        </a>
+
+                            <span id="first-text-pro">Calendar</span></a><span id="second-text">|</span>
+
                     </li>
                     <li id="box-menu">
                         <a href="/GandA/TopServlet" class="link-menu">
-                            <img id="menu-in-icon" src="img/other/menu.png">
-                            <span id="first-text">S</span><span id="second-text">chedule</span>
-                        </a>
+
+                            <span id="first-text">Schedule</span></a><span id="second-text">|</span>
+
                     </li>
                     <li id="box-menu">
                         <a href="/GandA/RecipeServlet" class="link-menu">
-                            <img id="menu-in-icon" src="img/other/recipe.png">
-                            <span id="first-text">C</span><span id="second-text">ooking</span>
-                        </a>
+
+                            <span id="first-text">Cooking</span></a><span id="second-text">|</span>
+
                     </li>
                     <li id="box-menu">
                         <a href="/GandA/TravelServlet" class="link-menu">
-                            <img id="menu-in-icon" src="img/other/travel.png">
-                            <span id="first-text">T</span><span id="second-text">ravel</span>
+
+                            <span id="first-text">Travel</span>
                         </a>
                     </li>
 
