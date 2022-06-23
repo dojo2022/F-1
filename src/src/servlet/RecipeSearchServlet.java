@@ -36,7 +36,7 @@ public class RecipeSearchServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 
 		HttpSession session = request.getSession();
-		 if (session.getAttribute("id") == null) {
+		 if (session.getAttribute("userid") == null) {
 		  response.sendRedirect("/GandA/LoginServlet");
 		  return;
 		}

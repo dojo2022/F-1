@@ -37,16 +37,16 @@
                     Time:
                         <div id="text-time"></div>
 
-                </div>
+
                 <!--ログアウトアイコン-->
-                <div id="box-logout"><a href="/GandA/LogoutServlet"><img src="img/other/icon_logout.png" alt="logoutlogo" id="icon-logout"></a>
+                <div id="box-logout"><a href="/GandA/LogoutServlet" class="link-menu">Log out</a></div>
                 </div>
 
             </div>
         </header>
 
         <main>
-            <!-- 検索結果表示 -->
+            <!-- 検索結果表示-->
             <div id="list-dish">
 
                 <!-- 料理表示 -->
