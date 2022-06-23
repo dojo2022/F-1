@@ -55,7 +55,7 @@ public class RecipeServlet extends HttpServlet {
 			Document source;
 			Elements elements;
 			// の該当ページ(検索内容に応じたページ)にGETリクエストを送る
-			source = Jsoup.connect("https://recipe.rakuten.co.jp/menu/").get();
+			source = Jsoup.connect("https://recipe.rakuten.co.jp/menu/").userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A").get();
 			elements = source.select(".weekly_menu__contents a");
 
 			// 使用する変数の宣言、初期化
@@ -69,7 +69,7 @@ public class RecipeServlet extends HttpServlet {
 
 			/* 該当ページを基に必要情報取得 */
 			// 曜日ごとの献立ページのURL取得
-			recipes = Jsoup.connect(elements.get(day).absUrl("href")).get();
+			recipes = Jsoup.connect(elements.get(day).absUrl("href")).userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A").get();
 
 			// 料理名の取得
 			dishes = recipes.select(".menu_detail__menu_title");

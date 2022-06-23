@@ -1,10 +1,15 @@
 @charset "UTF-8";
-.modal-open{
+.wrapper_top .modal-open{
   margin: auto;
   cursor: pointer;
+  border: none;
+  width: 340px;
+  font-size: 1.2em;
+  text-align: left;
+  background-color: #F8F8F8;
 }
 /*モーダル本体の指定 + モーダル外側の背景の指定*/
-.modal-container{
+.wrapper_top .modal-container{
   position: fixed;
   top: 0;
   left: 0;
@@ -20,28 +25,28 @@
   box-sizing: border-box;
 }
 /*モーダル本体の擬似要素の指定*/
-.modal-container:before{
+.wrapper_top .modal-container:before{
   content: "";
   display: inline-block;
   vertical-align: middle;
   height: 100%;
 }
 /*モーダル本体に「active」クラス付与した時のスタイル*/
-.modal-container.active{
+.wrapper_top .modal-container.active{
   opacity: 1;
   visibility: visible;
 }
 /*モーダル枠の指定*/
-.modal-body{
+.wrapper_top .modal-body{
   position: relative;
-  top: 200px;
+  top: 180px;
   display: inline-block;
   vertical-align: middle;
   max-width: 500px;
   width: 90%;
 }
 /*モーダルを閉じるボタンの指定*/
-.modal-close{
+.wrapper_top .modal-close{
   position: absolute;
   display: flex;
   align-items: center;
@@ -55,16 +60,13 @@
   cursor: pointer;
 }
 /*モーダル内のコンテンツの指定*/
-.modal-content{
+.wrapper_top .modal-content{
   background: #fff;
   text-align: left;
-  padding: 30px;
-}
-body {
-  background-color: #F8F8F8;
+  padding: 20px 30px 20px 30px;
 }
 
-.first-text {
+.wrapper_top .first-text {
   font-size: 22px;
   text-align: center;
   margin-right: 5%;
@@ -72,7 +74,7 @@ body {
   display: inline-block;
 }
 
-.first-text2 {
+.wrapper_top .first-text2 {
   text-align: left;
   border-bottom: dashed 2px black;
   /* margin-right: 15%; */
@@ -82,7 +84,7 @@ body {
   display: inline-block;
 }
 
-h2 {
+.wrapper_top h2 {
   text-align: center;
   text-decoration: underline;
   /*text-align: right;*/
@@ -92,12 +94,12 @@ h2 {
   /*padding-left: 70%*/
 }
 
-#text_top {
+.wrapper_top #text_top {
   display: flex;
   /*border: solid 1px #55ff55;*/
 }
 
-#text_left {
+.wrapper_top #text_left {
   width: 49.9%;
   height: 500px;
   /*border: solid 1px #7799FF;*/
@@ -105,7 +107,7 @@ h2 {
   margin-left: 90px;
 }
 
-#text_right {
+.wrapper_top #text_right {
   width: 49.9%;
   height: 500px;
   /* border: solid 1px #113498;*/
@@ -113,7 +115,7 @@ h2 {
   margin-left: -20px;
 }
 
-.box {
+.wrapper_top .box {
   width: 478px;
   height: 85px;
   padding: 20px;
@@ -123,4 +125,26 @@ h2 {
   border-bottom: 4px solid #66FFFF;
   overflow: hidden;
   overflow-y: scroll;
+}
+
+.wrapper_top #date{
+	border: none;
+	text-align:center;
+	pointer-events: none;
+	font-size: 1.2em;
+	width: 100%;
+}
+
+.wrapper_top #start-time {
+	margin-top: 10px;
+}
+
+.wrapper_top #update-check {
+	color: red;
+	margin: 5px 0 0 0;
+}
+
+.wrapper_top #clear {
+	margin: 5px 25px 0 35%;
+
 }

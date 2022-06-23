@@ -33,21 +33,21 @@ public class TopServlet extends HttpServlet {
 //			return;
 //		}
 
-		String user_id = (String)session.getAttribute("userid");
-		//String user_id = "a";
+		//String user = (String)session.getAttribute("userid");
+		String user = "a";
 		Calendar today = Calendar.getInstance();
 		String date = String.format("%d/%02d/%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1,today. get(Calendar.DATE));
 //
 
 		// 検索処理を行う
 		TopDAO toDao = new TopDAO();
-		List<Schedule> todoList = toDao.selectTodo(new Schedule(user_id, date,"","","",""));
+		List<Schedule> todoList = toDao.selectTodo(new Schedule(user, date,"","","",""));
 		//List<Schedule> cardList = toDao.selectTodo(new Schedule(user,date,sub,title,start_time,end_time));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("todoList", todoList);
 
-		// 登録ページにフォワードする
+		// topページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -60,22 +60,45 @@ public class TopServlet extends HttpServlet {
 //		}
 
 		// リクエストパラメータを取得する
-				request.setCharacterEncoding("UTF-8");
-				String user = (String)session.getAttribute("userid");
-				String date = request.getParameter("DATE");
-				String sub = request.getParameter("SUB");
-				String title = request.getParameter("TITLE");
-				String start_time = request.getParameter("START_TIME");
-				String end_time = request.getParameter("END_TIME");
+		request.setCharacterEncoding("UTF-8");
+		//String user = (String)session.getAttribute("userid");
+		String user = "a";
+		String date = request.getParameter("DATE");
+		String sub = request.getParameter("SUB");
+		String title = request.getParameter("TITLE");
+		String startTime = request.getParameter("STARTTIME");
+		String endTime = request.getParameter("ENDTIME");
 
-				// 登録処理を行う
-				TopDAO toDao = new TopDAO();
-				boolean todoList = toDao.insert(new Schedule(user,"","","","",""));
+		//前の開始時間がなければ更新、削除できない
+		String startTimeOld = request.getParameter("STARTTIMEOLD");
 
-				// 検索結果をリクエストスコープに格納する
-				request.setAttribute("todoList", todoList);
+		// 更新または削除を行う
+		TopDAO toDao = new TopDAO();
+		if (!title.equals("") && !startTime.equals("") && !endTime.equals("")) {
+			if (toDao.update((new Schedule(user,date,sub,title,startTime,endTime)),startTimeOld)) {	// 更新成功
+				request.setAttribute("result", "更新成功！");
+			}else {												// 更新失敗
+				request.setAttribute("result", "更新失敗！");
+			}
+		}else if(title.equals("") && sub.equals("") && startTime.equals("") && endTime.equals("")) {
+			if (toDao.delete(user,date,startTimeOld)) {	// 削除成功
+				request.setAttribute("result", "削除成功！");
+			}else {												// 更新失敗
+				request.setAttribute("result", "更新失敗！");
+			}
+		}else {
+			request.setAttribute("result", "更新失敗！");
+		}
 
-				//登録サーブレットにリダイレクトする
-				response.sendRedirect("/GandA/TopServlet");
+		Calendar today = Calendar.getInstance();
+		String nowDay = String.format("%d/%02d/%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1,today. get(Calendar.DATE));
+		List<Schedule> todoList = toDao.selectTodo(new Schedule(user, nowDay,"","","",""));
+
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("todoList", todoList);
+
+		//topサーブレットにリダイレクトする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+		dispatcher.forward(request, response);
 	}
 }

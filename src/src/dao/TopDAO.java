@@ -24,7 +24,7 @@ public class TopDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 				// SQL文を準備する
-				String sql = "SELECT * FROM SCHEDULE WHERE USER = ? AND DATE >= ? ORDER BY DATE limit 2"  ;
+				String sql = "SELECT * FROM SCHEDULE WHERE USER = ? AND DATE >= ? ORDER BY DATE";
 				//String sql2 = "SELECT * from schedule WHERE user =? and date_sub(CURRENT_DATE,INTERVAL 1 DAY)";
 
 				PreparedStatement pStmt1 = conn.prepareStatement(sql);
@@ -58,17 +58,8 @@ public class TopDAO {
 							rs1.getString("END_TIME"));
 					todo.add(list);
 				}
-//				while (rs2.next()) {
-//					Schedule list=new Schedule(
-//							rs2.getString("USER"),
-//							rs2.getString("DATE"),
-//							rs2.getString("SUB"),
-//							rs2.getString("TITLE"),
-//							rs2.getString("START_TIME"),
-//							rs2.getString("END_TIME"));
-//					todo.add(list);
-//				}
 			}
+
 			catch (SQLException e) {
 				e.printStackTrace();
 				todo = null;
@@ -215,7 +206,7 @@ public class TopDAO {
 		}
 
 		// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
-		public boolean update(Schedule list) {
+		public boolean update(Schedule list, String oldTime) {
 			Connection conn = null;
 			boolean result = false;
 
@@ -227,86 +218,51 @@ public class TopDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 				// SQL文を準備する
-				String sql1 = "update Schedule set user=?, date=?, sub=?, title=?, startTime=?, endTime=?  WHERE user=? AND WHERE date >= CURRENT_DATE";
-				String sql2 = "update Schedule set user=?, date=?, sub=?, title=?, startTime=?, endTime=?  WHERE user =? and date_sub(CURRENT_DATE,INTERVAL 1 DAY)";
-				PreparedStatement pStmt1 = conn.prepareStatement(sql1);
-				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+				String sql = "update schedule set sub=?, title=?, start_time=?, end_time=?  WHERE user=? AND date = ? AND start_time=?";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
-				if (list.getUser() != null && !list.getUser().equals("")) {
-					pStmt1.setString(1, list.getUser());
-				}
-				else {
-					pStmt1.setString(1, null);
-				}
-				if (list.getDate() != null && !list.getDate().equals("")) {
-					pStmt1.setString(2, list.getDate());
-				}
-				else {
-					pStmt1.setString(2, null);
-				}
 				if (list.getSub() != null && !list.getSub().equals("")) {
-					pStmt1.setString(3, list.getSub());
+					pStmt.setString(1, list.getSub());
 				}
 				else {
-					pStmt1.setString(3, null);
+					pStmt.setString(1, null);
 				}
 				if (list.getTitle() != null && !list.getTitle().equals("")) {
-					pStmt1.setString(4, list.getTitle());
+					pStmt.setString(2, list.getTitle());
 				}
 				else {
-					pStmt1.setString(4, null);
+					pStmt.setString(2, null);
 				}
 				if (list.getStartTime() != null && !list.getStartTime().equals("")) {
-					pStmt1.setString(5, list.getStartTime());
+					pStmt.setString(3, list.getStartTime());
 				}
 				else {
-					pStmt1.setString(5, null);
+					pStmt.setString(3, null);
 				}
 				if (list.getEndTime() != null && !list.getEndTime().equals("")) {
-					pStmt1.setString(6, list.getEndTime());
+					pStmt.setString(4, list.getEndTime());
 				}
 				else {
-					pStmt1.setString(6, null);
+					pStmt.setString(4, null);
 				}
-				if (list.getUser() != null && !list.getUser().equals("")) {
-					pStmt2.setString(1, list.getUser());
-				}
-				else {
-					pStmt2.setString(1, null);
-				}
+
+				pStmt.setString(5, list.getUser());
+
 				if (list.getDate() != null && !list.getDate().equals("")) {
-					pStmt2.setString(2, list.getDate());
+					pStmt.setString(6, list.getDate());
 				}
 				else {
-					pStmt2.setString(2, null);
+					pStmt.setString(6, null);
 				}
-				if (list.getSub() != null && !list.getSub().equals("")) {
-					pStmt2.setString(3, list.getSub());
-				}
-				else {
-					pStmt2.setString(3, null);
-				}
-				if (list.getTitle() != null && !list.getTitle().equals("")) {
-					pStmt2.setString(4, list.getTitle());
+				if (oldTime != null && !oldTime.equals("")) {
+					pStmt.setString(7, oldTime);
 				}
 				else {
-					pStmt2.setString(4, null);
-				}
-				if (list.getStartTime() != null && !list.getStartTime().equals("")) {
-					pStmt1.setString(5, list.getStartTime());
-				}
-				else {
-					pStmt1.setString(5, null);
-				}
-				if (list.getEndTime() != null && !list.getEndTime().equals("")) {
-					pStmt1.setString(6, list.getEndTime());
-				}
-				else {
-					pStmt1.setString(6, null);
+					pStmt.setString(7, null);
 				}
 
 				// SQL文を実行する
-				if (pStmt1.executeUpdate() == 1) {
+				if (pStmt.executeUpdate() == 1) {
 					result = true;
 				}
 			}
@@ -333,7 +289,7 @@ public class TopDAO {
 		}
 
 		// 引数numberで指定されたレコードを削除し、成功したらtrueを返す
-		public boolean delete(String date,String sub,String title,String startTime,String endTime) {
+		public boolean delete(String user, String date, String startTime) {
 			Connection conn = null;
 			boolean result = false;
 
@@ -345,23 +301,14 @@ public class TopDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/GandA", "sa", "");
 
 				// SQL文を準備する
-				String sql1 = "delete from BC where USER=?";
-				String sql2 = "delete from BC where USER=?";
-				PreparedStatement pStmt1 = conn.prepareStatement(sql1);
-				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+				String sql = "delete from schedule where user=? AND date=? AND start_time=?";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
-				pStmt1.setString(1, date);
-				pStmt1.setString(2, sub);
-				pStmt1.setString(3, title);
-				pStmt1.setString(4, startTime);
-				pStmt1.setString(5, endTime);
-				pStmt2.setString(1, date);
-				pStmt2.setString(2, sub);
-				pStmt2.setString(3, title);
-				pStmt2.setString(4, startTime);
-				pStmt2.setString(5, endTime);
+				pStmt.setString(1, user);
+				pStmt.setString(2, date);
+				pStmt.setString(3, startTime);
 				// SQL文を実行する
-				if (pStmt1.executeUpdate() == 1) {
+				if (pStmt.executeUpdate() == 1) {
 					result = true;
 				}
 			}
