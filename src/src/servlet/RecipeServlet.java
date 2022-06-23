@@ -35,11 +35,11 @@ public class RecipeServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 
 		 HttpSession session = request.getSession();
-		/* * if (session.getAttribute("id") == null) {
-		 * response.sendRedirect("/GandA/LoginServlet");
-		 * return;
-		 * }
-		 */
+		 if (session.getAttribute("id") == null) {
+		  response.sendRedirect("/GandA/LoginServlet");
+		  return;
+		 }
+
 
 		 //献立の検索は最初の一回のみで十分であるため
 		if(session.getAttribute("pickMenu") == null){
