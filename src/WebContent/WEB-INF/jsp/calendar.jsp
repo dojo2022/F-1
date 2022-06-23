@@ -37,7 +37,7 @@
 				<div id="calendar"></div>
 
 				<div class="footer-container-calendar">
-					<label>日付指定：</label> <select id="month" onchange="jump()">
+					<label>日付指定：</label><select id="month" onchange="jump()">
 						<option value=0>1月</option>
 						<option value=1>2月</option>
 						<option value=2>3月</option>
@@ -54,11 +54,6 @@
 				</div>
 			</div>
 		</main>
-		<div id="schedule"></div>
-		<c:forEach var="e" items="${dateList}">
-			<p>${e}</p>
-		</c:forEach>
-		<p>${dateList}</p>
 		<!-- メイン（ここまで） -->
 		<!-- フッター（ここから） -->
 		<footer onload="today()"> </footer>
@@ -115,8 +110,6 @@
 		function setScheduleDate() {
 			dateCount = 0;
 			var i = 0;
-			console.log("DATE:" +"${fn:length(dateList)}");
-			console.log("DATE:" +"${dateList}");
 			<c:forEach var="e" items="${dateList}">
 		 	//console.log("${e}");
 		 	<c:forEach var="str" items="${fn:split(e,'/')}">
