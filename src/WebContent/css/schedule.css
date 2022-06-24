@@ -38,8 +38,11 @@
 	outline: 1px solid #ddd;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	text-align: center;
+	text-align: left;
+	padding-left: 6%;
 	width: 50px;
+	height: 30px;
+	max-height: 30px;
 }
 
 .wrapper-calendar a {
@@ -54,8 +57,8 @@
 }
 
 .wrapper-calendar td.other .day-schedule {
-	color: gray;
 	font-size: 16px;
+	margin-left: 5px;
 }
 
 /*日曜日*/
@@ -87,12 +90,12 @@
 
 .wrapper-calendar #next-prev-button button {
 	cursor: pointer;
-	background: #00a2b7;
-	color: #fff;
+	background: #fff;
+	color: #00a2b7;
 	border: 1px solid #0aa2b5;
 	border-radius: 4px;
 	font-size: 1rem;
-	padding: 0.5rem 2rem;
+	padding: 0.5rem 5px;
 }
 
 .wrapper-calendar #next-prev-button button:hover {
@@ -125,6 +128,7 @@
 	padding: 5px 1em;
 }
 
+/*----------------------------------------------------------------------------------------*/
 
 /*schedule.html*/
 .wrapper-schedule {
@@ -138,8 +142,11 @@
 .wrapper-schedule .time-schedule {
 	overflow-y: scroll;
 	max-height: 300px;
-	max-width: 1000px;
-	margin: auto;
+	max-width: 1200px;
+	width:80%;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	margin: 0;
 }
 
 .wrapper-schedule .time-schedule p {
@@ -435,4 +442,29 @@
 
 .wrapper-schedule #error {
 	color: red;
+}
+
+#aaaa{
+	background-color: red;
+}
+#aaaaa {
+	display: block;
+	margin-right: 0;
+	margin-left: auto;
+	margin-top: -302px;
+	width: 20%;
+	height: 300px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+#back a {
+	text-decoration: none;
+	color: black;
+}
+#back {
+    padding: 8px 10px 8px 10px;
+    margin-top: 130px;
+    margin-left: 10px;
+    font-size: 1em;
 }

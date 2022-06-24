@@ -76,10 +76,10 @@ transform: translateY(-450px);
         <img id="logo" src="img/other/icon_main.png" alt="アイコン画像" width="120" height="100">
       </div>
       <div id="input_box">
-        <p>ID:<br>
+        <p>ID:　　　　　　　<span>半角英数字8字以上</span><br>
           <input type="text" name="user_id" id="user_id">
         </p>
-        <p>Password:<br>
+        <p>Password:　　　<span>半角英数字8字以上</span><br>
           <input type="password" name="password" id="password">
           <input type="button" id="buttonPassword" value="表示" onclick="pushHideButton();">
         </p>

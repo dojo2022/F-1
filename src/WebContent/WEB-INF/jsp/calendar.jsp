@@ -30,7 +30,7 @@
 					<button id="prev" onclick="prev()">‹</button>
 					<button id="next" onclick="next()">›</button>
 					<!-- xxxx年xx月を表示 -->
-					<h1 id="header-title"></h1>
+					<p id="header-title"></p>
 				</div>
 
 				<!-- カレンダー -->
@@ -197,7 +197,7 @@
 								//console.log(count);
 								if (judgeYear == scheduleYear[k] && judgeMonth == scheduleMonth[k]
 									&& count == parseInt(scheduleDay[k])){
-									calendar += "<span class='day-schedule'>･</span>";
+									calendar += "<span class='day-schedule'>👤</span>";
 									break;
 								}
 							}
@@ -215,7 +215,7 @@
 							for (var k = 0; k < dateCount; k++){
 								if (judgeYear == scheduleYear[k] && judgeMonth == scheduleMonth[k]
 									&& count == parseInt(scheduleDay[k])){
-									calendar += "<span class='day-schedule'>･</span>";
+									calendar += "<span class='day-schedule'>👤</span>";
 									break;
 								}
 							}

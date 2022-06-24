@@ -161,7 +161,17 @@
 				<input type="text" class="line line23" readonly onclick="show(23)">
 				<div id="schedule-add"></div>
 			</div>
-			<a href="/GandA/CalendarServlet">戻る</a>
+
+				<div id="aaaaa">
+					<form method="POST" action="/GandA/ScheduleRegisterServlet">
+						<label for="date">日付</label><input type="text" name="DATE" size ="15" readonly><br>
+						<label>時間</label><select name="START"></select><span> ～</span>
+						<select name="END"></select><br>
+						<label for="title">タイトル</label><br><input type="text" name="TITLE" maxlength="20" size ="30"><br>
+						<label for="sub">内容</label><br><textarea name="SUB" maxlength="100" rows="5" cols="20"></textarea><br>
+					</form>
+				</div>
+			<button id="back"><a href="/GandA/CalendarServlet">back</a></button>
 		</main>
 		<!-- メイン（ここまで） -->
 		<!-- フッター（ここから） -->
