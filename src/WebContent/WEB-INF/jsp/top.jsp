@@ -145,8 +145,8 @@
 								<option value="24:00">24:00</option>
 							</select><br>
 							<p id="update-check"></p>
-							<button type="button" id="clear">クリア</button>
-							<input type="submit" value="更新" id="update">
+							<input type="submit" value="削除"id="delete" name="SUBMIT">
+							<input type="submit" value="更新" id="update" name="SUBMIT">
 						</form>
 					</div>
 				</div>
@@ -276,12 +276,12 @@
 				document.querySelector('#start-time').value = "0";
 			});
 
-			if("${result}" == "更新失敗！"){
+			if("${result}" == "更新失敗！" || "${result}" == "削除失敗！"){
 				alert("${result}");
 			}
 		});
 
-		document.getElementById('form').onsubmit = function(event){
+		document.getElementById('update').onsubmit = function(event){
             const update_array = [document.getElementById('form').TITLE.value, document.getElementById('form').SUB.value,
             					   document.getElementById('form').STARTTIME.value, document.getElementById('form').ENDTIME.value];
 
@@ -311,9 +311,7 @@
             	}
             }
 
-            if(update_array[0] == "" && update_array[1] == "" && update_array[2] == "" && update_array[3] == ""){
-            	return true;
-            }else if(update_array[0] != "" && update_array[2] != "" && update_array[3] != ""){
+            if(update_array[0] != "" && update_array[2] != "" && update_array[3] != ""){
             	return true;
             }
 
