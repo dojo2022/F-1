@@ -27,14 +27,18 @@ public class CalendarServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/simpleBC/LoginServlet");
-//			return;
-//		}
+		if (session.getAttribute("userid") == null) {
+			response.sendRedirect("/GandA/LoginServlet");
+			return;
+		}
+
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String user = (String)session.getAttribute("userid");
 
 		// 検索処理を行う
 		CalendarDAO bDao = new CalendarDAO();
-		List<String> dateList = bDao.select(new Schedule("a","","","","",""));
+		List<String> dateList = bDao.select(new Schedule(user,"","","","",""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("dateList", dateList);
@@ -42,18 +46,6 @@ public class CalendarServlet extends HttpServlet {
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
 		dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/simpleBC/LoginServlet");
-//			return;
-//		}
 	}
 
 }

@@ -24,8 +24,8 @@
                 <div class="pick">
                     <c:forEach var="e" items="${pickMenu}" >
                         <div class="space-detail">
-                            <a href="https://recipe.rakuten.co.jp/${e.link}"><img src="${e.imageRecipe}" alt="料理の画像" class="image-pick"></a>
-                            <h2><a href="https://recipe.rakuten.co.jp/${e.link}">【${e.nameDish}】</a></h2>
+                            <a href="https://recipe.rakuten.co.jp/${e.link}" target="_blank" rel="noopener noreferrer"><img src="${e.imageRecipe}" alt="料理の画像" class="image-pick"></a>
+                            <h2><a href="https://recipe.rakuten.co.jp/${e.link}" target="_blank" rel="noopener noreferrer">【${e.nameDish}】</a></h2>
                         </div>
                     </c:forEach>
                 </div>

@@ -126,10 +126,9 @@
 }
 
 
-
 /*schedule.html*/
 .wrapper-schedule {
-	margin: 0 auto;
+	margin: -50px auto 0 auto;
 }
 
 .wrapper-schedule #register-date {
@@ -138,7 +137,7 @@
 
 .wrapper-schedule .time-schedule {
 	overflow-y: scroll;
-	max-height: 350px;
+	max-height: 300px;
 	max-width: 1000px;
 	margin: auto;
 }
@@ -353,12 +352,19 @@
 	top: -82px;
 }
 
+#wrapper-schedule #back {
+	padding: 8px 10px 8px 10px;
+	margin-left: 10px;
+	font-size: 1em;
+	text-decoration: none;
+    color: black;
+}
+
 /*登録用フォーム*/
 .wrapper-schedule #form-register-show {
 	width: 450px;
 	margin-left: auto;
 	margin-right: auto;
-
 }
 
 .wrapper-schedule #space-register,

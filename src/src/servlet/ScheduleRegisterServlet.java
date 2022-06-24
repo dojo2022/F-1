@@ -27,14 +27,14 @@ public class ScheduleRegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/simpleBC/LoginServlet");
-//			return;
-//		}
+		if (session.getAttribute("userid") == null) {
+			response.sendRedirect("/GandA/LoginServlet");
+			return;
+		}
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user = "a";
+		String user = (String)session.getAttribute("userid");
 		String year = request.getParameter("year");
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
@@ -64,14 +64,14 @@ public class ScheduleRegisterServlet extends HttpServlet {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/simpleBC/LoginServlet");
-//			return;
-//		}
+		if (session.getAttribute("userid") == null) {
+			response.sendRedirect("/GandA/LoginServlet");
+			return;
+		}
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user = "a";
+		String user = (String)session.getAttribute("userid");
 		String sub = request.getParameter("sub-hide");
 		String title = request.getParameter("TITLE");
 		String start = request.getParameter("START");
