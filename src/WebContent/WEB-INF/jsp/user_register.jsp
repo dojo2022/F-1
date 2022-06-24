@@ -8,8 +8,8 @@
 <link rel="stylesheet" type="text/css" href="/GandA/css/login.css">
 </head>
 <body>
+<img id="background" src="img/other/log_back.png">
 
-<body>
     <!--ヘッダーここから-->
     <header>
     </header>
