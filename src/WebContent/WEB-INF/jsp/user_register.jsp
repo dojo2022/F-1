@@ -5,6 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+img#background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: auto;
+    max-height: 657px;
+}
+</style>
 <link rel="stylesheet" type="text/css" href="/GandA/css/login.css">
 </head>
 <body>

@@ -80,11 +80,3 @@ p {
     margin-left: 320px;
 margin: initial;
 }
-img#background {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: auto;
-    max-height: 730px;
-}

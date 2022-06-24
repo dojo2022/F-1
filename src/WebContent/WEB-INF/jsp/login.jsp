@@ -12,7 +12,7 @@ img#main_pict {
     width: -webkit-fill-available;
     top: 0px;
     left: 0px;
-    max-height: 897px;
+    max-height: 657px;
 }
 img#background {
     position: absolute;
@@ -20,7 +20,7 @@ img#background {
     left: 0px;
     width: 100vw;
     height: auto;
-    max-height: 730px;
+    max-height: 657px;
 }
 .content::-webkit-scrollbar{
   display: block;
