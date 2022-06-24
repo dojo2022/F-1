@@ -71,20 +71,18 @@ public class TopServlet extends HttpServlet {
 
 		// 更新または削除を行う
 		TopDAO toDao = new TopDAO();
-		if (!title.equals("") && !startTime.equals("") && !endTime.equals("")) {
+		if (request.getParameter("SUBMIT").equals("更新")) {
 			if (toDao.update((new Schedule(user,date,sub,title,startTime,endTime)),startTimeOld)) {	// 更新成功
 				request.setAttribute("result", "更新成功！");
 			}else {												// 更新失敗
 				request.setAttribute("result", "更新失敗！");
 			}
-		}else if(title.equals("") && sub.equals("") && startTime.equals("") && endTime.equals("")) {
+		}else {
 			if (toDao.delete(user,date,startTimeOld)) {	// 削除成功
 				request.setAttribute("result", "削除成功！");
 			}else {												// 更新失敗
-				request.setAttribute("result", "更新失敗！");
+				request.setAttribute("result", "削除失敗！");
 			}
-		}else {
-			request.setAttribute("result", "更新失敗！");
 		}
 
 		Calendar today = Calendar.getInstance();
