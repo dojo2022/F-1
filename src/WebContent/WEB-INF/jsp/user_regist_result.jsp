@@ -3,13 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/GandA/css/login.css">
 <meta charset="UTF-8">
-<title>登録結果</title>
+<title>認証結果</title>
 </head>
 <body>
 
-<h1>登録結果</h1>
+<h2></h2>
+<div id="result">
 <p>${result}</p>
+</div>
+        <img id="logo_cat" src="img/other/cat.png" alt="猫の画像"width="300" height="250">
+<button id="back"><a href="/GandA/LoginServlet">戻る</a></button>
 
 </body>
 </html>
