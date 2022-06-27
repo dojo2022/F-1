@@ -20,7 +20,7 @@
 #text-pickup {
     width: 48%;
     height: auto;
-    padding: 10px;
+    padding: 5px;
 
     overflow-wrap: break-word;
     border: solid 1px;
@@ -60,27 +60,27 @@
 
 #explain-food {
     margin: 0px 5px 0px 20px;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 #explain-spot {
     margin: 0px 5px 0px 20px;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 #explain-hotel {
     margin: 0px 5px 0px 20px;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 #explain-budget {
     margin: 0px 5px 0px 20px;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 #explain-location {
     margin: 0px 5px 0px 20px;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 
@@ -91,7 +91,6 @@
 /*旅行先の写真*/
 
 #picture-travel {
-    margin-top: auto;
     margin-left: 20px;
     justify-content: flex-end;
     max-width: 600px;
