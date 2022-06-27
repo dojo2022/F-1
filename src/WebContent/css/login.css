@@ -1,90 +1,111 @@
 @charset "UTF-8";
-#login_box {
-		position:absolute;
-		background:#F8F8F8;
-    margin: 80px auto;
-    width: 540px;
-    height: 480px;
-    border: solid 3px #000088c3;
-    box-shadow: 1px 0 5px 2px #999 inset;
-    margin-left: 180px;
-    margin-top: 125px;
-}
-#input_box {
-    margin: 0 40px 0 80px;
-    padding: 10px 0 0 20px;
-}
-p input {
-    margin-left: 100px;
-}
-body {
-    height: 1em;
+.womanbox {
     text-align: center;
-        width: 1000px;
+    overflow: hidden;
+	margin-top: -23px;
 }
-.submit {
-    font-weight: bold;
-    font-size: 23px;
-    height: 40px;
-    width: 120px;
-    margin-left: 115px;
+
+#woman {
+    width: 68%;
+    height: auto;
+    margin-right: 0px;
+    border-radius: 13px;
+
+    animation :imgfade 10s infinite;
+opacity: 0;
 }
-.button {
-    font-weight: bold;
-    margin-left: 300px;
+
+@keyframes imgfade {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 1;
+	}
+
+	75% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }
-p {
-    font-size: 18px;
-    text-align: left;
-    font-weight: bold;
-    /*width: 150px;
-    margin-right:130px;*/
+
+
+
+
+
+
+#login-form {
+    height: 50px;
 }
-#back {
-    margin-left: 300px;
+
+
+
+#input_box {
+    display: flex;
+    justify-content: right;
+    width: 84%;
+    margin-top: 10px;
+
 }
-.icon_main {
-    margin-left: 3em;
-    padding-top: 1em;
-    padding-bottom: 3px;
+
+#submit-box {
+    text-align: right;
+    width: 84%;
+    margin-top: 0px;
 }
+
+
 #user_id {
-    display: inline-block;
-    width: 300px;
-    padding: 0.5em;
-    border: 1px solid #000088;
-    box-sizing: border-box;
-    background: #FFFFFF;
-    margin-left: 20px;
-    margin-right: 100px;
+    margin-left: 10px;
+    border-radius: 20px;
+    border: solid 1px;
 }
 #password {
-    display: inline-block;
-    width: 300px;
-    padding: 0.5em;
-    border: 1px solid #000088;
-    box-sizing: border-box;
-    background: #FFFFFF;
-    margin-left: 20px;
+    margin-left: 10px;
+    border-radius: 20px;
+    border: solid 1px;
 }
-#name {
-    display: inline-block;
-    width: 300px;
-    padding: 0.5em;
-    border: 1px solid #000088;
-    box-sizing: border-box;
-    background: #FFFFFF;
-    margin-left: 20px;
+#name{
+	    margin-left: 10px;
+    border-radius: 20px;
+    border: solid 1px;
 }
-#buttonPassword{
-    margin-left: 320px;
-margin: initial;
+.submit {
+    height: 16px;
+    margin-left: 20px;
+    margin-bottom: 1px;
+    border-radius: 20px;
+    border: none;
+    background-color: #3C3B6E;
+    color: #ffffff;
+}
+.button {
+    font-size: 13px;
+    height: 16px;
+    margin-left: 10px;
+    margin-bottom: 1px;
+    border-radius: 20px;
+    border: solid 1px;
+    background-color: #ffffff;
+    color: #1C1C1C;
+}
+#icon_main {
+    margin-left: 15%;
+    width: 120px;
+    height: auto;
 }
 #result p {
     font-size: 40px;
     text-align: end;
     margin-top: 200px;
+    margin-right: 500px;
 }
 #logo_cat{
-	margin-left: 914px;
+    margin-left: 675px;
 }

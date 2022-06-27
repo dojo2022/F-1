@@ -55,7 +55,6 @@
 						<input name="oldEnd" id="old-end">
 						<input name="sub-hide" id="sub-hide-add">
 						<input name="CHECK" id="judge-check-add">
-						<label>共有</label><input type="checkbox" value="check" id="checkAdd"><br>
 						<input type="submit" name="SUBMIT" value="更新" id="update">
 						<input type="submit" name="SUBMIT" value="削除" id="delete">
 					</form>
@@ -541,7 +540,6 @@
 					}
 				}
 			</c:forEach>
-
 		};
 	</script>
 </body>
