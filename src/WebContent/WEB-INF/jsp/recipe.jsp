@@ -40,9 +40,15 @@
                 <!-- 検索フォーム -->
                 <div id="space-search">
                     <form method="POST" action="/GandA/RecipeSearchServlet">
-                        <label>Genre<span id="balloon-pop-genre">ジャンル</span><input type="text" size="15" name="GENRE" id="genre"></label>
-                        <label>Ingredient<span id="balloon-pop-ingredient">具材</span><input type="text" size="15" name="INGREDIENT" id="ingredient"></label>
-                        <label>Time<br><span id="balloon-pop-time">調理時間</span>
+                    	<div id="key-word">
+                    		<label>Key Word<input type="text" size="15" class="key"></label>
+                    	</div>
+                    	<input type="hidden" id="key-union" name="KEY" value="">
+
+                        <!-- <label>Genre<span id="balloon-pop-genre">ジャンル</span><input type="text" size="15" name="GENRE" id="genre"></label> -->
+                        <!-- <label>Ingredient<span id="balloon-pop-ingredient">具材</span><input type="text" size="15" name="INGREDIENT" id="ingredient"></label> -->
+                        <label>Time<br>
+                        <!-- <span id="balloon-pop-time">調理時間</span> -->
                         	<select name="TIMECOOKING" id="time-cooking">
                                 <option value = "0">指定なし</option>
                                 <option value = "1">5分以内</option>
@@ -51,7 +57,9 @@
                                 <option value = "4">約30分</option>
                             </select>
                         </label>
-                        <input type="submit" value="search" id="search">
+
+                        <button type="button" id="add" onclick="key_add()">add</button>
+                        <input type="submit" value="search" id="search" onclick="union()">
                     </form>
                 </div>
             </div>
@@ -71,6 +79,26 @@
                     //none(非表示)のときblock(表示)にする
                     show_flag.style.display = "block";
                 }
+            }
+
+            let count = 0;
+            function key_add(){
+            	count += 1;
+            	let item = document.createElement('label');
+            	item.innerHTML = "Key Word<input type=\"text\" size=\"15\" class=\"key\">";
+            	document.querySelector('#key-word').appendChild(item);
+            }
+
+            function union(){
+            	let keyword = document.getElementsByClassName("key")[0].value;
+            	//let keyword_list = document.getElementsByClassName("key");
+            	//let keyword = keyword_list.item(0).value;
+            	keyword += " ";
+            	for(let i = 0; i < count; i++){
+            		keyword += document.getElementsByClassName("key")[i + 1].value;
+            		keyword += " ";
+            	}
+            	document.querySelector('#key-union').value = keyword;
             }
         </script>
 

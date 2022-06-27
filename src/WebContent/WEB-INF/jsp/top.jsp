@@ -146,7 +146,7 @@
 							</select><br>
 							<p id="update-check"></p>
 							<input type="submit" value="削除"id="delete" name="SUBMIT">
-							<input type="submit" value="更新" id="update" name="SUBMIT">
+							<input type="submit" value="更新" id="update" name="SUBMIT" onclick="return update_check()">
 						</form>
 					</div>
 				</div>
@@ -208,13 +208,13 @@
 				display2 = "<h2 id=\"h2\">" + (schedule[i][0].replace(/(\/0{1})/g, '/')) + "</h2><div class=\"box scroll\">";
 				display2 +=
 					"<span class=\"first-text\">" + schedule[i][3] + "</span><span class=\"first-text2\"><button class=\"modal-open\" value=\"" + i + "\">" + schedule[i][2] + "</button></span>";
-				i += 1;
+
 				for (j = i + 1; j < size; j++) {
 					if (schedule[i][0] != schedule[j][0]) {
 						break;
 					}
 					display2 +=
-						"<span class=\"first-text\">" + schedule[i][3] + "</span><span class=\"first-text2\"><button class=\"modal-open\" value=\"" + i + "\">" + schedule[i][2] + "</button></span>";
+						"<span class=\"first-text\">" + schedule[j][3] + "</span><span class=\"first-text2\"><button class=\"modal-open\" value=\"" + j + "\">" + schedule[j][2] + "</button></span>";
 				}
 				display2 += "</div>";
 			}
@@ -237,6 +237,7 @@
 
 				//フォーム内のinput、selectのvalueに初期値格納
 				index = event.target.value;
+				console.log(index);
 				document.querySelector('#date').value = schedule[index][0];
 				document.querySelector('#date-show').textContent = (schedule[index][0].replace(/(\/0{1})/g, '/'))
 				document.querySelector('#title').value = schedule[index][2];
@@ -281,7 +282,7 @@
 			}
 		});
 
-		document.getElementById('update').onsubmit = function(event){
+		function update_check(){
             const update_array = [document.getElementById('form').TITLE.value, document.getElementById('form').SUB.value,
             					   document.getElementById('form').STARTTIME.value, document.getElementById('form').ENDTIME.value];
 
@@ -317,7 +318,7 @@
 
             alert("タイトルを入力、開始時間、終了時間を選択してください");
             return false;
-        };
+        }
 	</script>
 </body>
 

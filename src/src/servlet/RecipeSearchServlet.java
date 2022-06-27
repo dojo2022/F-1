@@ -44,21 +44,24 @@ public class RecipeSearchServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String genre = request.getParameter("GENRE");
-		String ingredient = request.getParameter("INGREDIENT");
+		//String genre = request.getParameter("GENRE");
+		//String ingredient = request.getParameter("INGREDIENT");
+		String searchString = request.getParameter("KEY").strip();
 		int guide = Integer.parseInt(request.getParameter("TIMECOOKING"));
+
 
 		// スクレイピング
 		Document source;
 		Elements elements;
-		String searchString = genre + " " + ingredient;
+		//String searchString = genre + " " + ingredient;
 
 		//乱数生成
 		Random rand = new Random();
 	    int category = rand.nextInt(46) + 10;
 
 		// の該当ページ(検索内容に応じたページ)にGETリクエストを送る
-		if (!genre.isEmpty() || !ingredient.isEmpty()) {
+		//if (!genre.isEmpty() || !ingredient.isEmpty()) {
+	    if (!searchString.isEmpty()) {
 			if(guide == 0) { //調理時間が選択させていない場合
 				source = Jsoup.connect("https://recipe.rakuten.co.jp/search/" + searchString).userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A").get();
 			}else {         //調理時間が選択されている場合
@@ -82,7 +85,7 @@ public class RecipeSearchServlet extends HttpServlet {
 		Elements dishIngredients, ingredientQuantity, instructions;
 		int i = 0, j = 0, data_num = 0;
 		String nameDish = "", sub = "", timeCooking = "", link = "", imagePath = "";
-		ingredient = "";
+		String genre = "", ingredient = "";
 		List<Recipe> recipeList = new ArrayList<Recipe>();
 
 		//検索が見つかった場合
