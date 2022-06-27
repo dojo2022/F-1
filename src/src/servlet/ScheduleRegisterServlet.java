@@ -47,9 +47,10 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		// 検索処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
 		List<Schedule> cardList = bDao.select(new Schedule(user,date,"","","",""));
-
+		List<Schedule> allMembers = bDao.select(new Schedule("all_members",date,"","","",""));
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
+		request.setAttribute("allMembers", allMembers);
 		request.setAttribute("dateNow", dateNow);
 
 		// 登録ページにフォワードする
@@ -83,16 +84,29 @@ public class ScheduleRegisterServlet extends HttpServlet {
 		dateNow[1] = request.getParameter("month");
 		dateNow[2] = request.getParameter("day");
 		String date = dateNow[0] + "/" + dateNow[1] + "/" + dateNow[2];
+		String check = request.getParameter("CHECK");
 
 		// 登録処理を行う
 		ScheduleRegisterDAO bDao = new ScheduleRegisterDAO();
-		if (request.getParameter("SUBMIT").equals("登録")) {
-			bDao.insert(new Schedule(user, date, sub, title, start, end));
-		} else if (request.getParameter("SUBMIT").equals("更新")) {
-			bDao.update(new Schedule(user, date, sub, title, start, end),oldStart);
-		} else if (request.getParameter("SUBMIT").equals("削除")) {
-			bDao.delete(user,date,oldStart);
+		if (check.equals("true")) {
+			if (request.getParameter("SUBMIT").equals("登録")) {
+				bDao.insert(new Schedule("all_members", date, sub, title, start, end));
+			} else if (request.getParameter("SUBMIT").equals("更新")) {
+				bDao.update(new Schedule("all_members", date, sub, title, start, end),oldStart);
+			} else if (request.getParameter("SUBMIT").equals("削除")) {
+				bDao.delete("all_members",date,oldStart);
+			}
+		} else {
+			if (request.getParameter("SUBMIT").equals("登録")) {
+				bDao.insert(new Schedule(user, date, sub, title, start, end));
+			} else if (request.getParameter("SUBMIT").equals("更新")) {
+				bDao.update(new Schedule(user, date, sub, title, start, end),oldStart);
+			} else if (request.getParameter("SUBMIT").equals("削除")) {
+				bDao.delete(user,date,oldStart);
+			}
 		}
+
+
 
 		//編集サーブレットにリダイレクトする
 		response.sendRedirect("/GandA/ScheduleRegisterServlet?year=" + dateNow[0] + "&month=" + dateNow[1] + "&day=" + dateNow[2]);
