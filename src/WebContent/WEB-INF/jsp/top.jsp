@@ -27,6 +27,7 @@
 				<div id="text_left">
 
 				</div>
+
 				<div id="text_right">
 
 				</div>
@@ -185,8 +186,8 @@
 
 		<% } %>
 
-		var display1 = "直近のスケジュールがありません";
-		var display2 = "直近のスケジュールがありません";
+		var display1 = "<h2>直近のスケジュールがありません</h2>";
+		var display2 = "<h2>直近のスケジュールがありません</h2>";
 		var i, j;
 		var size = <%= todoList.size() %>;
 

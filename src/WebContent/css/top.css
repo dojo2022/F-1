@@ -88,7 +88,6 @@
 .wrapper_top h2 {
   text-align: center;
   width: 90%;
-  text-decoration: underline;
   /*text-align: right;*/
   font-size: 30px;
   margin-top: 130px;
@@ -104,21 +103,25 @@
 .wrapper_top #text_left {
   width: 49.9%;
   height: 500px;
+  margin-left: 90px;
   /*border: solid 1px #7799FF;*/
-  padding: 10%;
+
+  /*padding: 10%;
   padding-right: 10px;
   text-align: center;
-
+*/
 }
 
 .wrapper_top #text_right {
   width: 49.9%;
   height: 500px;
   /* border: solid 1px #113498;*/
+  /*
   text-align: center;
   padding: 10%;
   padding-left: 15px;
   margin-left: -20px;
+  */
 }
 
 .wrapper_top .box {
