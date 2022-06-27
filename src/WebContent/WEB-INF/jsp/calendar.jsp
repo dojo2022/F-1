@@ -24,33 +24,35 @@
 		<!-- ヘッダー（ここまで） -->
 		<!-- メイン（ここから） -->
 		<main>
-			<div class="wrapper">
-				<!-- ボタンクリックで月移動 -->
-				<div id="next-prev-button">
-					<button id="prev" onclick="prev()">‹</button>
-					<button id="next" onclick="next()">›</button>
-					<!-- xxxx年xx月を表示 -->
-					<p id="header-title"></p>
-				</div>
+			<div class="wrapper-frame">
+				<div class="wrapper">
+					<!-- ボタンクリックで月移動 -->
+					<div id="next-prev-button">
+						<button id="prev" onclick="prev()">‹</button>
+						<button id="next" onclick="next()">›</button>
+						<!-- xxxx年xx月を表示 -->
+						<p id="header-title"></p>
+					</div>
 
-				<!-- カレンダー -->
-				<div id="calendar"></div>
+					<!-- カレンダー -->
+					<div id="calendar"></div>
 
-				<div class="footer-container-calendar">
-					<label>日付指定：</label><select id="month" onchange="jump()">
-						<option value=0>1月</option>
-						<option value=1>2月</option>
-						<option value=2>3月</option>
-						<option value=3>4月</option>
-						<option value=4>5月</option>
-						<option value=5>6月</option>
-						<option value=6>7月</option>
-						<option value=7>8月</option>
-						<option value=8>9月</option>
-						<option value=9>10月</option>
-						<option value=10>11月</option>
-						<option value=11>12月</option>
-					</select> <select id="year" onchange="jump()"></select>
+					<div class="footer-container-calendar">
+						<label>日付指定：</label><select id="month" onchange="jump()">
+							<option value=0>1月</option>
+							<option value=1>2月</option>
+							<option value=2>3月</option>
+							<option value=3>4月</option>
+							<option value=4>5月</option>
+							<option value=5>6月</option>
+							<option value=6>7月</option>
+							<option value=7>8月</option>
+							<option value=8>9月</option>
+							<option value=9>10月</option>
+							<option value=10>11月</option>
+							<option value=11>12月</option>
+						</select> <select id="year" onchange="jump()"></select>
+					</div>
 				</div>
 			</div>
 		</main>

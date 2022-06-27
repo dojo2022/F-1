@@ -6,8 +6,15 @@
 	max-width: 630px;
 }
 
+.wrapper-calendar .wrapper-frame {
+	background-color: white;
+	border: 1px solid #d9d9d9;
+	margin-top: 11px;
+	padding: 0 10px;
+}
+
 .wrapper-calendar .wrapper {
-	margin: 0 auto;
+	margin: 0;
 	color: #666;
 }
 
@@ -143,7 +150,7 @@
 
 .wrapper-schedule .time-schedule {
 	overflow-y: scroll;
-	max-height: 300px;
+	max-height: 370px;
 	max-width: 1200px;
 	width:80%;
 	border-top: 4px solid #66FF99;
@@ -401,7 +408,7 @@
 .wrapper-schedule #back {
 	padding: 8px 10px 8px 10px;
 	margin-top: 10px;
-	margin-left: 20px;
+	margin-left: 10%;
 	font-size: 1em;
 }
 .wrapper-schedule #back:hover {
@@ -487,6 +494,7 @@
 .wrapper-schedule #old-end,
 .wrapper-schedule #sub-hide,
 .wrapper-schedule #sub-hide-add,
+.wrapper-schedule #judge-check,
 .wrapper-schedule #judge-check-add {
 	display: none;
 }
