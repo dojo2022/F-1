@@ -383,6 +383,7 @@
 			const show_flag = document.getElementById("space-register-add");
 			const other_flag = document.getElementById("space-register");
 
+			document.getElementById("judge-check-add").value = "false";
 			if (start <= 9) {
 				selectStartAdd.value = "0" + start + ":00";
 				document.getElementById("old-start").value = "0" + start + ":00";
@@ -418,6 +419,7 @@
 			const show_flag = document.getElementById("space-register-add");
 			const other_flag = document.getElementById("space-register");
 
+			document.getElementById("judge-check-add").value = "true";
 			if (start <= 9) {
 				selectStartAdd.value = "0" + start + ":00";
 				document.getElementById("old-start").value = "0" + start + ":00";
