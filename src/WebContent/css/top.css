@@ -72,6 +72,7 @@
   margin-right: 5%;
   padding-right: 5%;
   display: inline-block;
+  margin-bottom: 10px;
 }
 
 .wrapper_top .first-text2 {
@@ -86,6 +87,7 @@
 
 .wrapper_top h2 {
   text-align: center;
+  width: 90%;
   text-decoration: underline;
   /*text-align: right;*/
   font-size: 30px;
@@ -103,21 +105,25 @@
   width: 49.9%;
   height: 500px;
   /*border: solid 1px #7799FF;*/
-  padding: 20px;
-  margin-left: 90px;
+  padding: 10%;
+  padding-right: 10px;
+  text-align: center;
+
 }
 
 .wrapper_top #text_right {
   width: 49.9%;
   height: 500px;
   /* border: solid 1px #113498;*/
-  padding: 20px;
+  text-align: center;
+  padding: 10%;
+  padding-left: 15px;
   margin-left: -20px;
 }
 
 .wrapper_top .box {
   width: 478px;
-  height: 85px;
+  height: 165px;
   padding: 20px;
   margin: 10px;
   background: #F8F8F8;
