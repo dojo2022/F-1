@@ -9,7 +9,7 @@
 .wrapper-calendar .wrapper-frame {
 	background-color: white;
 	border: 1px solid #d9d9d9;
-	margin-top: 11px;
+	margin-top: 40px;
 	padding: 0 10px;
 }
 
@@ -153,8 +153,8 @@
 	max-height: 370px;
 	max-width: 1200px;
 	width:80%;
-	border-top: 4px solid #66FF99;
-	border-bottom: 4px solid #66FFFF;
+	border-top: 4px double black;
+	border-bottom: 4px double black;
 	margin: auto;
 }
 
@@ -423,19 +423,25 @@
 .wrapper-schedule #form-register-show {
 	width: 450px;
 	margin-left: auto;
-	margin-right: auto;
+	margin-right: 0;
 }
 
 .wrapper-schedule #space-register,
 .wrapper-schedule #space-register-add {
-	position: relative;
+	/*position: relative;
 	background-color: white;
-	box-shadow: 2px 2px 2px 2px #a8a8a8;
 	z-index: 30;
 	width: 270px;
 	height: 350px;
 	margin-bottom: -350px;
-	left: 200px;
+	left: 200px;*/
+	display: block;
+	width: 270px;
+	height: 350px;
+	margin-bottom: -350px;
+	margin-left: auto;
+	margin-right: 0;
+	background-color: red;
 }
 
 .wrapper-schedule #space-register #date,

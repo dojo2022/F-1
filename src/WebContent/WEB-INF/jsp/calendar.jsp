@@ -12,6 +12,7 @@
 <meta charset="UTF-8">
 <title>カレンダー | G＆A</title>
 <link rel="stylesheet" href="/GandA/css/schedule.css">
+<link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>
 
 <body onload="setScheduleDate(); todayCalendar();">

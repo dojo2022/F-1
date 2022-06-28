@@ -10,6 +10,7 @@
 <title>スケジュール登録 | G＆A</title>
 <link rel="stylesheet" href="/GandA/css/schedule.css">
 <link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>
 
 <body onload="todaySchedule(); displaySchedule();">
@@ -501,11 +502,6 @@
 		//更新の判定
 		document.getElementById('update').onclick = function(event) {
 			//event.preventDefault();
-			if (document.forms.form2.checkAdd.checked == true){
-				document.getElementById("judge-check-add").value = "true";
-			} else {
-				document.getElementById("judge-check-add").value = "false";
-			}
 			var valueStart = document.getElementById("start-add").value;
 			var valueEnd = document.getElementById("end-add").value;
 			var oldStart = document.getElementById("old-start").value;
