@@ -38,7 +38,7 @@
 
 	                        <!-- 料理の詳細 -->
 	                        <div class="detail-dish">
-	                            <h3>Genre</h3>
+	                            <h3>Comment</h3>
 	                            <p>
 	                                ${e.genre}
 	                            </p>

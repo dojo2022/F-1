@@ -43,7 +43,8 @@
 							<input type="hidden" name="USER" id="user">
 							<p id="date-show"></p>
 							<label>タイトル<br><input type="text" name="TITLE" id="title"></label><br>
-							<label>内容<br><input type="text" name="SUB" id="sub"></label><br>
+							<label>内容<br><textarea id="sub" name="NAMESHOW" maxlength="100" rows="3" cols="30"></textarea></label><br>
+							<input type="hidden" name="SUB" id="sub-hide">
 							<input type="hidden" name="STARTTIMEOLD" id="start-time-old">
 							<select name="STARTTIME" id="start-time">
 								<option hidden value="0"></option>
@@ -248,9 +249,9 @@
 				document.querySelector('#date').value = schedule[index][0];
 				document.querySelector('#date-show').textContent = (schedule[index][0].replace(/(\/0{1})/g, '/'))
 				document.querySelector('#title').value = schedule[index][2];
-				document.querySelector('#sub').value = schedule[index][1];
-				document.querySelector('#start-time-old').value = schedule[index][3];
+				document.querySelector('#sub').value = schedule[index][1].replace(/(\^)/g, '\n');
 
+				document.querySelector('#start-time-old').value = schedule[index][3];
 				document.querySelector('#start-time').options[0].value = schedule[index][3];
 				document.querySelector('#end-time').options[0].value = schedule[index][4];
 				document.querySelector('#start-time').options[0].textContent = schedule[index][3];
@@ -290,7 +291,7 @@
 		});
 
 		function update_check(){
-            const update_array = [document.getElementById('form').TITLE.value, document.getElementById('form').SUB.value,
+            const update_array = [document.getElementById('form').TITLE.value, document.getElementById('form').NAMESHOW.value,
             					   document.getElementById('form').STARTTIME.value, document.getElementById('form').ENDTIME.value];
 
             if(document.querySelector('#start-time').value >= document.querySelector('#end-time').value){
@@ -320,6 +321,7 @@
             }
 
             if(update_array[0] != "" && update_array[2] != "" && update_array[3] != ""){
+            	document.querySelector('#sub-hide').value = update_array[1].replace(/\r?\n/g, "^");
             	return true;
             }
 

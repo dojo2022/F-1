@@ -110,7 +110,7 @@ public class ScheduleRegisterDAO {
 			if (card.getSub() != null && !card.getSub().equals("")) {
 				pStmt.setString(3, card.getSub());
 			} else {
-				pStmt.setString(3, null);
+				pStmt.setString(3, "");
 			}
 			if (card.getTitle() != null && !card.getTitle().equals("")) {
 				pStmt.setString(4, card.getTitle());

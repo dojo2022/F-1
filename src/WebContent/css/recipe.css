@@ -19,6 +19,10 @@
     word-break:break-all;
 }
 
+#wrapper-recipe .pick-menu {
+    margin-left: 120px;
+}
+
 #wrapper-recipe .pick {
     display: flex;
 }
@@ -43,13 +47,13 @@
 }
 
 #wrapper-recipe .space-detail {
-    width: 350px;
+    width: 300px;
     margin-left: 20px;
 }
 
 #wrapper-recipe .image-pick {
     width: 300px;
-    height: 330px;
+    height: 300px;
 }
 
 #wrapper-recipe .detail-pick{
@@ -69,7 +73,7 @@
 }
 
 #wrapper-recipe .form-search-show {
-    margin: 50px 0 0 0px;
+    margin: 37px 0 0 30px;
 }
 
 #wrapper-recipe #form-search {
@@ -204,7 +208,7 @@
 }
 
 #wrapper-search-recipe .name-dish {
-    font-size: 2em;
+    font-size: 1.6em;
     margin: 10px 0 0 0;
 }
 
