@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="/GandA/css/travel.css">
-
+    <link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>
 
 
