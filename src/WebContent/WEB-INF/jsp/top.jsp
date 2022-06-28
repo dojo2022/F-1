@@ -12,7 +12,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<title>G＆A</title>
 	<meta name=”viewport” content=”width=device-width,initial-scale=1.0″>
 	<link rel="stylesheet" type="text/css" href="css/top.css">
 	<link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
