@@ -24,7 +24,13 @@
 }
 
 #wrapper-recipe h1 {
-    margin: 0;
+    margin: 0 0 20px 0;
+    font-size: 1.4em;
+}
+
+#wrapper-recipe h2 {
+    font-size: 1.2em;
+    text-align: center;
 }
 
 #wrapper-recipe a {
@@ -42,7 +48,7 @@
 }
 
 #wrapper-recipe .image-pick {
-    width: 350px;
+    width: 300px;
     height: 330px;
 }
 
@@ -63,14 +69,15 @@
 }
 
 #wrapper-recipe .form-search-show {
-    margin: 50px 0 0 20px;
+    margin: 50px 0 0 0px;
 }
 
 #wrapper-recipe #form-search {
     padding: 0;
-    width: 40px;
+    width: 30px;
     height: 30px;
     border: none;
+    margin-top: 17px;
 }
 
 #wrapper-recipe #space-search {

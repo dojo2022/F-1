@@ -12,10 +12,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>レシピ検索</title>
+    <title>レシピ検索結果 | G＆A</title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/recipe.css">
-
+    <link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>
 
 <body>

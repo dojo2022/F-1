@@ -6,9 +6,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>レシピ</title>
+    <title>献立 | G＆A</title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/recipe.css">
+    <link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>
 
 <body>
@@ -34,8 +35,7 @@
 
             <div class="form-search-show">
                 <!-- 検索項目表示ボタン -->
-                <button type="button" id="form-search" onclick="show()"><img src="img/recipe/画像3.png" alt="" height="30px"
-                        width="40px"></button>
+                <button type="button" id="form-search" onclick="show()"><img src="img/recipe/search.png" alt="" height="30px" width="30px"></button>
 
                 <!-- 検索フォーム -->
                 <div id="space-search">
