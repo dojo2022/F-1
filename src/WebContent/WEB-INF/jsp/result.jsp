@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/GandA/css/login.css">
 <meta charset="UTF-8">
 <title>認証結果</title>
+<link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>
 <body>
 

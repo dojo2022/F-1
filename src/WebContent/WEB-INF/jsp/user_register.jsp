@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>新規登録ページ</title>
 <link rel="stylesheet" type="text/css" href="/GandA/css/login.css">
+<link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>
 <body>
   <div class="wrapper-user-register">
