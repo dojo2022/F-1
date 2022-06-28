@@ -29,6 +29,14 @@
 
         <main>
             <h1 id="title-travel">【 ${travelList.get(0).sitePlace} 】</h1>
+
+
+            <!--レスポンシブ旅行先写真-->
+            <div id="picture-travel-pro">
+              <img src="img/travel/${travelList.get(0).siteImage}" alt="image-spot">
+            </div>
+
+
             <div class="flex-travel">
 
                 <!--おすすめ旅行先の説明 -->
