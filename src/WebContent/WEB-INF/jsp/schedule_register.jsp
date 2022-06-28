@@ -30,14 +30,14 @@
 						<label for="date">日付</label><input type="text" name="DATE" id="date" size ="15" readonly><br>
 						<label>時間</label><select name="START" id="start"></select><span> ～</span>
 						<select name="END" id="end"></select><br>
-						<label for="title">タイトル</label><br><input type="text" name="TITLE" id="title" maxlength="20" size ="30"><br>
-						<label for="sub">内容</label><br><textarea name="SUB" id="sub" maxlength="100" rows="5" cols="20"></textarea><br>
+						<label class="label-title" for="title">タイトル</label><br><input type="text" name="TITLE" id="title" maxlength="20" size ="30"><br>
+						<label class="label-sub" for="sub">内容</label><br><textarea name="SUB" id="sub" maxlength="100" rows="5" cols="20"></textarea><br>
 						<input name="year" id="year">
 						<input name="month" id="month">
 						<input name="day" id="day">
 						<input name="sub-hide" id="sub-hide">
 						<input name="CHECK" id="judge-check">
-						<label>共有</label><input type="checkbox" value="check" id="check"><br>
+						<label class="label-share" for="check">共有</label><input type="checkbox" value="check" id="check">
 						<input type="submit" name="SUBMIT" value="登録" id="register">
 					</form>
 					<p id="error"></p>
@@ -47,8 +47,8 @@
 						<label for="date-add">日付</label><input type="text" name="DATE" id="date-add" size ="15" readonly><br>
 						<label>時間</label><select name="START" id="start-add"></select><span> ～</span>
 						<select name="END" id="end-add"></select><br>
-						<label for="title-add">タイトル</label><br><input type="text" name="TITLE" id="title-add" maxlength="20" size ="30"><br>
-						<label for="sub-add">内容</label><br><textarea name="SUB" id="sub-add" maxlength="100" rows="5" cols="20"></textarea><br>
+						<label class="label-title" for="title-add">タイトル</label><br><input type="text" name="TITLE" id="title-add" maxlength="20" size ="30"><br>
+						<label class="label-sub" for="sub-add">内容</label><br><textarea name="SUB" id="sub-add" maxlength="100" rows="5" cols="20"></textarea><br>
 						<input name="year" id="year-add">
 						<input name="month" id="month-add">
 						<input name="day" id="day-add">

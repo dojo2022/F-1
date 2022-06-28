@@ -10,7 +10,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>カレンダー | G＆A</title>
+<title>calendar | G＆A</title>
 <link rel="stylesheet" href="/GandA/css/schedule.css">
 <link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>
@@ -68,6 +68,9 @@
 		var scheduleYear = [""];
 		var scheduleMonth = [""];
 		var scheduleDay = [""];
+		var scheduleYearAll = [""];
+		var scheduleMonthAll = [""];
+		var scheduleDayAll = [""];
 		var selectYear = document.getElementById("year");
 		var selectMonth = document.getElementById("month");
 		var createYear = generateYearRange(1970, 2200);
