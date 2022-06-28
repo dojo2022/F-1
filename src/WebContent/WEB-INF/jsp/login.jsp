@@ -5,7 +5,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>ログイン|G＆A</title>
+  <title>ログイン｜G＆A</title>
 <link rel="stylesheet" type="text/css" href="/GandA/css/login.css">
 <link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>
