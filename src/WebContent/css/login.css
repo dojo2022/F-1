@@ -109,3 +109,12 @@ opacity: 0;
 #logo_cat{
     margin-left: 675px;
 }
+
+@media screen and (max-width:700px){
+	.button#back{
+	margin-right: 6px
+	}
+	.fade_xos#regist_form{
+	    margin-left: 645px;
+	}
+}
