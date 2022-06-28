@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -40,6 +41,12 @@ public class TopServlet extends HttpServlet {
 		// 検索処理を行う
 		TopDAO toDao = new TopDAO();
 		List<Schedule> todoList = toDao.selectTodo(new Schedule(user, date,"","","",""));
+		todoList.addAll(toDao.selectTodo(new Schedule("all_members", date,"","","","")));
+
+		//クラスをソート(日付、開始時間)
+		Comparator<Schedule> compare = Comparator.comparing(Schedule::getDate).thenComparing(Schedule::getStartTime);
+		todoList.sort(compare);
+
 		//List<Schedule> cardList = toDao.selectTodo(new Schedule(user,date,sub,title,start_time,end_time));
 
 		// 検索結果をリクエストスコープに格納する
@@ -59,7 +66,8 @@ public class TopServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user = (String)session.getAttribute("userid");
+		//String user = (String)session.getAttribute("userid");
+		String user = request.getParameter("USER");
 		String date = request.getParameter("DATE");
 		String sub = request.getParameter("SUB");
 		String title = request.getParameter("TITLE");
@@ -87,7 +95,14 @@ public class TopServlet extends HttpServlet {
 
 		Calendar today = Calendar.getInstance();
 		String nowDay = String.format("%d/%02d/%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1,today. get(Calendar.DATE));
+		user = (String)session.getAttribute("userid");
+
 		List<Schedule> todoList = toDao.selectTodo(new Schedule(user, nowDay,"","","",""));
+		todoList.addAll(toDao.selectTodo(new Schedule("all_members", date,"","","","")));
+
+		//クラスをソート(日付、開始時間)
+		Comparator<Schedule> compare = Comparator.comparing(Schedule::getDate).thenComparing(Schedule::getStartTime);
+		todoList.sort(compare);
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("todoList", todoList);

@@ -38,6 +38,7 @@
 					<div class="modal-content">
 						<form method="POST" action="/GandA/TopServlet" id="form">
 							<input type="hidden" name="DATE" id="date">
+							<input type="hidden" name="USER" id="user">
 							<p id="date-show"></p>
 							<label>タイトル<br><input type="text" name="TITLE" id="title"></label><br>
 							<label>内容<br><input type="text" name="SUB" id="sub"></label><br>
@@ -172,7 +173,7 @@
 		//取得した日付（文字列）を数値に変換
 		<% int i; %>
 		<% for (i = 0; i < todoList.size(); i++) { %>
-			schedule[<%= i %>] = new Array(5);
+			schedule[<%= i %>] = new Array(6);
 			//日付
 			schedule[<%= i %>][0] = "<%= todoList.get(i).getDate() %>";
 			//内容
@@ -184,6 +185,7 @@
 			//終了時間
 			schedule[<%= i %>][4] = "<%= todoList.get(i).getEndTime() %>";
 
+			schedule[<%= i %>][5] = "<%= todoList.get(i).getUser() %>";
 		<% } %>
 
 		var display1 = "<h2>直近のスケジュールがありません</h2>";
@@ -239,6 +241,8 @@
 				//フォーム内のinput、selectのvalueに初期値格納
 				index = event.target.value;
 				console.log(index);
+
+				document.querySelector('#user').value = schedule[index][5];
 				document.querySelector('#date').value = schedule[index][0];
 				document.querySelector('#date-show').textContent = (schedule[index][0].replace(/(\/0{1})/g, '/'))
 				document.querySelector('#title').value = schedule[index][2];
