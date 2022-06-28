@@ -20,7 +20,7 @@
 
 .wrapper-calendar #header-title {
 	text-align: center;
-	font-size: 24px;
+	font-size: 20px;
 	width: 100%;
 	margin: 1rem 0 0;
 }
@@ -202,8 +202,8 @@
 	outline: none;
 	position: relative;
 	border: none;
-	left: 100px;
-	width: 10px;
+	left: 90px;
+	width: 7px;
 	z-index: 20;
 	margin: 0;
 	padding: 0;
@@ -223,7 +223,7 @@
 	position: relative;
 	border: none;
 	left: 170px;
-	width: 10px;
+	width: 7px;
 	z-index: 20;
 	margin: 0;
 	padding: 0;
@@ -242,7 +242,7 @@
 	display: flex;
 	position: relative;
 	border: none;
-	left: 110px;
+	left: 97px;
 }
 
 .wrapper-schedule .time-schedule textarea {
@@ -250,14 +250,14 @@
 	display: flex;
 	position: relative;
 	border: none;
-	left: 110px;
+	left: 97px;
 	resize: none;
 }
 
 .wrapper-schedule .time-schedule .line {
 	background-color: #FCFEFD;
 	z-index: 10;
-	width: 60%;
+	width: 70%;
 	height: 51px;
 	margin-bottom: -53px;
 }
@@ -270,7 +270,7 @@
 .wrapper-schedule .time-schedule .line-sub {
 	background-color: #CDFFED;
 	z-index: 20;
-	width: 60%;
+	width: 70%;
 }
 
 .wrapper-schedule .time-schedule .line-title {
@@ -286,8 +286,8 @@
 .wrapper-schedule .time-schedule .line-sub-all {
 	background-color: #FFE7B8;
 	z-index: 20;
-	width: 60%;
-	left: 180px;
+	width: 70%;
+	left: 177px;
 }
 
 .wrapper-schedule .time-schedule .line-title-all {

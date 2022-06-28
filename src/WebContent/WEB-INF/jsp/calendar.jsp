@@ -65,6 +65,7 @@
 	<!--jsプログラム-->
 	<script>
 		var dateCount = 0;
+		var dateCountAll = 0;
 		var scheduleYear = [""];
 		var scheduleMonth = [""];
 		var scheduleDay = [""];
@@ -115,27 +116,49 @@
 		//予定がある日を設定
 		function setScheduleDate() {
 			dateCount = 0;
+			dateCountAll = 0;
 			var i = 0;
 			<c:forEach var="e" items="${dateList}">
-		 	//console.log("${e}");
-		 	<c:forEach var="str" items="${fn:split(e,'/')}">
-		 		//console.log("${str}");
-		 		if (i == 0){
-		 			scheduleYear[dateCount]  = "${str}";
-		 		}else if (i == 1){
-		 			scheduleMonth[dateCount] = "${str}";
-		 		}else if (i == 2){
-		 			scheduleDay[dateCount]   = "${str}";
-		 		}else{
-		 			scheduleYear[dateCount]  = "";
-		 			scheduleMonth[dateCount] = "";
-		 			scheduleDay[dateCount]   = "";
-		 		}
-		 		i++;
-		 	</c:forEach>
-		 	i = 0;
-			dateCount++;
-		 </c:forEach>
+			 	//console.log("${e}");
+			 	<c:forEach var="str1" items="${fn:split(e,'/')}">
+			 		//console.log("${str}");
+			 		if (i == 0){
+			 			scheduleYear[dateCount]  = "${str1}";
+			 		}else if (i == 1){
+			 			scheduleMonth[dateCount] = "${str1}";
+			 		}else if (i == 2){
+			 			scheduleDay[dateCount]   = "${str1}";
+			 		}else{
+			 			scheduleYear[dateCount]  = "";
+			 			scheduleMonth[dateCount] = "";
+			 			scheduleDay[dateCount]   = "";
+			 		}
+			 		i++;
+			 	</c:forEach>
+			 	i = 0;
+				dateCount++;
+			</c:forEach>
+
+			<c:forEach var="e" items="${allMembers}">
+			 	//console.log("${e}");
+			 	<c:forEach var="str2" items="${fn:split(e,'/')}">
+			 		//console.log("${str}");
+			 		if (i == 0){
+			 			scheduleYearAll[dateCountAll]  = "${str2}";
+			 		}else if (i == 1){
+			 			scheduleMonthAll[dateCountAll] = "${str2}";
+			 		}else if (i == 2){
+			 			scheduleDayAll[dateCountAll]   = "${str2}";
+			 		}else{
+			 			scheduleYearAll[dateCountAll]  = "";
+			 			scheduleMonthAll[dateCountAll] = "";
+			 			scheduleDayAll[dateCountAll]   = "";
+			 		}
+			 		i++;
+			 	</c:forEach>
+			 	i = 0;
+				dateCountAll++;
+			</c:forEach>
 		}
 
 		// カレンダー表示
@@ -205,6 +228,10 @@
 									&& count == parseInt(scheduleDay[k])){
 									calendar += "<span class='day-schedule'>👤</span>";
 									break;
+								} else if (judgeYear == scheduleYearAll[k] && judgeMonth == scheduleMonthAll[k]
+									&& count == parseInt(scheduleDayAll[k])){
+									calendar += "<span class='day-schedule'>👤</span>";
+									break;
 								}
 							}
 							calendar += "</td>";
@@ -221,6 +248,10 @@
 							for (var k = 0; k < dateCount; k++){
 								if (judgeYear == scheduleYear[k] && judgeMonth == scheduleMonth[k]
 									&& count == parseInt(scheduleDay[k])){
+									calendar += "<span class='day-schedule'>👤</span>";
+									break;
+								} else if (judgeYear == scheduleYearAll[k] && judgeMonth == scheduleMonthAll[k]
+									&& count == parseInt(scheduleDayAll[k])){
 									calendar += "<span class='day-schedule'>👤</span>";
 									break;
 								}

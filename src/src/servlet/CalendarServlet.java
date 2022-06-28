@@ -39,9 +39,11 @@ public class CalendarServlet extends HttpServlet {
 		// 検索処理を行う
 		CalendarDAO bDao = new CalendarDAO();
 		List<String> dateList = bDao.select(new Schedule(user,"","","","",""));
+		List<String> allMembers = bDao.select(new Schedule("all_members","","","","",""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("dateList", dateList);
+		request.setAttribute("allMembers", allMembers);
 
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
