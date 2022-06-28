@@ -25,6 +25,54 @@
                 </div>
 
             </div>
+
+
+                        <!--ハンバーガーメニュー-->
+            <div id="drawer">
+                <input id="input" type="checkbox" class="unshown">
+                <label id="open" for="input"><span></span></label>
+                <label class="unshown" id="close" for="input"></label>
+                <div id="menu-content">
+
+
+                    <nav>
+                        <div class="menu-pro">M E N U</div>
+                        <ul class="flex-pro">
+                            <li id="box-pro">
+                                <a href="/GandA/TopServlet" class="link-pro">
+
+                                    <span id="first-pro1">Top</span>
+                                </a>
+                            </li>
+                            <li id="box-pro">
+                                <a href="/GandA/CalendarServlet" class="link-pro">
+                                    <span id="first-pro">Calendar</span>
+                                </a>
+                            </li>
+                            <li id="box-pro">
+                                <a href="/GandA/RecipeServlet" class="link-pro">
+
+                                    <span id="first-pro">Cooking</span>
+                                </a>
+                            </li>
+                            <li id="box-pro">
+                                <a href="/GandA/TravelServlet" class="link-pro">
+
+                                    <span id="first-pro">Travel</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!--ログアウト-->
+                    <div id="box-logout-pro"><a href="/GandA/LogoutServlet" class="link-menu-pro">Log out</a></div>
+                </div>
+            </div>
+            <!--ハンバーガー終わり-->
+
+
+
+
         <!-- メニューバー部分 -->
 
         <div id="text_menu">
