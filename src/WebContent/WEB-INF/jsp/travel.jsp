@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>旅行先｜G&A</title>
     <link rel="stylesheet" href="/GandA/css/travel.css">
     <link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>

@@ -32,15 +32,15 @@
                 <div class="menu-center">M E N U</div>
                 <ul class="menu-flex">
                     <li id="box-menu">
-                        <a href="/GandA/CalendarServlet" class="link-menu">
+                        <a href="/GandA/TopServlet" class="link-menu">
 
-                            <span id="first-text-pro">Calendar</span></a><span id="second-text">|</span>
+                            <span id="first-text-pro">Top</span></a><span id="second-text">|</span>
 
                     </li>
                     <li id="box-menu">
-                        <a href="/GandA/TopServlet" class="link-menu">
+                        <a href="/GandA/CalendarServlet" class="link-menu">
 
-                            <span id="first-text">Schedule</span></a><span id="second-text">|</span>
+                            <span id="first-text">Calendar</span></a><span id="second-text">|</span>
 
                     </li>
                     <li id="box-menu">
