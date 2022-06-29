@@ -10,7 +10,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>calendar | G＆A</title>
+<title>カレンダー | G＆A</title>
 <link rel="stylesheet" href="/GandA/css/schedule.css">
 <link rel="shortcut icon" href="/GandA/img/other/favicon.ico">
 </head>

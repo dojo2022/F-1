@@ -12,7 +12,7 @@
     margin-top: 10px;
     margin-bottom: 0%;
     margin-left: 2%;
-    font-weight: 600;
+    font-size: 1.4em;
 }
 
 /*説明ブロック、写真の配置と間隔*/
@@ -25,7 +25,6 @@
     width: 48%;
     height: auto;
     padding: 5px;
-
     overflow-wrap: break-word;
     border: solid 1px;
     border-color: #D9D9D9;
@@ -37,26 +36,31 @@
 #picmenu-food {
     margin-top: 5px;
     margin-bottom: 0px;
+    font-size: 1.4em;
 }
 
 #picmenu-spot {
     margin-top: 5px;
     margin-bottom: 0px;
+    font-size: 1.4em;
 }
 
 #picmenu-hotel {
     margin-top: 5px;
     margin-bottom: 0px;
+    font-size: 1.4em;
 }
 
 #picmenu-budget {
     margin-top: 5px;
     margin-bottom: 0px;
+    font-size: 1.4em;
 }
 
 #picmenu-location {
     margin-top: 5px;
     margin-bottom: 0px;
+    font-size: 1.4em;
 }
 
 
@@ -117,6 +121,7 @@
 
 #title-season {
     margin-right: 20px;
+    font-size: 1.4em;
 }
 
 
