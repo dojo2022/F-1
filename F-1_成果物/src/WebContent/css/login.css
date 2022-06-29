@@ -1,0 +1,120 @@
+@charset "UTF-8";
+.womanbox {
+    text-align: center;
+    overflow: hidden;
+	margin-top: -23px;
+}
+
+#woman {
+    width: 68%;
+    height: auto;
+    margin-right: 0px;
+    border-radius: 13px;
+
+    animation :imgfade 10s infinite;
+opacity: 0;
+}
+
+@keyframes imgfade {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 1;
+	}
+
+	75% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+
+
+
+
+
+#login-form {
+    height: 50px;
+}
+
+
+
+#input_box {
+    display: flex;
+    justify-content: right;
+    width: 84%;
+    margin-top: 10px;
+
+}
+
+#submit-box {
+    text-align: right;
+    width: 84%;
+    margin-top: 0px;
+}
+
+
+#user_id {
+    margin-left: 10px;
+    border-radius: 20px;
+    border: solid 1px;
+}
+#password {
+    margin-left: 10px;
+    border-radius: 20px;
+    border: solid 1px;
+}
+#name{
+	    margin-left: 10px;
+    border-radius: 20px;
+    border: solid 1px;
+}
+.submit {
+    height: 16px;
+    margin-left: 20px;
+    margin-bottom: 1px;
+    border-radius: 20px;
+    border: none;
+    background-color: #3C3B6E;
+    color: #ffffff;
+}
+.button {
+    font-size: 13px;
+    height: 16px;
+    margin-left: 10px;
+    margin-bottom: 1px;
+    border-radius: 20px;
+    border: solid 1px;
+    background-color: #ffffff;
+    color: #1C1C1C;
+}
+#icon_main {
+    margin-left: 15%;
+    width: 120px;
+    height: auto;
+}
+#result p {
+    font-size: 40px;
+    text-align: end;
+    margin-top: 200px;
+    margin-right: 500px;
+}
+#logo_cat{
+    margin-left: 675px;
+}
+
+@media screen and (max-width:700px){
+	.button#back{
+	margin-right: 6px
+	}
+	.fade_xos#regist_form{
+	    margin-left: 645px;
+	}
+}

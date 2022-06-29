@@ -1,0 +1,282 @@
+@charset "UTF-8";
+
+
+@media screen and (min-width: 601px) {
+
+
+
+/*旅行先の名前 */
+#title-travel {
+	background-color: none;
+    width: fit-content;
+    margin-top: 10px;
+    margin-bottom: 0%;
+    margin-left: 2%;
+    font-size: 1.4em;
+}
+
+/*説明ブロック、写真の配置と間隔*/
+.flex-travel {
+    display: flex;
+    margin-left: 30px;
+}
+
+#text-pickup {
+    width: 48%;
+    height: auto;
+    padding: 5px;
+    overflow-wrap: break-word;
+    border: solid 1px;
+    border-color: #D9D9D9;
+    background-color: #ffffff;
+}
+
+/*説明文中の見出し*/
+
+#picmenu-food {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: 1.4em;
+}
+
+#picmenu-spot {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: 1.4em;
+}
+
+#picmenu-hotel {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: 1.4em;
+}
+
+#picmenu-budget {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: 1.4em;
+}
+
+#picmenu-location {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: 1.4em;
+}
+
+
+/*説明文中の細かな説明*/
+
+#explain-food {
+    margin: 0px 5px 0px 20px;
+    font-size: 15px;
+}
+
+#explain-spot {
+    margin: 0px 5px 0px 20px;
+    font-size: 15px;
+}
+
+#explain-hotel {
+    margin: 0px 5px 0px 20px;
+    font-size: 15px;
+}
+
+#explain-budget {
+    margin: 0px 5px 0px 20px;
+    font-size: 15px;
+}
+
+#explain-location {
+    margin: 0px 5px 0px 20px;
+    font-size: 15px;
+}
+
+
+
+
+
+
+/*旅行先の写真*/
+
+#picture-travel {
+    margin-left: 20px;
+    justify-content: flex-end;
+    max-width: 600px;
+}
+
+#picture-travel img {
+    width: 100%;
+    max-height: 400px;
+}
+
+
+
+/*季節ごとのアイコン表示*/
+.icon-season {
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+    align-items: center;
+}
+
+#title-season {
+    margin-right: 20px;
+    font-size: 1.4em;
+}
+
+
+#season-spring {
+    width: 60px;
+    height: 60px;
+}
+
+#season-summer {
+    width: 70px;
+    height: 60px;
+    margin-left: 20px;
+}
+
+#season-autumn {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+}
+
+#season-winter {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+}
+
+    #picture-travel-pro {
+        display: none;
+    }
+
+}
+
+
+
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 10px;
+    }
+
+
+        /*旅行先の名前*/
+        #title-travel {
+            background-color: none;
+            margin-left: 2%;
+            margin-bottom: 0%;
+        }
+
+        /*説明ブロック、写真の配置と間隔*/
+
+        #text-pickup {
+            width: 94%;
+            height: auto;
+            padding: 3px;
+            margin-left: 5px;
+            overflow-wrap: break-word;
+            border: solid 1px;
+            border-color: #D9D9D9;
+            background-color: #ffffff;
+        }
+
+        /*説明文中の見出し*/
+
+        #picmenu-food {
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+
+        #picmenu-spot {
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+
+        #picmenu-hotel {
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+
+        #picmenu-budget {
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+
+        #picmenu-location {
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+
+
+        /*説明文中の細かな説明*/
+        #explain-food {
+            margin: 0px 5px 0px 20px;
+            font-size: 14px;
+        }
+
+        #explain-spot {
+            margin: 0px 5px 0px 20px;
+            font-size: 14px;
+        }
+
+        #explain-hotel {
+            margin: 0px 5px 0px 20px;
+            font-size: 14px;
+        }
+
+        #explain-budget {
+            margin: 0px 5px 0px 20px;
+            font-size: 14px;
+        }
+
+        #explain-location {
+            margin: 0px 5px 0px 20px;
+            font-size: 14px;
+        }
+
+
+    /*旅行先の写真*/
+
+    #picture-travel-pro {
+        align-items: center;
+        margin-left: 5px;
+        margin-right: 5px;
+        max-width: 600px;
+    }
+
+    #picture-travel-pro img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+    }
+
+    #picture-travel {
+        display: none;
+    }
+
+    /*季節ごとのアイコン表示*/
+    .icon-season {
+        display: flex;
+        justify-content: center;
+        margin-top: 0px;
+        align-items: center;
+    }
+
+    #title-season {
+        margin-right: 20px;
+    }
+
+    #season-winter {
+        width: 45px;
+        height: 45px;
+        margin-left: 20px;
+    }
+
+
+
+
+
+
+}
