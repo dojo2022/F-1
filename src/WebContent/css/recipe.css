@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-/*html {
-    font-family: sans-serif;
-    background-color: #F8F8F8;
-}*/
-
 #wrapper-recipe {
 	margin-top: 10px;
 }
@@ -20,7 +15,7 @@
 }
 
 #wrapper-recipe .pick-menu {
-    margin-left: 120px;
+    margin: 40px 0 0 120px;
 }
 
 #wrapper-recipe .pick {
@@ -100,74 +95,10 @@
     /*color: white;*/
 }
 
-/*#wrapper-recipe #genre {
-    border-radius: 10px;
-}
-
-#wrapper-recipe #ingredient {
-    border-radius: 10px;
-}*/
 
 #wrapper-recipe #time-cooking {
     border-radius: 10px;
 }
-
-/*#wrapper-recipe label:hover #balloon-pop-genre {
-    animation-name: popup;
-    animation-duration: 1s;
-}
-
-#wrapper-recipe label:hover #balloon-pop-ingredient {
-    animation-name: popup;
-    animation-duration: 1s;
-}
-
-#wrapper-recipe label:hover #balloon-pop-time {
-    animation-name: popup;
-    animation-duration: 1s;
-}
-
-#wrapper-recipe #balloon-pop-genre {
-    position: absolute;
-    top: 4px;
-    left: 70px;
-
-    padding: 3px 10px 3px 10px;
-    border-radius: 10px;
-    opacity: 0;
-}
-
-#wrapper-recipe #balloon-pop-ingredient {
-    position: absolute;
-    top: 62px;
-    left: 100px;
-
-    padding: 3px 10px 3px 10px;
-    border-radius: 10px;
-    opacity: 0;
-}
-
-#wrapper-recipe #balloon-pop-time {
-    position: absolute;
-    top: 117px;
-    left: 70px;
-
-    padding: 5px 10px 5px 10px;
-    border-radius: 10px;
-    opacity: 0;
-}
-
-@keyframes popup {
-    0% {
-    opacity:0;
-    }
-    50%{
-        opacity: 1;
-    }
-    100%{
-        opacity: 0;
-    }
-}*/
 
 #wrapper-recipe #add {
     font-size: 1em;
@@ -181,13 +112,13 @@
 
 /*レシピ検索画面*/
 #wrapper-search-recipe main {
-    margin: 0 auto 0 280px;
+    margin: 30px auto 0 280px;
 }
 
 #wrapper-search-recipe .dish {
     width: 860px;
-    border-bottom: 1px dashed black;
     padding-left: 20px;
+    margin-bottom: 40px;
 }
 
 #wrapper-search-recipe a {
